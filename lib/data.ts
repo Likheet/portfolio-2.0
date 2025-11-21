@@ -13,7 +13,8 @@ export const GENERAL_INFO = {
 export const SOCIAL_LINKS = [
     { name: 'GitHub', url: 'https://github.com/Likheet' },
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/likheet/' },
-    { name: 'HackerRank', url: 'https://www.hackerrank.com/profile/likheet_s' },
+    { name: 'Instagram', url: 'https://www.instagram.com/likheetshetty/' },
+    { name: 'Kaggle', url: 'https://www.kaggle.com/likheet' },
     {
         name: 'Resume',
         url: '/docs/likheet-shetty-resume.pdf',
@@ -24,9 +25,11 @@ export const MY_STACK = {
     languages: [
         {
             name: 'Python',
+            icon: '/logo/python.svg',
         },
         {
             name: 'C / C++',
+            icon: '/logo/cpp.svg',
         },
         {
             name: 'JavaScript',
@@ -34,6 +37,7 @@ export const MY_STACK = {
         },
         {
             name: 'SQL',
+            icon: '/logo/sql.svg',
         },
     ],
     frontend: [
@@ -54,28 +58,30 @@ export const MY_STACK = {
             icon: '/logo/bootstrap.svg',
         },
         {
-            name: 'GSAP',
-            icon: '/logo/gsap.png',
-        },
-        {
             name: 'Three.js',
+            icon: '/logo/threejs.svg',
         },
     ],
     'ai & cloud': [
         {
             name: 'Azure AI Services',
+            icon: '/logo/azure.svg',
         },
         {
             name: 'Google Cloud Platform',
+            icon: '/logo/gcp.svg',
+        },
+        {
+            name: 'Oracle OCI',
+            icon: '/logo/oracle.svg',
         },
         {
             name: 'Hugging Face',
-        },
-        {
-            name: 'Alan AI',
+            icon: '/logo/huggingface.svg',
         },
         {
             name: 'Stable Diffusion',
+            icon: '/logo/stablediffusion.png',
         },
     ],
     tools: [
@@ -88,16 +94,24 @@ export const MY_STACK = {
             icon: '/logo/github.png',
         },
         {
+            name: 'Postman',
+            icon: '/logo/postman.svg',
+        },
+        {
             name: 'Vercel',
+            icon: '/logo/vercel.svg',
         },
         {
             name: 'VS Code',
+            icon: '/logo/vscode.svg',
         },
         {
             name: 'Jupyter Notebook',
+            icon: '/logo/jupyter.svg',
         },
         {
             name: 'RapidAPI',
+            icon: '/logo/rapidapi.svg',
         },
     ],
 };
@@ -236,5 +250,40 @@ export const MY_EXPERIENCE = [
         title: 'Software Development Intern',
         company: 'DesiQna (Remote, India)',
         duration: 'Jul 2023 - Dec 2023',
+    },
+];
+
+export const MY_EDUCATION = [
+    {
+        degree: 'Master of Information Technology (Artificial Intelligence)',
+        institution: 'University of New South Wales (UNSW)',
+        location: 'Sydney, Australia',
+        duration: 'Upcoming (2026)',
+        description: 'Focusing on Advanced AI, Machine Learning, and Data Science.',
+        score: '-',
+    },
+    {
+        degree: 'B.E. in Electronics & Communication Engineering',
+        institution: 'RV Institute of Technology & Management',
+        location: 'Bengaluru, India',
+        duration: '2021 - 2025',
+        description: 'Specializing in Electronics and Communication.',
+        score: 'CGPA: 8.68',
+    },
+    {
+        degree: 'Higher Secondary (12th)',
+        institution: 'Sri Chaitanya PU College (CBSE)',
+        location: 'India',
+        duration: '2020',
+        description: 'Completed with distinction.',
+        score: '93%',
+    },
+    {
+        degree: 'Secondary (10th)',
+        institution: 'Sri Chaitanya Techno School',
+        location: 'India',
+        duration: '2018',
+        description: 'Completed with distinction.',
+        score: '91%',
     },
 ];

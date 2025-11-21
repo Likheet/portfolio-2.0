@@ -1,24 +1,7 @@
-import { GENERAL_INFO } from '@/lib/data';
+import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
 import { GitFork, Star } from 'lucide-react';
 
-interface RepoStats {
-    stargazers_count: number;
-    forks_count: number;
-}
-
-const Footer = async () => {
-    const repoStats = await fetch(
-        'https://api.github.com/repos/tajmirul/portfolio-2.0',
-        {
-            next: {
-                revalidate: 60 * 60, // 1 hour
-            },
-        },
-    );
-
-    const { stargazers_count, forks_count } =
-        (await repoStats.json()) as RepoStats;
-
+const Footer = () => {
     return (
         <footer className="text-center pb-5" id="contact">
             <div className="container">
@@ -30,22 +13,18 @@ const Footer = async () => {
                     {GENERAL_INFO.email}
                 </a>
 
-                <div className="">
-                    <a
-                        href="https://github.com/Tajmirul/portfolio-2.0"
-                        target="_blank"
-                        className="leading-none text-muted-foreground hover:underline hover:text-white"
-                    >
-                        Design by Tajmirul Islam · Adapted by Likheet Shetty
-                        <div className="flex items-center justify-center gap-5 pt-1">
-                            <span className="flex items-center gap-2">
-                                <Star size={18} /> {stargazers_count}
-                            </span>
-                            <span className="flex items-center gap-2">
-                                <GitFork size={18} /> {forks_count}
-                            </span>
-                        </div>
-                    </a>
+                <div className="flex justify-center gap-8 items-center">
+                    {SOCIAL_LINKS.filter(link => link.name !== 'Resume').map((link) => (
+                        <a
+                            key={link.name}
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-muted-foreground hover:text-portfolio-red transition-colors duration-300 text-sm uppercase tracking-widest"
+                        >
+                            {link.name}
+                        </a>
+                    ))}
                 </div>
             </div>
         </footer>
