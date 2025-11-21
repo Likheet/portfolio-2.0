@@ -2,8 +2,9 @@
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { MoveUpRight } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
+import { useLenis } from 'lenis/react';
 
 const COLORS = [
     'bg-yellow-500 text-black',
@@ -34,6 +35,18 @@ const MENU_LINKS = [
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const router = useRouter();
+    const pathname = usePathname();
+    const lenis = useLenis();
+
+    const handleLinkClick = (url: string) => {
+        setIsMenuOpen(false);
+        if (pathname === '/' && url.startsWith('/#')) {
+            const hash = url.replace('/', '');
+            lenis?.scrollTo(hash);
+        } else {
+            router.push(url);
+        }
+    };
 
     return (
         <>
@@ -120,10 +133,9 @@ const Navbar = () => {
                                 {MENU_LINKS.map((link, idx) => (
                                     <li key={link.name}>
                                         <button
-                                            onClick={() => {
-                                                router.push(link.url);
-                                                setIsMenuOpen(false);
-                                            }}
+                                            onClick={() =>
+                                                handleLinkClick(link.url)
+                                            }
                                             className="group text-xl flex items-center gap-3"
                                         >
                                             <span

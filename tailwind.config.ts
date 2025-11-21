@@ -59,7 +59,7 @@ export default {
                 'accent-yellow': '#EAB32E',
                 'portfolio-bg': '#BCC0B6',
                 'portfolio-text': '#1A1A1A',
-                'portfolio-cream': '#F3EFE5',
+                'portfolio-cream': '#E8E0D0',
                 'portfolio-red': '#DE5448',
                 'portfolio-yellow': '#EAB330',
             },

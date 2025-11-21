@@ -11,6 +11,8 @@ import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
 import Preloader from '../components/Preloader';
 import StickyEmail from './_components/StickyEmail';
+import ScrollToTop from '@/components/ScrollToTop';
+import ScrollFix from '@/components/ScrollFix';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 
@@ -105,6 +107,8 @@ export default function RootLayout({
                     <ScrollProgressIndicator />
                     <ParticleBackground />
                     <StickyEmail />
+                    <ScrollToTop />
+                    <ScrollFix />
                 </ReactLenis>
             </body>
         </html>

@@ -32,11 +32,12 @@ const CustomCursor = () => {
             const isClickable =
                 target.tagName === 'A' ||
                 target.tagName === 'BUTTON' ||
+                target.tagName === 'IFRAME' ||
                 target.closest('a') ||
                 target.closest('button') ||
                 window.getComputedStyle(target).cursor === 'pointer';
 
-            setIsHovering(isClickable);
+            setIsHovering(!!isClickable);
         };
 
         window.addEventListener('mousemove', handleMouseMove);
