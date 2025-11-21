@@ -25,10 +25,10 @@ const TabCard = ({
         <Link
             href={href}
             className={`
-                group relative h-[120px] md:h-[160px] w-full md:w-[300px]
+                group relative h-[100px] md:h-[120px] w-full max-w-[320px] md:w-[340px]
                 ${colorClass} ${textColorClass}
                 rounded-none rounded-br-[3rem] 
-                p-6 flex flex-col justify-between 
+                px-7 py-5 flex flex-col justify-between 
                 overflow-hidden
                 shadow-lg hover:shadow-xl
                 transition-shadow duration-300
@@ -39,10 +39,10 @@ const TabCard = ({
             <div className="absolute inset-0 bg-[#2C2C2C] translate-y-full transition-transform duration-700 ease-in-out group-hover:translate-y-0 z-0" />
 
             {/* Content (Relative z-10 to stay on top) */}
-            <span className="relative z-10 text-lg md:text-xl font-medium tracking-wide transition-colors duration-700 group-hover:text-white">
+            <span className="relative z-10 text-base md:text-lg font-semibold tracking-[0.08em] drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] transition-colors duration-700 group-hover:text-white">
                 {label}
             </span>
-            <span className="relative z-10 text-lg md:text-xl font-medium self-end transition-colors duration-700 group-hover:text-white">
+            <span className="relative z-10 text-sm md:text-base font-semibold self-end tracking-[0.08em] drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)] transition-colors duration-700 group-hover:text-white">
                 {number}
             </span>
         </Link>
@@ -56,36 +56,12 @@ const Banner = () => {
 
     useGSAP(
         () => {
-            // Initial Reveal
-            const tl = gsap.timeline();
-
-            tl.from('.nav-item', {
-                y: -20,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: 'power3.out',
-            })
-            .from('.hero-text', {
-                y: 100,
-                opacity: 0,
-                duration: 1.5,
-                stagger: 0.1,
-                ease: 'power4.out',
-            }, '-=0.5')
-            .from('.hero-sub', {
-                opacity: 0,
-                y: 20,
-                duration: 1,
-                ease: 'power2.out',
-            }, '-=1')
-            .from('.tab-card', {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.2,
-                ease: 'back.out(1.7)',
-            }, '-=0.5');
+            // Single delayed fade-in for the whole banner
+            gsap.fromTo(
+                containerRef.current,
+                { opacity: 0 },
+                { opacity: 1, duration: 1, delay: 1.5, ease: 'power1.out' },
+            );
 
             // Mouse Move Effect for Typography
             const handleMouseMove = (e: MouseEvent) => {
@@ -119,7 +95,7 @@ const Banner = () => {
 
     return (
         <section
-            className="relative bg-portfolio-bg text-portfolio-text min-h-screen flex flex-col justify-center items-center overflow-hidden cursor-default"
+            className="relative bg-background text-foreground min-h-screen flex flex-col justify-center items-center overflow-hidden cursor-default"
             id="banner"
             ref={containerRef}
         >
@@ -150,26 +126,26 @@ const Banner = () => {
             </nav>
 
             {/* CENTER HERO CONTENT */}
-            <div className="relative z-10 w-full max-w-[85vw] h-[80vh] flex flex-col justify-center px-4 md:px-12">
+            <div className="relative z-10 w-full max-w-[85vw] h-[80vh] flex flex-col justify-center px-4 md:px-12 -translate-y-[3.5rem] md:-translate-y-[4.5rem]">
                 
                 {/* ROW 1: NAME + PROJECTS CARD */}
                 <div className="relative w-full flex flex-col md:flex-row items-center md:items-end justify-center md:justify-start mb-4 md:mb-0">
                     <div className="flex flex-col w-full md:w-auto z-10 mix-blend-difference">
-                        <div className="flex justify-start items-center border-b border-portfolio-text/30 pb-2 mb-2 md:mb-4 w-full">
+                        <div className="flex justify-start items-center border-b border-foreground/30 pb-2 mb-3 md:mb-5 w-full -translate-y-[0.45rem] md:-translate-y-[0.6rem]">
                             <span className="font-inter text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-80">
                                 MS in IT(AI) at UNSW 2026
                             </span>
                         </div>
                         <h1 
                             ref={nameRef}
-                            className="hero-text font-playfair italic font-normal text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-tight text-portfolio-text"
+                            className="hero-text font-playfair italic font-normal text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-tight text-foreground"
                         >
                             Likheet
                         </h1>
                     </div>
                     
                     {/* Projects: Red (Floating Right of Name) */}
-                    <div className="tab-card mt-8 md:mt-0 md:absolute md:top-[20%] md:right-[5%] lg:right-[5%] z-20">
+                    <div className="tab-card mt-8 md:mt-0 md:absolute md:top-[6%] md:right-[8%] lg:right-[8%] z-20">
                         <TabCard 
                             href="#selected-projects" 
                             label="Projects" 
@@ -181,19 +157,19 @@ const Banner = () => {
                 </div>
 
                 {/* MIDDLE DECORATION */}
-                <div className="hero-sub w-full flex justify-center items-center py-4 md:py-12 gap-4 md:gap-8 z-0">
-                    <div className="h-[1px] w-12 md:w-24 bg-portfolio-text/30" />
-                    <span className="font-inter text-xs md:text-sm uppercase tracking-[0.2em] text-portfolio-text/80">
+                <div className="hero-sub w-full flex justify-center items-center py-6 md:py-14 gap-6 md:gap-12 z-0">
+                    <div className="h-[1px] w-12 md:w-24 bg-foreground/30" />
+                    <span className="font-inter text-xs md:text-sm uppercase tracking-[0.2em] text-foreground/80">
                         Software Developer
                     </span>
-                    <div className="h-[1px] w-12 md:w-24 bg-portfolio-text/30" />
+                    <div className="h-[1px] w-12 md:w-24 bg-foreground/30" />
                 </div>
 
                 {/* ROW 2: SURNAME + MY WORKS CARD */}
                 <div className="relative w-full flex flex-col md:flex-row items-center md:items-start justify-center md:justify-end">
                     
                     {/* My Works: Yellow (Floating Left of Surname) */}
-                    <div className="tab-card mb-8 md:mb-0 md:absolute md:bottom-[20%] md:left-[5%] lg:left-[5%] z-20">
+                    <div className="tab-card mb-8 md:mb-0 md:absolute md:bottom-[16%] md:left-[6%] lg:left-[6%] z-20">
                         <TabCard 
                             href="#my-experience" 
                             label="My Works" 
@@ -205,21 +181,21 @@ const Banner = () => {
 
                     <h1 
                         ref={surnameRef}
-                        className="hero-text font-inter font-light text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-tighter text-portfolio-text z-10 mix-blend-difference"
+                        className="hero-text font-inter font-light text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-tighter text-foreground z-10 mix-blend-difference"
                     >
                         Shetty
                     </h1>
                 </div>
 
                 {/* CONTACT CARD (Bottom Anchor) */}
-                <div className="tab-card mt-8 md:mt-0 md:absolute md:bottom-[-5%] md:right-[20%] z-20 flex justify-center md:block w-full md:w-auto">
-                    <TabCard 
-                        href="#contact" 
-                        label="Contact" 
-                        number="03"
-                        colorClass="bg-portfolio-cream"
-                        textColorClass="text-portfolio-text"
-                    />
+                <div className="tab-card mt-8 md:mt-0 md:absolute md:bottom-[-6%] md:right-[25%] z-20 flex justify-center md:block w-full md:w-auto">
+                        <TabCard 
+                            href="#contact" 
+                            label="Contact" 
+                            number="03"
+                            colorClass="bg-portfolio-cream"
+                            textColorClass="text-portfolio-text"
+                        />
                 </div>
 
             </div>

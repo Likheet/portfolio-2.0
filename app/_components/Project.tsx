@@ -14,6 +14,7 @@ interface Props {
     project: IProject;
     selectedProject: string | null;
     onMouseEnter: (_slug: string) => void;
+    onMouseLeave: () => void;
 }
 
 /*
@@ -33,7 +34,13 @@ interface Props {
 
 gsap.registerPlugin(useGSAP);
 
-const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
+const Project = ({
+    index,
+    project,
+    selectedProject,
+    onMouseEnter,
+    onMouseLeave,
+}: Props) => {
     const externalLinkSVGRef = useRef<SVGSVGElement>(null);
 
     const { context, contextSafe } = useGSAP(() => {}, {
@@ -100,7 +107,8 @@ const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
     });
 
     const handleMouseLeave = contextSafe?.(() => {
-        context.kill();
+        context?.kill();
+        onMouseLeave();
     });
 
     return (
@@ -117,7 +125,7 @@ const Project = ({ index, project, selectedProject, onMouseEnter }: Props) => {
                     width="300"
                     height="200"
                     className={cn(
-                        'w-full object-cover mb-6 aspect-[3/2] object-top',
+                        'md:hidden w-full object-cover mb-6 aspect-[3/2] object-top',
                     )}
                     key={project.slug}
                     loading="lazy"
