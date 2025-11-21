@@ -159,7 +159,7 @@ const Banner = () => {
                     </div>
 
                     {/* Projects: Red (Floating Right of Name) */}
-                    <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:top-[10%] lg:right-[2%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
+                    <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:top-[10%] lg:right-[-3%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
                             href="#selected-projects"
                             label="Projects"
@@ -171,7 +171,7 @@ const Banner = () => {
                             href="https://www.instagram.com/likheetshetty/"
                             target="_blank"
                             rel="noreferrer"
-                            className="group relative mt-3 lg:absolute lg:-right-16 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                            className="group relative mt-3 lg:absolute lg:-right-20 lg:-bottom-6 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
                         >
                             <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                                 Instagram
@@ -195,7 +195,7 @@ const Banner = () => {
                 {/* ROW 2: SURNAME + MY WORKS CARD */}
                 <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-end gap-8 lg:gap-10">
                     {/* My Works: Yellow (Floating Left of Surname) */}
-                    <div className="tab-card mb-6 sm:mb-8 lg:mb-0 lg:absolute lg:bottom-[18%] lg:left-[2%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
+                    <div className="tab-card mb-6 sm:mb-8 lg:mb-0 lg:absolute lg:bottom-[18%] lg:left-[-1%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
                             href="#my-experience"
                             label="My Works"
@@ -207,7 +207,7 @@ const Banner = () => {
                             href="https://github.com/Likheet"
                             target="_blank"
                             rel="noreferrer"
-                            className="group relative mt-3 lg:absolute lg:-left-16 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                            className="group relative mt-3 lg:absolute lg:-left-20 lg:-bottom-6 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
                         >
                             <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                                 GitHub

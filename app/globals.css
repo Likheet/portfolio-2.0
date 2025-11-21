@@ -36,6 +36,10 @@
 
 @layer base {
     html {
+        /* Base font size scaled to 80% to match intended 80% zoom design at 100% zoom */
+        /* 16px (browser default) * 0.8 = 12.8px */
+        /* This scales all rem-based values (Tailwind's default unit) proportionally */
+        font-size: 12.8px;
         scroll-behavior: smooth;
     }
     ::-webkit-scrollbar {
