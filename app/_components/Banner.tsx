@@ -131,8 +131,8 @@ const Banner = () => {
                 {/* ROW 1: NAME + PROJECTS CARD */}
                 <div className="relative w-full flex flex-col md:flex-row items-center md:items-end justify-center md:justify-start mb-4 md:mb-0">
                     <div className="flex flex-col w-full md:w-auto z-10 mix-blend-difference">
-                        <div className="flex justify-start items-center border-b border-foreground/30 pb-2 mb-3 md:mb-5 w-full -translate-y-[0.45rem] md:-translate-y-[0.6rem]">
-                            <span className="font-inter text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-80">
+                        <div className="flex justify-start items-center border-b border-foreground/30 pb-3 mb-4 md:mb-6 w-full -translate-y-[0.45rem] md:-translate-y-[0.6rem]">
+                            <span className="font-inter text-xs md:text-sm font-medium uppercase tracking-[0.22em] opacity-90">
                                 MS in IT(AI) at UNSW 2026
                             </span>
                         </div>
@@ -181,7 +181,7 @@ const Banner = () => {
 
                     <h1 
                         ref={surnameRef}
-                        className="hero-text font-inter font-light text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-tighter text-foreground z-10 mix-blend-difference"
+                        className="hero-text font-bodoni font-normal text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-[-0.03em] text-foreground z-10 mix-blend-difference"
                     >
                         Shetty
                     </h1>
