@@ -85,30 +85,30 @@ const ProjectDetails = ({ project }: Props) => {
     );
 
     return (
-        <section className="pt-5 pb-14">
+        <section className="pt-6 pb-16 sm:pb-20">
             <div className="container" ref={containerRef}>
                 <TransitionLink
                     back
                     href="/"
-                    className="mb-16 inline-flex gap-2 items-center group h-12"
+                    className="mb-12 sm:mb-14 md:mb-16 inline-flex gap-2 items-center group h-12"
                 >
                     <ArrowLeft className="group-hover:-translate-x-1 group-hover:text-primary transition-all duration-300" />
                     Back
                 </TransitionLink>
 
                 <div
-                    className="top-0 min-h-[calc(100svh-100px)] flex"
+                    className="top-0 lg:min-h-[calc(100svh-120px)] flex flex-col"
                     id="info"
                 >
                     <div className="relative w-full">
-                        <div className="flex items-start gap-6 mx-auto mb-10 max-w-[635px]">
-                            <h1 className="fade-in-later opacity-0 text-4xl md:text-[60px] leading-none font-anton overflow-hidden">
+                        <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 mx-auto mb-8 sm:mb-10 max-w-[760px]">
+                            <h1 className="fade-in-later opacity-0 text-3xl sm:text-4xl md:text-[48px] lg:text-[60px] leading-none font-anton overflow-hidden">
                                 <span className="inline-block">
                                     {project.title}
                                 </span>
                             </h1>
 
-                            <div className="fade-in-later opacity-0 flex gap-2">
+                            <div className="fade-in-later opacity-0 flex gap-3 sm:gap-2">
                                 {project.sourceCode && (
                                     <a
                                         href={project.sourceCode}
@@ -132,7 +132,7 @@ const ProjectDetails = ({ project }: Props) => {
                             </div>
                         </div>
 
-                        <div className="max-w-[635px] space-y-7 pb-20 mx-auto">
+                        <div className="max-w-[760px] space-y-6 sm:space-y-7 pb-14 sm:pb-16 lg:pb-20 mx-auto">
                             <div className="fade-in-later">
                                 <p className="text-muted-foreground font-anton mb-3">
                                     Year
@@ -154,7 +154,7 @@ const ProjectDetails = ({ project }: Props) => {
                                     Description
                                 </p>
 
-                                <div className="text-lg prose-xl markdown-text">
+                                <div className="text-base sm:text-lg prose-lg sm:prose-xl markdown-text">
                                     {parse(project.description)}
                                 </div>
                             </div>
@@ -164,7 +164,7 @@ const ProjectDetails = ({ project }: Props) => {
                                         My Role
                                     </p>
 
-                                    <div className="text-lg">
+                                    <div className="text-base sm:text-lg">
                                         {parse(project.role)}
                                     </div>
                                 </div>
@@ -176,7 +176,7 @@ const ProjectDetails = ({ project }: Props) => {
                 </div>
 
                 <div
-                    className="fade-in-later relative flex flex-col gap-2 max-w-[800px] mx-auto"
+                    className="fade-in-later relative flex flex-col gap-4 sm:gap-6 max-w-[900px] mx-auto"
                     id="images"
                 >
                     {project.images.map((image) => (

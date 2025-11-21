@@ -76,7 +76,8 @@ export default {
                 playfair: ['var(--font-playfair)'],
             },
             padding: {
-                section: '250px',
+                // Responsive vertical spacing used by py-section/pb-section utilities
+                section: 'clamp(6rem, 8vw + 3rem, 15rem)',
             },
             container: {
                 center: true,

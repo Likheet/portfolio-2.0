@@ -74,18 +74,18 @@ const Contact = () => {
         <section className="container py-section relative z-10" id="contact">
             <SectionTitle title="Get in Touch" />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 items-start">
                 <div className="space-y-8 lg:sticky lg:top-32">
-                    <h3 className="text-6xl md:text-8xl font-anton uppercase leading-none tracking-tight">
+                    <h3 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-anton uppercase leading-none tracking-tight">
                         Say <span className="text-portfolio-red">Hello</span>
                     </h3>
-                    <p className="text-xl md:text-2xl text-muted-foreground max-w-md font-roboto-flex font-light leading-relaxed">
+                    <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-xl font-roboto-flex font-light leading-relaxed">
                         Whether you have a project in mind, a question to ask, or just want to say hi — I&apos;m always open to new ideas and connections.
                     </p>
                     
-                    <div className="pt-12 space-y-4">
+                    <div className="pt-8 sm:pt-10 space-y-3 sm:space-y-4">
                         <p className="text-sm uppercase tracking-widest text-muted-foreground">Or email me directly</p>
-                        <a href="mailto:likheet.s@gmail.com" className="block text-3xl md:text-4xl font-bodoni italic hover:text-portfolio-red transition-colors duration-300">
+                        <a href="mailto:likheet.s@gmail.com" className="block text-2xl sm:text-3xl md:text-4xl font-bodoni italic hover:text-portfolio-red transition-colors duration-300 break-words">
                             likheet.s@gmail.com
                         </a>
                     </div>
@@ -113,15 +113,15 @@ const Contact = () => {
                             </Button>
                         </div>
                     ) : (
-                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
-                            <div className="space-y-12">
+                        <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 sm:space-y-12">
+                            <div className="space-y-10 sm:space-y-12">
                                 <div className="group relative">
                                     <input
                                         {...register('name', { required: 'Name is required' })}
                                         id="name"
                                         type="text"
                                         className={cn(
-                                            "w-full bg-transparent border-b border-border py-4 text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors rounded-none placeholder:text-muted-foreground/30",
+                                            "w-full bg-transparent border-b border-border py-4 text-xl sm:text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors rounded-none placeholder:text-muted-foreground/30",
                                             errors.name && "border-destructive"
                                         )}
                                         placeholder="Your Name"
@@ -143,7 +143,7 @@ const Contact = () => {
                                         id="email"
                                         type="email"
                                         className={cn(
-                                            "w-full bg-transparent border-b border-border py-4 text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors rounded-none placeholder:text-muted-foreground/30",
+                                            "w-full bg-transparent border-b border-border py-4 text-xl sm:text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors rounded-none placeholder:text-muted-foreground/30",
                                             errors.email && "border-destructive"
                                         )}
                                         placeholder="Your Email"
@@ -159,7 +159,7 @@ const Contact = () => {
                                         id="message"
                                         rows={4}
                                         className={cn(
-                                            "w-full bg-transparent border-b border-border py-4 text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors resize-none rounded-none placeholder:text-muted-foreground/30",
+                                            "w-full bg-transparent border-b border-border py-4 text-xl sm:text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors resize-none rounded-none placeholder:text-muted-foreground/30",
                                             errors.message && "border-destructive"
                                         )}
                                         placeholder="Your Message..."
@@ -170,12 +170,14 @@ const Contact = () => {
                                 </div>
                             </div>
 
-                            <div className="space-y-8">
-                                <ReCAPTCHA
-                                    sitekey="6LfQUA4sAAAAAO1tnhCJGzZlpWJ71Ew7AM4kP6ut"
-                                    onChange={onRecaptchaChange}
-                                    theme="dark"
-                                />
+                            <div className="space-y-6 sm:space-y-8">
+                                <div className="w-fit">
+                                    <ReCAPTCHA
+                                        sitekey="6LfQUA4sAAAAAO1tnhCJGzZlpWJ71Ew7AM4kP6ut"
+                                        onChange={onRecaptchaChange}
+                                        theme="dark"
+                                    />
+                                </div>
                                 {error && (
                                     <p className="text-destructive text-sm uppercase tracking-wider">{error}</p>
                                 )}

@@ -76,18 +76,18 @@ const Skills = () => {
             <div className="container">
                 <SectionTitle title="My Stack" />
 
-                <div className="space-y-20">
+                <div className="space-y-12 sm:space-y-16 lg:space-y-20">
                     {(
                         Object.entries(MY_STACK) as [string, Skill[]][]
                     ).map(([key, value]) => (
                         <div className="grid sm:grid-cols-12" key={key}>
                             <div className="sm:col-span-5">
-                                <p className="slide-up text-5xl font-anton leading-none text-muted-foreground uppercase">
+                                <p className="slide-up text-4xl sm:text-5xl font-anton leading-none text-muted-foreground uppercase">
                                     {key}
                                 </p>
                             </div>
 
-                            <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap">
+                            <div className="sm:col-span-7 flex gap-x-8 sm:gap-x-11 gap-y-7 sm:gap-y-9 flex-wrap">
                                 {value.map((item) => (
                                     <div
                                         className="slide-up flex gap-3.5 items-center leading-none"

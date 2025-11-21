@@ -34,7 +34,7 @@ const TabCard = ({
                 }
             }}
             className={`
-                group relative h-[120px] md:h-[150px] w-full max-w-[350px] md:w-[380px]
+                group relative h-[120px] md:h-[150px] lg:h-[130px] w-full max-w-[350px] md:max-w-[380px] lg:w-[320px] lg:max-w-none
                 ${colorClass} ${textColorClass}
                 rounded-none rounded-br-[3rem] 
                 px-8 py-4 flex flex-col justify-end 
@@ -107,16 +107,16 @@ const Banner = () => {
 
     return (
         <section
-            className="relative bg-background text-foreground min-h-screen flex flex-col justify-center items-center overflow-hidden cursor-default"
+            className="relative bg-background text-foreground min-h-[90vh] lg:min-h-screen flex flex-col justify-center items-center overflow-hidden cursor-default px-4 sm:px-6 lg:px-0"
             id="banner"
             ref={containerRef}
         >
             {/* CORNER NAVIGATION */}
-            <nav className="absolute inset-0 pointer-events-none p-8 md:p-16 flex flex-col justify-between z-50">
+            <nav className="absolute inset-0 pointer-events-none p-6 sm:p-8 lg:p-14 flex flex-col justify-between z-50">
                 {/* Top Row */}
                 <div className="flex justify-between items-start">
                     <div className="nav-item pointer-events-auto">
-                        <span className="font-inter text-sm font-medium tracking-widest uppercase">
+                        <span className="font-inter text-xs sm:text-sm font-medium tracking-widest uppercase">
                             Likheet.dev
                         </span>
                     </div>
@@ -141,25 +141,25 @@ const Banner = () => {
             </nav>
 
             {/* CENTER HERO CONTENT */}
-            <div className="relative z-10 w-full max-w-[85vw] h-[80vh] flex flex-col justify-center px-4 md:px-12 -translate-y-[3.5rem] md:-translate-y-[4.5rem]">
+            <div className="relative z-10 w-full max-w-6xl lg:max-w-7xl flex flex-col justify-center gap-12 lg:gap-14 py-16 sm:py-20 lg:py-0 lg:h-[80vh] -translate-y-3 sm:-translate-y-6 lg:-translate-y-[4.5rem]">
                 {/* ROW 1: NAME + PROJECTS CARD */}
-                <div className="relative w-full flex flex-col md:flex-row items-center md:items-end justify-center md:justify-start mb-4 md:mb-0">
+                <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between gap-8 lg:gap-12">
                     <div className="flex flex-col w-full md:w-auto z-10 mix-blend-difference">
-                        <div className="flex justify-start items-center border-b border-foreground/30 pb-3 mb-4 md:mb-6 w-full -translate-y-[0.45rem] md:-translate-y-[0.6rem]">
-                            <span className="font-inter text-xs md:text-sm font-medium uppercase tracking-[0.22em] opacity-90">
+                        <div className="flex justify-start items-center border-b border-foreground/30 pb-3 mb-4 md:mb-6 w-full -translate-y-[0.3rem] sm:-translate-y-[0.45rem] lg:-translate-y-[0.6rem]">
+                            <span className="font-inter text-[11px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.22em] opacity-90">
                                 MS in IT(AI) at UNSW 2026
                             </span>
                         </div>
                         <h1
                             ref={nameRef}
-                            className="hero-text font-playfair italic font-normal text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-tight text-foreground"
+                            className="hero-text font-playfair italic font-normal text-[clamp(3.4rem,12vw,8.5rem)] md:text-[clamp(5rem,14vw,12rem)] lg:text-[clamp(6.5rem,18vw,16rem)] leading-[0.85] tracking-tight text-foreground text-center lg:text-left"
                         >
                             Likheet
                         </h1>
                     </div>
 
                     {/* Projects: Red (Floating Right of Name) */}
-                    <div className="tab-card mt-8 md:mt-0 md:absolute md:top-[10%] md:right-[11%] lg:right-[11%] z-20 relative">
+                    <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:top-[10%] lg:right-[2%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
                             href="#selected-projects"
                             label="Projects"
@@ -171,7 +171,7 @@ const Banner = () => {
                             href="https://www.instagram.com/likheetshetty/"
                             target="_blank"
                             rel="noreferrer"
-                            className="group absolute -right-16 md:-right-20 -bottom-3 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                            className="group relative mt-3 lg:absolute lg:-right-16 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
                         >
                             <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                                 Instagram
@@ -184,18 +184,18 @@ const Banner = () => {
                 </div>
 
                 {/* MIDDLE DECORATION */}
-                <div className="hero-sub w-full flex justify-center items-center py-6 md:py-14 gap-6 md:gap-12 z-0">
-                    <div className="h-[1px] w-12 md:w-24 bg-foreground/30" />
-                    <span className="font-inter text-xs md:text-sm uppercase tracking-[0.2em] text-foreground/80">
+                <div className="hero-sub w-full flex justify-center items-center py-6 md:py-10 lg:py-14 gap-5 md:gap-10 lg:gap-12 z-0">
+                    <div className="h-[1px] w-10 md:w-24 bg-foreground/30" />
+                    <span className="font-inter text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] text-foreground/80 text-center">
                         Software Developer
                     </span>
-                    <div className="h-[1px] w-12 md:w-24 bg-foreground/30" />
+                    <div className="h-[1px] w-10 md:w-24 bg-foreground/30" />
                 </div>
 
                 {/* ROW 2: SURNAME + MY WORKS CARD */}
-                <div className="relative w-full flex flex-col md:flex-row items-center md:items-start justify-center md:justify-end">
+                <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-end gap-8 lg:gap-10">
                     {/* My Works: Yellow (Floating Left of Surname) */}
-                    <div className="tab-card mb-8 md:mb-0 md:absolute md:bottom-[16%] md:left-[2%] lg:left-[2%] z-20 relative">
+                    <div className="tab-card mb-6 sm:mb-8 lg:mb-0 lg:absolute lg:bottom-[18%] lg:left-[2%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
                             href="#my-experience"
                             label="My Works"
@@ -207,7 +207,7 @@ const Banner = () => {
                             href="https://github.com/Likheet"
                             target="_blank"
                             rel="noreferrer"
-                            className="group absolute -left-16 md:-left-20 -bottom-3 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                            className="group relative mt-3 lg:absolute lg:-left-16 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
                         >
                             <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                                 GitHub
@@ -220,14 +220,14 @@ const Banner = () => {
 
                     <h1
                         ref={surnameRef}
-                        className="hero-text font-bodoni font-normal text-[clamp(5rem,18vw,16rem)] leading-[0.8] tracking-[-0.03em] text-foreground z-10 mix-blend-difference"
+                        className="hero-text font-bodoni font-normal text-[clamp(3.2rem,12vw,8.5rem)] md:text-[clamp(5rem,14vw,12rem)] lg:text-[clamp(6.5rem,18vw,16rem)] leading-[0.85] tracking-[-0.02em] text-foreground z-10 mix-blend-difference text-center lg:text-left"
                     >
                         Shetty
                     </h1>
                 </div>
 
                 {/* CONTACT CARD (Bottom Anchor) */}
-                <div className="tab-card mt-8 md:mt-0 md:absolute md:bottom-[-10%] md:right-[25%] z-20 flex justify-center md:block w-full md:w-auto relative">
+                <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-[-12%] lg:right-[12%] xl:right-[15%] z-20 flex justify-center lg:block w-full lg:w-auto relative lg:w-[320px]">
                     <TabCard
                         href="#contact"
                         label="Contact"
@@ -239,7 +239,7 @@ const Banner = () => {
                         href="https://www.linkedin.com/in/likheet/"
                         target="_blank"
                         rel="noreferrer"
-                        className="group absolute -right-16 md:-right-20 -bottom-3 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                        className="group relative mt-3 lg:absolute lg:-right-16 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
                     >
                         <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                             LinkedIn

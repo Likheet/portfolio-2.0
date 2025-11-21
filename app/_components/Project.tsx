@@ -137,7 +137,7 @@ const Project = ({
                 </div>
                 <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3">
-                        <h4 className="text-4xl xs:text-6xl flex gap-4 font-anton transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                        <h4 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl flex gap-4 font-anton leading-tight transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
                             {project.title}
                             <span className="text-foreground opacity-0 group-hover:opacity-100 transition-all">
                                 <svg

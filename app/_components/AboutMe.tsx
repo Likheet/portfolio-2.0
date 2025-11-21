@@ -52,9 +52,9 @@ const AboutMe = () => {
     );
 
     return (
-        <section className="pb-section" id="about-me">
+        <section className="pb-section pt-10 sm:pt-14" id="about-me">
             <div className="container" ref={container}>
-                <h2 className="text-4xl md:text-6xl font-thin mb-20 leading-[1.05] tracking-[0.01em] text-balance max-w-5xl slide-up-and-fade">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-thin mb-10 sm:mb-14 lg:mb-20 leading-[1.05] tracking-[0.01em] text-balance max-w-5xl slide-up-and-fade">
                     I turn ML experiments into products that feel{' '}
                     <FlipWords
                         words={['smooth', 'smarter', 'polished', 'human']}
@@ -65,18 +65,18 @@ const AboutMe = () => {
                     engineering.
                 </h2>
 
-                <p className="pb-3 border-b text-muted-foreground slide-up-and-fade">
+                <p className="pb-3 border-b text-muted-foreground text-sm sm:text-base slide-up-and-fade">
                     This is me.
                 </p>
 
-                <div className="grid md:grid-cols-12 mt-9">
+                <div className="grid md:grid-cols-12 gap-8 md:gap-12 lg:gap-14 mt-9">
                     <div className="md:col-span-5">
-                        <p className="text-5xl slide-up-and-fade">
+                        <p className="text-4xl sm:text-5xl leading-[1.05] slide-up-and-fade">
                             Hi, I&apos;m Likheet Shetty.
                         </p>
                     </div>
                     <div className="md:col-span-7">
-                        <div className="text-lg text-muted-foreground max-w-[520px] leading-9 text-justify space-y-4">
+                        <div className="text-base sm:text-lg text-muted-foreground max-w-[620px] leading-8 sm:leading-9 text-justify space-y-4">
                             <p className="slide-up-and-fade">
                                 I&apos;m Likheet, an ECE undergrad and incoming
                                 MS IT (AI) student at UNSW who likes turning AI

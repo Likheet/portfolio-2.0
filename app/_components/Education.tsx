@@ -38,7 +38,7 @@ const Education = () => {
         <section className="container py-section" id="education" ref={containerRef}>
             <SectionTitle title="Education" />
 
-            <div className="grid grid-cols-1 gap-16 mt-16">
+            <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:gap-16 mt-12 sm:mt-14 lg:mt-16">
                 {MY_EDUCATION.map((edu, index) => (
                     <div
                         key={index}
@@ -53,12 +53,12 @@ const Education = () => {
                             </div>
 
                             {/* Content - Right Side */}
-                            <div className="md:col-span-9 space-y-4">
+                            <div className="md:col-span-9 space-y-3 sm:space-y-4">
                                 <div className="flex flex-col gap-1">
                                     <h3 className="text-3xl md:text-4xl font-anton uppercase tracking-wide">
                                         {edu.degree}
                                     </h3>
-                                    <div className="flex flex-wrap items-center gap-3 text-lg font-light text-muted-foreground">
+                                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-base sm:text-lg font-light text-muted-foreground">
                                         <span>{edu.institution}</span>
                                         <span className="hidden md:inline w-1 h-1 bg-portfolio-red rounded-full" />
                                         <span>{edu.location}</span>
