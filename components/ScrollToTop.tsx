@@ -37,7 +37,7 @@ const ScrollToTop = () => {
                 {
                     'opacity-0 translate-y-10 pointer-events-none': !isVisible,
                     'opacity-100 translate-y-0': isVisible,
-                }
+                },
             )}
             aria-label="Scroll to top"
         >

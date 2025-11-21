@@ -1,5 +1,11 @@
 import type { Metadata } from 'next';
-import { Anton, Roboto_Flex, Bodoni_Moda, Inter, Playfair_Display } from 'next/font/google';
+import {
+    Anton,
+    Roboto_Flex,
+    Bodoni_Moda,
+    Inter,
+    Playfair_Display,
+} from 'next/font/google';
 import { ReactLenis } from 'lenis/react';
 
 import 'lenis/dist/lenis.css';

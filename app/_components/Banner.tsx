@@ -121,18 +121,6 @@ const Banner = () => {
                             Likheet.dev
                         </span>
                     </div>
-                    <div className="nav-item pointer-events-auto">
-                        <Link
-                            href="#contact"
-                            onClick={(e) => {
-                                e.preventDefault();
-                                lenis?.scrollTo('#contact');
-                            }}
-                            className="font-inter text-sm font-medium tracking-widest uppercase hover:line-through transition-all"
-                        >
-                            Menu
-                        </Link>
-                    </div>
                 </div>
 
                 {/* Bottom Row */}
@@ -172,7 +160,7 @@ const Banner = () => {
                     </div>
 
                     {/* Projects: Red (Floating Right of Name) */}
-                    <div className="tab-card mt-8 md:mt-0 md:absolute md:top-[10%] md:right-[11%] lg:right-[11%] z-20">
+                    <div className="tab-card mt-8 md:mt-0 md:absolute md:top-[10%] md:right-[11%] lg:right-[11%] z-20 relative">
                         <TabCard
                             href="#selected-projects"
                             label="Projects"
@@ -180,6 +168,19 @@ const Banner = () => {
                             colorClass="bg-portfolio-red"
                             textColorClass="text-white"
                         />
+                        <Link
+                            href="https://www.instagram.com/likheetshetty/"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group absolute -right-16 md:-right-20 -bottom-3 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                        >
+                            <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                                Instagram
+                            </span>
+                            <span className="absolute left-0 top-full block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                                Instagram
+                            </span>
+                        </Link>
                     </div>
                 </div>
 
@@ -195,7 +196,7 @@ const Banner = () => {
                 {/* ROW 2: SURNAME + MY WORKS CARD */}
                 <div className="relative w-full flex flex-col md:flex-row items-center md:items-start justify-center md:justify-end">
                     {/* My Works: Yellow (Floating Left of Surname) */}
-                    <div className="tab-card mb-8 md:mb-0 md:absolute md:bottom-[16%] md:left-[2%] lg:left-[2%] z-20">
+                    <div className="tab-card mb-8 md:mb-0 md:absolute md:bottom-[16%] md:left-[2%] lg:left-[2%] z-20 relative">
                         <TabCard
                             href="#my-experience"
                             label="My Works"
@@ -203,6 +204,19 @@ const Banner = () => {
                             colorClass="bg-portfolio-yellow"
                             textColorClass="text-portfolio-text"
                         />
+                        <Link
+                            href="https://github.com/Likheet"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="group absolute -left-16 md:-left-20 -bottom-3 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                        >
+                            <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                                GitHub
+                            </span>
+                            <span className="absolute left-0 top-full block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                                GitHub
+                            </span>
+                        </Link>
                     </div>
 
                     <h1
@@ -214,7 +228,7 @@ const Banner = () => {
                 </div>
 
                 {/* CONTACT CARD (Bottom Anchor) */}
-                <div className="tab-card mt-8 md:mt-0 md:absolute md:bottom-[-10%] md:right-[25%] z-20 flex justify-center md:block w-full md:w-auto">
+                <div className="tab-card mt-8 md:mt-0 md:absolute md:bottom-[-10%] md:right-[25%] z-20 flex justify-center md:block w-full md:w-auto relative">
                     <TabCard
                         href="#contact"
                         label="Contact"
@@ -222,6 +236,19 @@ const Banner = () => {
                         colorClass="bg-portfolio-cream"
                         textColorClass="text-portfolio-text"
                     />
+                    <Link
+                        href="https://www.linkedin.com/in/likheet/"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group absolute -right-16 md:-right-20 -bottom-3 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                    >
+                        <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                            LinkedIn
+                        </span>
+                        <span className="absolute left-0 top-full block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
+                            LinkedIn
+                        </span>
+                    </Link>
                 </div>
             </div>
 
