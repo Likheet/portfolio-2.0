@@ -64,7 +64,6 @@ const Banner = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const nameRef = useRef<HTMLHeadingElement>(null);
     const surnameRef = useRef<HTMLHeadingElement>(null);
-    const lenis = useLenis();
 
     useGSAP(
         () => {

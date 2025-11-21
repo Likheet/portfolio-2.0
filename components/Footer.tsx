@@ -1,5 +1,4 @@
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
-import { GitFork, Star } from 'lucide-react';
 
 const Footer = () => {
     return (

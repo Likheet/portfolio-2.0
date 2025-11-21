@@ -1,5 +1,9 @@
 import { IProject } from '@/types';
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+const withBasePath = (path: string) =>
+    path.startsWith('/') ? `${BASE_PATH}${path}` : path;
+
 export const GENERAL_INFO = {
     email: 'likheet.s@gmail.com',
 
@@ -17,7 +21,7 @@ export const SOCIAL_LINKS = [
     { name: 'Kaggle', url: 'https://www.kaggle.com/likheet' },
     {
         name: 'Resume',
-        url: '/docs/likheet-shetty-resume.pdf',
+        url: withBasePath('/docs/likheet-shetty-resume.pdf'),
     },
 ];
 
