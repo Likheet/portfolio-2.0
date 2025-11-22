@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import SectionTitle from '@/components/SectionTitle';
 import { PROJECTS, PUBLICATIONS } from '@/lib/data';
 import { cn } from '@/lib/utils';
@@ -156,17 +156,20 @@ const MyWork = () => {
                         </div>
                     )}
 
-                    <div
-                        className="flex flex-col gap-16"
-                        ref={projectListRef}
-                    >
+                    <div className="flex flex-col gap-16" ref={projectListRef}>
                         {/* Research Papers Subsection */}
                         {PUBLICATIONS && PUBLICATIONS.length > 0 && (
                             <div>
                                 <div className="flex items-center justify-between mb-8">
-                                    <h3 className="text-2xl font-medium text-muted-foreground">Research Papers</h3>
-                                    <Link href="/archive" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
-                                        View All <ArrowUpRight className="w-4 h-4" />
+                                    <h3 className="text-2xl font-medium text-muted-foreground">
+                                        Research Papers
+                                    </h3>
+                                    <Link
+                                        href="/archive"
+                                        className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                                    >
+                                        View All{' '}
+                                        <ArrowUpRight className="w-4 h-4" />
                                     </Link>
                                 </div>
                                 <div className="flex flex-col">
@@ -184,14 +187,22 @@ const MyWork = () => {
                                                         <h4 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl flex gap-4 font-anton leading-tight transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
                                                             {pub.title}
                                                             {pub.url && (
-                                                                <Link href={pub.url} target="_blank" className="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                                                <Link
+                                                                    href={
+                                                                        pub.url
+                                                                    }
+                                                                    target="_blank"
+                                                                    className="text-foreground opacity-0 group-hover:opacity-100 transition-all"
+                                                                >
                                                                     <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
                                                                 </Link>
                                                             )}
                                                         </h4>
                                                     </div>
                                                     <div className="mt-2 flex flex-wrap gap-3 text-muted-foreground text-sm font-medium">
-                                                        <span>{pub.conference}</span>
+                                                        <span>
+                                                            {pub.conference}
+                                                        </span>
                                                         <span className="inline-block size-1.5 rounded-full bg-muted-foreground/50 self-center"></span>
                                                         <span>{pub.year}</span>
                                                     </div>
@@ -206,9 +217,15 @@ const MyWork = () => {
                         {/* Projects Subsection */}
                         <div>
                             <div className="flex items-center justify-between mb-8">
-                                <h3 className="text-2xl font-medium text-muted-foreground">Projects</h3>
-                                <Link href="/archive" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
-                                    View All <ArrowUpRight className="w-4 h-4" />
+                                <h3 className="text-2xl font-medium text-muted-foreground">
+                                    Projects
+                                </h3>
+                                <Link
+                                    href="/archive"
+                                    className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
+                                >
+                                    View All{' '}
+                                    <ArrowUpRight className="w-4 h-4" />
                                 </Link>
                             </div>
                             <div className="flex flex-col max-md:gap-10">
@@ -228,11 +245,7 @@ const MyWork = () => {
 
                     {/* View More Button */}
                     <div className="flex justify-center mt-16">
-                        <Button
-                            as="link"
-                            href="/archive"
-                            variant="secondary"
-                        >
+                        <Button as="link" href="/archive" variant="secondary">
                             <span className="flex items-center gap-2">
                                 View All Work
                                 <ArrowUpRight className="h-5 w-5" />
