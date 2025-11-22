@@ -163,7 +163,12 @@ const MyWork = () => {
                         {/* Research Papers Subsection */}
                         {PUBLICATIONS && PUBLICATIONS.length > 0 && (
                             <div>
-                                <h3 className="text-2xl font-medium mb-8 text-muted-foreground">Research Papers</h3>
+                                <div className="flex items-center justify-between mb-8">
+                                    <h3 className="text-2xl font-medium text-muted-foreground">Research Papers</h3>
+                                    <Link href="/archive" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                                        View All <ArrowUpRight className="w-4 h-4" />
+                                    </Link>
+                                </div>
                                 <div className="flex flex-col">
                                     {PUBLICATIONS.map((pub, index) => (
                                         <div
@@ -200,7 +205,12 @@ const MyWork = () => {
 
                         {/* Projects Subsection */}
                         <div>
-                            <h3 className="text-2xl font-medium mb-8 text-muted-foreground">Projects</h3>
+                            <div className="flex items-center justify-between mb-8">
+                                <h3 className="text-2xl font-medium text-muted-foreground">Projects</h3>
+                                <Link href="/archive" className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1">
+                                    View All <ArrowUpRight className="w-4 h-4" />
+                                </Link>
+                            </div>
                             <div className="flex flex-col max-md:gap-10">
                                 {PROJECTS.map((project, index) => (
                                     <Project
