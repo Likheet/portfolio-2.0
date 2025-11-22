@@ -27,8 +27,9 @@ const Contact = () => {
     } = useForm<FormData>();
 
     const onSubmit = async (data: FormData) => {
+        // Client-side reCAPTCHA verification
         if (!recaptchaToken) {
-            setError('Please complete the ReCaptcha verification.');
+            setError('Please complete the reCAPTCHA verification.');
             return;
         }
 
@@ -44,8 +45,10 @@ const Contact = () => {
                 },
                 body: JSON.stringify({
                     access_key: 'cad71167-9b5a-4c27-b161-261815e8cc34',
+                    subject: `New Contact Form Message from ${data.name}`,
+                    from_name: data.name,
                     ...data,
-                    recaptcha_response: recaptchaToken,
+                    botcheck: false, // Required to pass Web3Forms spam filter
                 }),
             });
 
@@ -171,6 +174,15 @@ const Contact = () => {
                             </div>
 
                             <div className="space-y-6 sm:space-y-8">
+                                {/* Hidden botcheck field for Web3Forms spam prevention */}
+                                <input 
+                                    type="checkbox" 
+                                    name="botcheck" 
+                                    className="hidden" 
+                                    style={{ display: 'none' }}
+                                />
+
+                                {/* Google reCAPTCHA v2 - Free tier */}
                                 <div className="w-fit">
                                     <ReCAPTCHA
                                         sitekey="6LfQUA4sAAAAAO1tnhCJGzZlpWJ71Ew7AM4kP6ut"
@@ -178,6 +190,7 @@ const Contact = () => {
                                         theme="dark"
                                     />
                                 </div>
+                                
                                 {error && (
                                     <p className="text-destructive text-sm uppercase tracking-wider">{error}</p>
                                 )}

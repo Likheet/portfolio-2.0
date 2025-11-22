@@ -1,6 +1,6 @@
-'use client';
+"use client";
 import SectionTitle from '@/components/SectionTitle';
-import { PROJECTS } from '@/lib/data';
+import { PROJECTS, PUBLICATIONS } from '@/lib/data';
 import { cn } from '@/lib/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -8,10 +8,13 @@ import { ScrollTrigger } from 'gsap/all';
 import Image from 'next/image';
 import React, { useRef, useState, MouseEvent } from 'react';
 import Project from './Project';
+import Link from 'next/link';
+import { ArrowUpRight } from 'lucide-react';
+import Button from '@/components/Button';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const ProjectList = () => {
+const MyWork = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectListRef = useRef<HTMLDivElement>(null);
     const imageContainer = useRef<HTMLDivElement>(null);
@@ -118,9 +121,9 @@ const ProjectList = () => {
     };
 
     return (
-        <section className="pb-section" id="selected-projects">
+        <section className="pb-section" id="my-work">
             <div className="container">
-                <SectionTitle title="SELECTED PROJECTS" />
+                <SectionTitle title="MY WORK" />
 
                 <div
                     className="group/projects relative"
@@ -154,19 +157,77 @@ const ProjectList = () => {
                     )}
 
                     <div
-                        className="flex flex-col max-md:gap-10"
+                        className="flex flex-col gap-16"
                         ref={projectListRef}
                     >
-                        {PROJECTS.map((project, index) => (
-                            <Project
-                                index={index}
-                                project={project}
-                                selectedProject={selectedProject}
-                                onMouseEnter={handleMouseEnter}
-                                onMouseLeave={handleMouseLeave}
-                                key={project.slug}
-                            />
-                        ))}
+                        {/* Research Papers Subsection */}
+                        {PUBLICATIONS && PUBLICATIONS.length > 0 && (
+                            <div>
+                                <h3 className="text-2xl font-medium mb-8 text-muted-foreground">Research Papers</h3>
+                                <div className="flex flex-col">
+                                    {PUBLICATIONS.map((pub, index) => (
+                                        <div
+                                            key={index}
+                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                                        >
+                                            <div className="flex gap-2 md:gap-5">
+                                                <div className="font-anton text-muted-foreground">
+                                                    01.
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <div className="flex flex-wrap items-center gap-3">
+                                                        <h4 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl flex gap-4 font-anton leading-tight transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                                                            {pub.title}
+                                                            {pub.url && (
+                                                                <Link href={pub.url} target="_blank" className="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                                                    <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
+                                                                </Link>
+                                                            )}
+                                                        </h4>
+                                                    </div>
+                                                    <div className="mt-2 flex flex-wrap gap-3 text-muted-foreground text-sm font-medium">
+                                                        <span>{pub.conference}</span>
+                                                        <span className="inline-block size-1.5 rounded-full bg-muted-foreground/50 self-center"></span>
+                                                        <span>{pub.year}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Projects Subsection */}
+                        <div>
+                            <h3 className="text-2xl font-medium mb-8 text-muted-foreground">Projects</h3>
+                            <div className="flex flex-col max-md:gap-10">
+                                {PROJECTS.map((project, index) => (
+                                    <Project
+                                        index={index}
+                                        project={project}
+                                        selectedProject={selectedProject}
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                        key={project.slug}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* View More Button */}
+                    <div className="flex justify-center mt-16">
+                        <Button
+                            as="link"
+                            href="/archive"
+                            variant="secondary"
+                        >
+                            <span className="flex items-center gap-2">
+                                View All Work
+                                <ArrowUpRight className="h-5 w-5" />
+                            </span>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -174,4 +235,4 @@ const ProjectList = () => {
     );
 };
 
-export default ProjectList;
+export default MyWork;

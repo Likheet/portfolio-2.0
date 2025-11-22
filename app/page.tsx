@@ -2,7 +2,7 @@ import AboutMe from './_components/AboutMe';
 import Banner from './_components/Banner';
 import Experiences from './_components/Experiences';
 import Skills from './_components/Skills';
-import ProjectList from './_components/ProjectList';
+import MyWork from './_components/MyWork';
 import Education from './_components/Education';
 import Contact from './_components/Contact';
 
@@ -14,7 +14,7 @@ export default function Home() {
             <Education />
             <Skills />
             <Experiences />
-            <ProjectList />
+            <MyWork />
             <Contact />
         </div>
     );

@@ -291,3 +291,48 @@ export const MY_EDUCATION = [
         score: '91%',
     },
 ];
+
+export interface IPublication {
+    title: string;
+    conference: string;
+    year: string;
+    url?: string;
+    description?: string;
+}
+
+export const PUBLICATIONS: IPublication[] = [
+    {
+        title: 'Paper Title Placeholder',
+        conference: 'Conference Name / Journal',
+        year: '2024',
+        url: '#',
+        description: 'Brief description of the paper and its contribution.',
+    },
+];
+
+export const ARCHIVE_PROJECTS: IProject[] = [
+    {
+        title: 'Project Alpha',
+        slug: 'project-alpha',
+        techStack: ['Python', 'FastAPI'],
+        thumbnail: '/projects/thumbnail/placeholder.png', // Placeholder
+        longThumbnail: '/projects/long/placeholder.png',
+        images: [],
+        sourceCode: '#',
+        year: 2023,
+        description: 'A cool project from the archives.',
+        role: 'Developer',
+    },
+     {
+        title: 'Project Beta',
+        slug: 'project-beta',
+        techStack: ['React', 'Firebase'],
+        thumbnail: '/projects/thumbnail/placeholder.png', // Placeholder
+        longThumbnail: '/projects/long/placeholder.png',
+        images: [],
+        sourceCode: '#',
+        year: 2022,
+        description: 'Another cool project.',
+        role: 'Frontend Dev',
+    },
+];

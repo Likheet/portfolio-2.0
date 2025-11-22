@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
@@ -31,11 +31,15 @@ const Education = () => {
                 });
             });
         },
-        { scope: containerRef }
+        { scope: containerRef },
     );
 
     return (
-        <section className="container pb-section pt-10 sm:pt-14" id="education" ref={containerRef}>
+        <section
+            className="container pb-section pt-10 sm:pt-14"
+            id="education"
+            ref={containerRef}
+        >
             <SectionTitle title="Education" />
 
             <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:gap-16 mt-12 sm:mt-14 lg:mt-16">
@@ -68,12 +72,12 @@ const Education = () => {
                                         </span>
                                     </div>
                                 </div>
-                                
+
                                 <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
                                     <p className="text-lg text-muted-foreground/80 font-light leading-relaxed max-w-2xl">
                                         {edu.description}
                                     </p>
-                                    
+
                                     {/* Score Badge */}
                                     {edu.score && (
                                         <div className="px-4 py-2 border border-border/50 rounded-full bg-background/50 backdrop-blur-sm whitespace-nowrap">
