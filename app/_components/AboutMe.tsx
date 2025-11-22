@@ -52,7 +52,7 @@ const AboutMe = () => {
     );
 
     return (
-        <section className="pb-section pt-10 sm:pt-14" id="about-me">
+        <section className="pb-10 sm:pb-14 pt-10 sm:pt-14" id="about-me">
             <div className="container" ref={container}>
                 <h2 className="text-3xl sm:text-4xl md:text-6xl font-thin mb-10 sm:mb-14 lg:mb-20 leading-[1.05] tracking-[0.01em] text-balance max-w-5xl slide-up-and-fade">
                     I turn ML experiments into products that feel{' '}
@@ -69,7 +69,7 @@ const AboutMe = () => {
                     This is me.
                 </p>
 
-                <div className="grid md:grid-cols-12 gap-8 md:gap-12 lg:gap-14 mt-9">
+                <div className="grid md:grid-cols-12 gap-8 md:gap-12 lg:gap-14 mt-6">
                     <div className="md:col-span-5">
                         <p className="text-4xl sm:text-5xl leading-[1.05] slide-up-and-fade">
                             Hi, I&apos;m Likheet Shetty.

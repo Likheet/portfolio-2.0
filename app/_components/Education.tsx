@@ -35,7 +35,7 @@ const Education = () => {
     );
 
     return (
-        <section className="container py-section" id="education" ref={containerRef}>
+        <section className="container pb-section pt-10 sm:pt-14" id="education" ref={containerRef}>
             <SectionTitle title="Education" />
 
             <div className="grid grid-cols-1 gap-10 sm:gap-12 lg:gap-16 mt-12 sm:mt-14 lg:mt-16">

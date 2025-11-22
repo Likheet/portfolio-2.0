@@ -102,7 +102,7 @@ const ProjectDetails = ({ project }: Props) => {
                 >
                     <div className="relative w-full">
                         <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 mx-auto mb-8 sm:mb-10 max-w-[760px]">
-                            <h1 className="fade-in-later opacity-0 text-3xl sm:text-4xl md:text-[48px] lg:text-[60px] leading-none font-anton overflow-hidden">
+                            <h1 className="fade-in-later opacity-0 text-3xl sm:text-4xl md:text-[48px] lg:text-[60px] leading-tight font-anton py-1">
                                 <span className="inline-block">
                                     {project.title}
                                 </span>
