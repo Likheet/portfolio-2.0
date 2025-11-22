@@ -33,7 +33,7 @@ const ScrollToTop = () => {
         <button
             onClick={scrollToTop}
             className={cn(
-                'fixed bottom-10 right-10 z-[5] p-3 rounded-full bg-background-light text-foreground border border-border shadow-lg transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-primary-foreground hover:border-primary focus:outline-none',
+                'fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[5] p-2 md:p-3 rounded-full bg-background-light text-foreground border border-border shadow-lg transition-all duration-300 hover:scale-110 hover:bg-primary hover:text-primary-foreground hover:border-primary focus:outline-none',
                 {
                     'opacity-0 translate-y-10 pointer-events-none': !isVisible,
                     'opacity-100 translate-y-0': isVisible,
@@ -41,7 +41,7 @@ const ScrollToTop = () => {
             )}
             aria-label="Scroll to top"
         >
-            <ArrowUp size={24} />
+            <ArrowUp className="w-5 h-5 md:w-6 md:h-6" />
         </button>
     );
 };

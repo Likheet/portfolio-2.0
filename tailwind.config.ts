@@ -10,6 +10,15 @@ export default {
     ],
     theme: {
         extend: {
+            screens: {
+                xs: '475px',
+                sm: '640px',
+                md: '768px',
+                lg: '1024px',
+                xl: '1280px',
+                '2xl': '1536px',
+                '3xl': '1920px',
+            },
             colors: {
                 background: {
                     DEFAULT: 'hsl(var(--background))',
@@ -75,23 +84,36 @@ export default {
                 inter: ['var(--font-inter)'],
                 playfair: ['var(--font-playfair)'],
             },
+            fontSize: {
+                'fluid-h1': 'clamp(2.5rem, 5vw + 1rem, 6rem)',
+                'fluid-h2': 'clamp(2rem, 4vw + 1rem, 4.5rem)',
+                'fluid-h3': 'clamp(1.5rem, 3vw + 1rem, 3rem)',
+                'fluid-body': 'clamp(1rem, 0.83vw + 0.83rem, 1.25rem)',
+            },
             padding: {
                 // Responsive vertical spacing used by py-section/pb-section utilities
                 section: 'clamp(6rem, 8vw + 3rem, 15rem)',
             },
             container: {
                 center: true,
-                padding: '1rem',
+                padding: {
+                    DEFAULT: '1rem',
+                    sm: '2rem',
+                    lg: '4rem',
+                    xl: '5rem',
+                    '2xl': '6rem',
+                },
                 screens: {
-                    xl: '1148px',
-                    '2xl': '1148px',
+                    sm: '640px',
+                    md: '768px',
+                    lg: '1024px',
+                    xl: '1280px',
+                    '2xl': '1536px',
+                    '3xl': '1920px',
                 },
             },
             transitionDuration: {
                 '7000': '7s',
-            },
-            screens: {
-                xs: '420px',
             },
         },
     },

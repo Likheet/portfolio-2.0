@@ -107,12 +107,12 @@ const Banner = () => {
 
     return (
         <section
-            className="relative bg-background text-foreground min-h-[90vh] lg:min-h-screen flex flex-col justify-center items-center overflow-hidden cursor-default px-4 sm:px-6 lg:px-0"
+            className="relative bg-background text-foreground min-h-screen flex flex-col justify-center items-center overflow-hidden cursor-default px-4 sm:px-6 lg:px-0"
             id="banner"
             ref={containerRef}
         >
             {/* CORNER NAVIGATION */}
-            <nav className="absolute inset-0 pointer-events-none p-6 sm:p-8 lg:p-14 flex flex-col justify-between z-50">
+            <nav className="absolute inset-0 pointer-events-none px-6 pt-6 pb-6 sm:px-8 sm:pt-8 lg:px-14 lg:pt-14 flex flex-col justify-between z-50">
                 {/* Top Row */}
                 <div className="flex justify-between items-start">
                     <div className="nav-item pointer-events-auto">
@@ -140,8 +140,69 @@ const Banner = () => {
                 </div>
             </nav>
 
-            {/* CENTER HERO CONTENT */}
-            <div className="relative z-10 w-full max-w-6xl lg:max-w-7xl flex flex-col justify-center gap-12 lg:gap-14 py-16 sm:py-20 lg:py-0 lg:h-[80vh] -translate-y-3 sm:-translate-y-6 lg:-translate-y-[4.5rem]">
+            {/* MOBILE LAYOUT (Visible < md) */}
+            <div className="relative z-10 w-full flex flex-col justify-center items-center gap-8 py-12 md:hidden">
+                {/* Name & Role */}
+                <div className="w-full flex flex-col px-6">
+                    {/* Likheet - Left Aligned */}
+                    <div className="self-start relative">
+                        <h1 className="font-playfair italic font-normal text-[17vw] leading-[0.85] tracking-tight text-foreground relative z-10">
+                            Likheet
+                        </h1>
+                        <div className="absolute -bottom-2 left-0 w-full h-px bg-foreground/50 z-0" />
+                    </div>
+
+                    {/* Shetty - Right Aligned */}
+                    <div className="self-end relative mt-8">
+                        <h1 className="font-bodoni font-normal text-[17vw] leading-[0.85] tracking-[-0.02em] text-foreground mix-blend-difference relative z-10">
+                            Shetty
+                        </h1>
+                        <div className="absolute -bottom-2 right-0 w-full h-px bg-foreground/50 z-0" />
+                    </div>
+
+                    {/* Role - Centered */}
+                    <div className="w-full flex justify-center mt-12 mb-4">
+                        <div className="flex items-center gap-4">
+                            <div className="h-[1px] w-8 bg-foreground/30" />
+                            <span className="font-inter text-xs uppercase tracking-[0.2em] text-foreground/80">
+                                Software Developer
+                            </span>
+                            <div className="h-[1px] w-8 bg-foreground/30" />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Stacked Navigation Cards */}
+                <div className="flex flex-col w-full max-w-[280px] mt-12">
+                    <TabCard
+                        href="#about-me"
+                        label="About"
+                        number="01"
+                        colorClass="bg-portfolio-cream"
+                        textColorClass="text-portfolio-text"
+                        className="w-full rounded-t-2xl rounded-br-[3rem] h-[100px] z-30 relative"
+                    />
+                    <TabCard
+                        href="#selected-projects"
+                        label="Projects"
+                        number="02"
+                        colorClass="bg-portfolio-red"
+                        textColorClass="text-white"
+                        className="w-full rounded-br-[3rem] h-[100px] -mt-10 pt-10 z-20 relative"
+                    />
+                    <TabCard
+                        href="#contact"
+                        label="Contact"
+                        number="03"
+                        colorClass="bg-portfolio-yellow"
+                        textColorClass="text-portfolio-text"
+                        className="w-full rounded-bl-2xl rounded-br-[3rem] h-[100px] -mt-10 pt-10 pb-6 z-10 relative"
+                    />
+                </div>
+            </div>
+
+            {/* DESKTOP LAYOUT (Visible >= md) */}
+            <div className="relative z-10 w-full max-w-6xl lg:max-w-7xl hidden md:flex flex-col justify-center gap-12 lg:gap-14 py-16 sm:py-20 lg:py-0 lg:h-[80vh] -translate-y-3 sm:-translate-y-6 lg:-translate-y-[4.5rem]">
                 {/* ROW 1: NAME + PROJECTS CARD */}
                 <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-end justify-center lg:justify-between gap-8 lg:gap-12">
                     <div className="flex flex-col w-full md:w-auto z-10 mix-blend-difference">
@@ -158,20 +219,20 @@ const Banner = () => {
                         </h1>
                     </div>
 
-                    {/* Projects: Red (Floating Right of Name) */}
+                    {/* About: Cream (Floating Right of Name) */}
                     <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:top-[10%] lg:right-[-3%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
-                            href="#selected-projects"
-                            label="Projects"
+                            href="#about-me"
+                            label="About"
                             number="01"
-                            colorClass="bg-portfolio-red"
-                            textColorClass="text-white"
+                            colorClass="bg-portfolio-cream"
+                            textColorClass="text-portfolio-text"
                         />
                         <Link
                             href="https://www.instagram.com/likheetshetty/"
                             target="_blank"
                             rel="noreferrer"
-                            className="group relative mt-3 lg:absolute lg:-right-20 lg:-bottom-6 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                            className="group relative mt-3 lg:absolute lg:-right-24 lg:-bottom-6 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden block h-[12px]"
                         >
                             <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                                 Instagram
@@ -194,20 +255,20 @@ const Banner = () => {
 
                 {/* ROW 2: SURNAME + MY WORKS CARD */}
                 <div className="relative w-full flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-end gap-8 lg:gap-10">
-                    {/* My Works: Yellow (Floating Left of Surname) */}
+                    {/* Projects: Red (Floating Left of Surname) */}
                     <div className="tab-card mb-6 sm:mb-8 lg:mb-0 lg:absolute lg:bottom-[18%] lg:left-[-1%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
-                            href="#my-experience"
-                            label="My Works"
+                            href="#selected-projects"
+                            label="Projects"
                             number="02"
-                            colorClass="bg-portfolio-yellow"
-                            textColorClass="text-portfolio-text"
+                            colorClass="bg-portfolio-red"
+                            textColorClass="text-white"
                         />
                         <Link
                             href="https://github.com/Likheet"
                             target="_blank"
                             rel="noreferrer"
-                            className="group relative mt-3 lg:absolute lg:-left-20 lg:-bottom-6 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                            className="group relative mt-3 lg:absolute lg:-left-20 lg:-bottom-6 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden block h-[12px]"
                         >
                             <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                                 GitHub
@@ -232,14 +293,14 @@ const Banner = () => {
                         href="#contact"
                         label="Contact"
                         number="03"
-                        colorClass="bg-portfolio-cream"
+                        colorClass="bg-portfolio-yellow"
                         textColorClass="text-portfolio-text"
                     />
                     <Link
                         href="https://www.linkedin.com/in/likheet/"
                         target="_blank"
                         rel="noreferrer"
-                        className="group relative mt-3 lg:absolute lg:-right-16 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden"
+                        className="group relative mt-3 lg:absolute lg:-right-20 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden block h-[12px]"
                     >
                         <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                             LinkedIn

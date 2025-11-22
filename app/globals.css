@@ -42,6 +42,10 @@
         font-size: 12.8px;
         scroll-behavior: smooth;
     }
+    img, video {
+        max-width: 100%;
+        height: auto;
+    }
     ::-webkit-scrollbar {
         display: none;
     }
