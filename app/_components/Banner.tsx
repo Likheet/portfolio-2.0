@@ -183,7 +183,7 @@ const Banner = () => {
                         className="w-full rounded-t-2xl rounded-br-[3rem] h-[100px] z-30 relative"
                     />
                     <TabCard
-                        href="#selected-projects"
+                        href="#my-work"
                         label="Projects"
                         number="02"
                         colorClass="bg-portfolio-red"
@@ -258,7 +258,7 @@ const Banner = () => {
                     {/* Projects: Red (Floating Left of Surname) */}
                     <div className="tab-card mb-6 sm:mb-8 lg:mb-0 lg:absolute lg:bottom-[18%] lg:left-[-1%] z-20 relative w-full max-w-[360px] lg:w-[320px]">
                         <TabCard
-                            href="#selected-projects"
+                            href="#my-work"
                             label="Projects"
                             number="02"
                             colorClass="bg-portfolio-red"
