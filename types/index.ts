@@ -27,4 +27,25 @@ export interface IProject {
     slug: string;
     liveUrl?: string;
     sourceCode?: string;
+    // New rich content fields
+    challenge?: string;
+    solution?: string;
+    impact?: string;
+    key_features?: string[];
+    team_size?: string;
+    duration?: string;
+}
+
+export interface IPublication {
+    title: string;
+    conference: string;
+    year: string;
+    url?: string;
+    description?: string;
+    // New rich content fields
+    abstract?: string;
+    key_contributions?: string[];
+    methodology?: string; // Could be a description or steps
+    results?: string; // Key metrics
+    citation?: string;
 }

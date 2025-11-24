@@ -9,11 +9,13 @@ import ArchiveCard from './_components/ArchiveCard';
 import ProjectModal from './_components/ProjectModal';
 import { IProject } from '@/types';
 import ScrambleText from '@/components/ScrambleText';
+import { useLenis } from 'lenis/react';
 
 const ArchivePage = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const lenis = useLenis();
 
     useGSAP(
         () => {
@@ -27,6 +29,15 @@ const ArchivePage = () => {
         },
         { scope: containerRef }
     );
+
+    // Manage Lenis state
+    React.useEffect(() => {
+        if (isModalOpen) {
+            lenis?.stop();
+        } else {
+            lenis?.start();
+        }
+    }, [isModalOpen, lenis]);
 
     // Combine and sort projects by year descending
     const allProjects = [...PROJECTS, ...ARCHIVE_PROJECTS].sort((a, b) => {

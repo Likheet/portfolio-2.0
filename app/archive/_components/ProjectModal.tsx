@@ -78,6 +78,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             {/* Main Container (Full Screen Sheet) */}
             <div 
                 ref={containerRef}
+                data-lenis-prevent="true"
                 className="relative w-full h-full bg-background overflow-y-auto custom-scrollbar"
             >
                 {/* Background Noise */}
@@ -88,7 +89,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 />
 
                 {/* Header / Nav Area */}
-                <div className="sticky top-0 z-50 flex justify-between items-start p-6 md:p-12 mix-blend-difference text-white">
+                <div className="sticky top-0 z-50 flex justify-between items-start p-6 md:p-12 mix-blend-difference text-white pointer-events-none">
                     <div className="flex flex-col">
                         <span className="font-playfair italic text-xl md:text-2xl opacity-80">
                             Selected Work
@@ -96,7 +97,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     </div>
                     <button 
                         onClick={handleClose}
-                        className="group flex items-center gap-2 text-sm font-anton uppercase tracking-widest hover:text-portfolio-red transition-colors"
+                        className="group flex items-center gap-2 text-sm font-anton uppercase tracking-widest hover:text-portfolio-red transition-colors pointer-events-auto"
                     >
                         <span>Close</span>
                         <div className="relative w-8 h-8 border border-current rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
@@ -107,32 +108,86 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
                 {/* Content Wrapper */}
                 <div className="relative z-10 px-6 md:px-12 pb-24 max-w-[1800px] mx-auto">
-                    
-                    {/* Title Section */}
-                    <div ref={contentRef} className="mb-12 md:mb-20">
-                        <h1 className="font-anton text-5xl md:text-7xl lg:text-8xl leading-none text-foreground uppercase tracking-tight break-words mb-8">
-                            {project.title}
-                        </h1>
-                        <div className="flex flex-wrap gap-4 mt-6 md:mt-10">
-                            {project.techStack.map((tech, i) => (
-                                <span 
-                                    key={i}
-                                    className="px-4 py-2 text-sm font-mono uppercase tracking-wider border border-foreground/20 rounded-full text-muted-foreground"
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Main Grid */}
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
                         
-                        {/* Left: Image */}
-                        <div className="lg:col-span-7">
+                        {/* Left Column: Sticky Meta Info */}
+                        <div className="lg:col-span-4 lg:sticky lg:top-32 h-fit flex flex-col gap-8 md:gap-12">
+                            {/* Title */}
+                            <h1 className="font-anton text-5xl md:text-6xl lg:text-7xl leading-[0.9] text-foreground uppercase tracking-tight break-words">
+                                {project.title}
+                            </h1>
+
+                            {/* Meta Grid */}
+                            <div className="grid grid-cols-2 gap-6 font-mono text-sm text-muted-foreground border-t border-foreground/10 pt-6">
+                                <div>
+                                    <span className="block text-xs uppercase tracking-widest opacity-60 mb-1">Year</span>
+                                    <span className="text-foreground">{project.year}</span>
+                                </div>
+                                <div>
+                                    <span className="block text-xs uppercase tracking-widest opacity-60 mb-1">Role</span>
+                                    <span className="text-foreground">{project.role ? parse(project.role) : 'Developer'}</span>
+                                </div>
+                                {project.team_size && (
+                                    <div>
+                                        <span className="block text-xs uppercase tracking-widest opacity-60 mb-1">Team</span>
+                                        <span className="text-foreground">{project.team_size}</span>
+                                    </div>
+                                )}
+                                {project.duration && (
+                                    <div>
+                                        <span className="block text-xs uppercase tracking-widest opacity-60 mb-1">Duration</span>
+                                        <span className="text-foreground">{project.duration}</span>
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* Tech Stack */}
+                            <div className="border-t border-foreground/10 pt-6">
+                                <span className="block text-xs font-mono uppercase tracking-widest opacity-60 mb-4">Technologies</span>
+                                <div className="flex flex-wrap gap-2">
+                                    {project.techStack.map((tech, i) => (
+                                        <span 
+                                            key={i}
+                                            className="px-3 py-1.5 text-xs font-mono uppercase tracking-wider border border-foreground/20 rounded-full text-muted-foreground hover:border-foreground/40 transition-colors cursor-default"
+                                        >
+                                            {tech}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Links */}
+                            <div className="flex flex-col gap-3 pt-4">
+                                {project.liveUrl && (
+                                    <Link 
+                                        href={project.liveUrl!}
+                                        target="_blank"
+                                        className="group flex items-center justify-between px-6 py-4 bg-portfolio-red text-white font-anton text-lg uppercase tracking-wider rounded-lg hover:bg-red-600 transition-all"
+                                    >
+                                        <span>Visit Site</span>
+                                        <ArrowUpRight className="w-5 h-5 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+                                    </Link>
+                                )}
+                                {project.sourceCode && project.sourceCode !== '#' && (
+                                    <Link 
+                                        href={project.sourceCode!}
+                                        target="_blank"
+                                        className="group flex items-center justify-between px-6 py-4 border border-foreground/20 text-foreground font-anton text-lg uppercase tracking-wider rounded-lg hover:bg-foreground hover:text-background transition-all"
+                                    >
+                                        <span>Source Code</span>
+                                        <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                                    </Link>
+                                )}
+                            </div>
+                        </div>
+
+                        {/* Right Column: Scrollable Content */}
+                        <div className="lg:col-span-8 flex flex-col gap-8 md:gap-12 pt-8 lg:pt-0">
+                            
+                            {/* Hero Image - Reduced Height */}
                             <div 
                                 ref={imageRef}
-                                className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] rounded-br-[3rem] md:rounded-br-[5rem] overflow-hidden bg-secondary/5"
+                                className="relative w-full aspect-[21/9] rounded-3xl overflow-hidden bg-secondary/5 shadow-2xl"
                             >
                                 <Image
                                     src={project.longThumbnail || project.thumbnail}
@@ -142,54 +197,60 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                     priority
                                 />
                             </div>
-                        </div>
 
-                        {/* Right: Details */}
-                        <div className="lg:col-span-5 flex flex-col gap-12 lg:pt-12">
-                            
-                            {/* Description */}
-                            <div className="prose prose-invert prose-lg md:prose-xl max-w-none font-light leading-relaxed text-muted-foreground">
-                                {parse(project.description)}
-                            </div>
-
-                            {/* Meta Info Grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 py-8 border-t border-foreground/10 border-b">
-                                <div>
-                                    <h3 className="font-anton text-lg mb-2 text-foreground">YEAR</h3>
-                                    <p className="font-mono text-muted-foreground">{project.year}</p>
-                                </div>
-                                <div>
-                                    <h3 className="font-anton text-lg mb-2 text-foreground">ROLE</h3>
-                                    <div className="font-mono text-muted-foreground text-sm">
-                                        {project.role ? parse(project.role) : 'Developer'}
+                            {/* Rich Content */}
+                            <div ref={contentRef} className="flex flex-col gap-8 md:gap-12">
+                                
+                                {/* Impact - Moved to Top for Recruiters */}
+                                {project.impact && (
+                                    <div className="flex flex-col gap-4 p-6 md:p-8 rounded-2xl bg-portfolio-red/10 border border-portfolio-red/20">
+                                        <h3 className="font-anton text-2xl text-portfolio-red uppercase tracking-wide">Impact & Results</h3>
+                                        <p className="font-inter text-lg md:text-xl text-foreground leading-relaxed font-medium">
+                                            "{project.impact}"
+                                        </p>
                                     </div>
-                                </div>
-                            </div>
-
-                            {/* Links */}
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                {project.liveUrl && (
-                                    <Link 
-                                        href={project.liveUrl}
-                                        target="_blank"
-                                        className="flex-1 group flex items-center justify-center gap-3 px-8 py-6 bg-portfolio-red text-white font-anton text-xl uppercase tracking-wider rounded-none rounded-br-[2rem] hover:bg-red-600 transition-all"
-                                    >
-                                        <span>Visit Site</span>
-                                        <ArrowUpRight className="w-6 h-6 group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
-                                    </Link>
                                 )}
-                                {project.sourceCode && project.sourceCode !== '#' && (
-                                    <Link 
-                                        href={project.sourceCode}
-                                        target="_blank"
-                                        className={cn(
-                                            "flex items-center justify-center gap-3 px-8 py-6 border border-foreground/20 text-foreground font-anton text-xl uppercase tracking-wider hover:bg-foreground hover:text-background transition-all rounded-none rounded-br-[2rem]",
-                                            !project.liveUrl ? "flex-1" : ""
+
+                                {/* Challenge & Solution Grid */}
+                                {(project.challenge || project.solution) ? (
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                                        {project.challenge && (
+                                            <div className="flex flex-col gap-3 p-6 rounded-2xl bg-secondary/5 border border-white/5">
+                                                <h3 className="font-playfair italic text-2xl text-foreground opacity-80">The Challenge</h3>
+                                                <p className="font-inter text-sm md:text-base text-muted-foreground leading-relaxed">
+                                                    {project.challenge}
+                                                </p>
+                                            </div>
                                         )}
-                                    >
-                                        <Github className="w-6 h-6" />
-                                        <span>Source Code</span>
-                                    </Link>
+                                        {project.solution && (
+                                            <div className="flex flex-col gap-3 p-6 rounded-2xl bg-secondary/5 border border-white/5">
+                                                <h3 className="font-playfair italic text-2xl text-foreground opacity-80">The Solution</h3>
+                                                <p className="font-inter text-sm md:text-base text-muted-foreground leading-relaxed">
+                                                    {project.solution}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : (
+                                    // Fallback Description
+                                    <div className="prose prose-invert prose-lg max-w-none font-light leading-relaxed text-muted-foreground">
+                                        {parse(project.description)}
+                                    </div>
+                                )}
+
+                                {/* Key Features */}
+                                {project.key_features && (
+                                    <div className="flex flex-col gap-6">
+                                        <h3 className="font-anton text-2xl text-foreground uppercase tracking-wide opacity-80">Key Features</h3>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            {project.key_features.map((feature, i) => (
+                                                <div key={i} className="flex gap-3 p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors items-center">
+                                                    <span className="font-mono text-portfolio-red text-lg">{(i + 1).toString().padStart(2, '0')}</span>
+                                                    <span className="font-inter text-base text-foreground/90">{feature}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
                                 )}
                             </div>
                         </div>

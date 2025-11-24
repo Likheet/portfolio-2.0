@@ -7,7 +7,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ArchiveCard from '../archive/_components/ArchiveCard';
 import ProjectModal from '../archive/_components/ProjectModal';
-import { IProject } from '@/types';
+import ResearchModal from '../archive/_components/ResearchModal';
+import { IProject, IPublication } from '@/types';
 import { useLenis } from 'lenis/react';
 import { cn } from '@/lib/utils';
 import ScrambleText from '@/components/ScrambleText';
@@ -23,6 +24,8 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
     const thumbRef = useRef<HTMLDivElement>(null);
     const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPublication, setSelectedPublication] = useState<IPublication | null>(null);
+    const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
     const lenis = useLenis();
 
     useGSAP(
@@ -105,139 +108,145 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
         setTimeout(() => setSelectedProject(null), 300);
     };
 
-    return (
-        <div className="fixed inset-0 z-[90] flex items-end justify-center pointer-events-none">
-            {/* Backdrop */}
-            <div 
-                className={cn(
-                    "absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500",
-                    isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-                )}
-                onClick={onClose}
-            />
+    const handlePublicationClick = (pub: IPublication) => {
+        setSelectedPublication(pub);
+        setIsResearchModalOpen(true);
+    };
 
-            {/* Main Container (Sheet) */}
-            <div 
-                ref={containerRef}
-                className="relative w-full h-[95vh] bg-background rounded-t-[2.5rem] overflow-hidden shadow-2xl pointer-events-auto translate-y-full flex flex-col will-change-transform"
-            >
-                {/* Background Noise */}
-                <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
-                    style={{
-                        backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
-                    }}
+    const handleCloseResearchModal = () => {
+        setIsResearchModalOpen(false);
+        setTimeout(() => setSelectedPublication(null), 300);
+    };
+
+    return (
+        <>
+            <div className="fixed inset-0 z-[90] flex items-end justify-center pointer-events-none">
+                {/* Backdrop */}
+                <div 
+                    className={cn(
+                        "absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500",
+                        isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    )}
+                    onClick={onClose}
                 />
 
-                {/* Custom Scroll Indicator */}
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 h-[80%] w-1 bg-white/5 rounded-full z-50 pointer-events-none mix-blend-difference">
-                    <div 
-                        ref={thumbRef}
-                        className="w-full bg-[#00ff00] rounded-full transition-transform duration-75 ease-out shadow-[0_0_10px_#00ff00]"
-                    />
-                </div>
-
-                {/* Scrollable Content Wrapper */}
+                {/* Main Container (Sheet) */}
                 <div 
-                    ref={scrollContainerRef}
-                    onScroll={handleScroll}
-                    data-lenis-prevent="true"
-                    className="flex-1 overflow-y-auto custom-scrollbar relative z-10"
+                    ref={containerRef}
+                    className="relative w-full h-[95vh] bg-background rounded-t-[2.5rem] overflow-hidden shadow-2xl pointer-events-auto translate-y-full flex flex-col will-change-transform"
                 >
-                    <div className="max-w-[1600px] mx-auto py-12 px-6 md:px-12 lg:px-20">
-                        {/* Header */}
-                        <div className="flex justify-between items-start mb-16 md:mb-24 animate-archive-item">
-                            <div>
-                                <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-anton mb-6 tracking-tight uppercase">
-                                    All Works
-                                </h1>
-                                <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                                    A curated collection of my projects, experiments, and research endeavors.
-                                </p>
-                            </div>
-                            <button 
-                                onClick={onClose}
-                                className="group flex items-center gap-2 text-sm font-anton uppercase tracking-widest hover:text-portfolio-red transition-colors mt-4"
-                            >
-                                <span>Close</span>
-                                <div className="relative w-10 h-10 border border-current rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
-                                    <X className="w-5 h-5" />
-                                </div>
-                            </button>
-                        </div>
+                    {/* Background Noise */}
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+                        style={{
+                            backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E\")",
+                        }}
+                    />
 
-                        {/* Research Papers Section */}
-                        {PUBLICATIONS && PUBLICATIONS.length > 0 && (
-                            <div className="animate-archive-item mb-24">
-                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
-                                    <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
-                                        <ScrambleText text="RESEARCH" autoStart revealDelay={500} />
-                                    </h2>
-                                    <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
-                                        Academic Contributions
+                    {/* Custom Scroll Indicator */}
+                    <div className="absolute right-2 top-1/2 -translate-y-1/2 h-[80%] w-1 bg-white/5 rounded-full z-50 pointer-events-none mix-blend-difference">
+                        <div 
+                            ref={thumbRef}
+                            className="w-full bg-[#00ff00] rounded-full transition-transform duration-75 ease-out shadow-[0_0_10px_#00ff00]"
+                        />
+                    </div>
+
+                    {/* Scrollable Content Wrapper */}
+                    <div 
+                        ref={scrollContainerRef}
+                        onScroll={handleScroll}
+                        data-lenis-prevent="true"
+                        className="flex-1 overflow-y-auto custom-scrollbar relative z-10"
+                    >
+                        <div className="max-w-[1600px] mx-auto py-12 px-6 md:px-12 lg:px-20">
+                            {/* Header */}
+                            <div className="flex justify-between items-start mb-16 md:mb-24 animate-archive-item">
+                                <div>
+                                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-anton mb-6 tracking-tight uppercase">
+                                        All Works
+                                    </h1>
+                                    <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                                        A curated collection of my projects, experiments, and research endeavors.
                                     </p>
                                 </div>
-                                
-                                <div className="grid gap-4">
-                                     <div className="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-white/5 text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2 px-6">
-                                        <div className="col-span-1">Year</div>
-                                        <div className="col-span-7">Title</div>
-                                        <div className="col-span-3">Conference</div>
-                                        <div className="col-span-1 text-right">Link</div>
+                                <button 
+                                    onClick={onClose}
+                                    className="group flex items-center gap-2 text-sm font-anton uppercase tracking-widest hover:text-portfolio-red transition-colors mt-4"
+                                >
+                                    <span>Close</span>
+                                    <div className="relative w-10 h-10 border border-current rounded-full flex items-center justify-center group-hover:rotate-90 transition-transform duration-300">
+                                        <X className="w-5 h-5" />
                                     </div>
-                                    <div className="flex flex-col gap-3">
-                                        {PUBLICATIONS.map((pub, index) => (
-                                            <div
-                                                key={index}
-                                                className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center p-6 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-all border border-white/5 hover:border-white/10"
-                                            >
-                                                <div className="md:col-span-1 text-sm text-primary font-mono mb-2 md:mb-0">
-                                                    {pub.year}
-                                                </div>
-                                                <div className="md:col-span-7 font-medium text-xl md:text-xl text-foreground group-hover:text-primary transition-colors mb-2 md:mb-0 font-anton tracking-wide">
-                                                    {pub.title}
-                                                </div>
-                                                <div className="md:col-span-3 text-sm text-muted-foreground mb-4 md:mb-0">
-                                                    {pub.conference}
-                                                </div>
-                                                <div className="md:col-span-1 flex md:justify-end items-center">
-                                                    {pub.url && pub.url !== '#' && (
-                                                        <Link
-                                                            href={pub.url}
-                                                            target="_blank"
-                                                            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors px-4 py-2 md:p-2 bg-white/5 md:bg-transparent rounded-full hover:bg-white/10"
-                                                        >
-                                                            <span className="md:hidden">Read Paper</span>
+                                </button>
+                            </div>
+
+                            {/* Research Papers Section */}
+                            {PUBLICATIONS && PUBLICATIONS.length > 0 && (
+                                <div className="animate-archive-item mb-24">
+                                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
+                                        <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
+                                            <ScrambleText text="RESEARCH" autoStart revealDelay={500} />
+                                        </h2>
+                                        <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
+                                            Academic Contributions
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="grid gap-4">
+                                         <div className="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-white/5 text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2 px-6">
+                                            <div className="col-span-1">Year</div>
+                                            <div className="col-span-7">Title</div>
+                                            <div className="col-span-3">Conference</div>
+                                            <div className="col-span-1 text-right">Link</div>
+                                        </div>
+                                        <div className="flex flex-col gap-3">
+                                            {PUBLICATIONS.map((pub, index) => (
+                                                <div
+                                                    key={index}
+                                                    onClick={() => handlePublicationClick(pub)}
+                                                    className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center p-6 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-all border border-white/5 hover:border-white/10 cursor-pointer"
+                                                >
+                                                    <div className="md:col-span-1 text-sm text-primary font-mono mb-2 md:mb-0">
+                                                        {pub.year}
+                                                    </div>
+                                                    <div className="md:col-span-7 font-medium text-xl md:text-xl text-foreground group-hover:text-primary transition-colors mb-2 md:mb-0 font-anton tracking-wide">
+                                                        {pub.title}
+                                                    </div>
+                                                    <div className="md:col-span-3 text-sm text-muted-foreground mb-4 md:mb-0">
+                                                        {pub.conference}
+                                                    </div>
+                                                    <div className="md:col-span-1 flex md:justify-end items-center">
+                                                        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:text-primary transition-colors">
                                                             <ArrowUpRight className="w-5 h-5" />
-                                                        </Link>
-                                                    )}
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        ))}
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )}
+                            )}
 
-                        {/* Projects Grid */}
-                        <div className="w-full animate-archive-item mb-32">
-                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
-                                <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
-                                    <ScrambleText text="SELECTED WORKS" autoStart revealDelay={800} />
-                                </h2>
-                                <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
-                                    Projects & Experiments
-                                </p>
-                            </div>
+                            {/* Projects Grid */}
+                            <div className="w-full animate-archive-item mb-32">
+                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
+                                    <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
+                                        <ScrambleText text="SELECTED WORKS" autoStart revealDelay={800} />
+                                    </h2>
+                                    <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
+                                        Projects & Experiments
+                                    </p>
+                                </div>
 
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-                                {allProjects.map((project, index) => (
-                                    <ArchiveCard 
-                                        key={index} 
-                                        project={project} 
-                                        index={index}
-                                        onClick={handleProjectClick}
-                                    />
-                                ))}
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
+                                    {allProjects.map((project, index) => (
+                                        <ArchiveCard 
+                                            key={index} 
+                                            project={project} 
+                                            index={index}
+                                            onClick={handleProjectClick}
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -247,12 +256,21 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
             {/* Project Detail Modal (Nested Overlay) */}
             {selectedProject && (
                 <ProjectModal 
-                    project={selectedProject} 
+                    project={selectedProject!} 
                     isOpen={isModalOpen} 
                     onClose={handleCloseModal} 
                 />
             )}
-        </div>
+
+            {/* Research Detail Modal */}
+            {selectedPublication && (
+                <ResearchModal 
+                    publication={selectedPublication!} 
+                    isOpen={isResearchModalOpen} 
+                    onClose={handleCloseResearchModal} 
+                />
+            )}
+        </>
     );
 };
 
