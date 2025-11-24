@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import ArchiveCard from './_components/ArchiveCard';
 import ProjectModal from './_components/ProjectModal';
 import { IProject } from '@/types';
+import ScrambleText from '@/components/ScrambleText';
 
 const ArchivePage = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
@@ -68,8 +69,8 @@ const ArchivePage = () => {
                 {PUBLICATIONS && PUBLICATIONS.length > 0 && (
                     <div className="animate-item mb-24">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
-                            <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide">
-                                RESEARCH
+                            <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
+                                <ScrambleText text="RESEARCH" autoStart revealDelay={500} />
                             </h2>
                             <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
                                 Academic Contributions
@@ -120,8 +121,8 @@ const ArchivePage = () => {
                 {/* Projects Grid (Now Second) */}
                 <div className="w-full animate-item mb-32">
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
-                        <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide">
-                            SELECTED WORKS
+                        <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
+                            <ScrambleText text="SELECTED WORKS" autoStart revealDelay={800} />
                         </h2>
                         <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
                             Projects & Experiments

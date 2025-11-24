@@ -73,7 +73,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
     return (
         <div 
             ref={modalRef}
-            className="fixed inset-0 z-[100] flex flex-col"
+            className="fixed inset-0 z-[100] flex flex-col pointer-events-auto"
         >
             {/* Main Container (Full Screen Sheet) */}
             <div 
@@ -96,7 +96,6 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     </div>
                     <button 
                         onClick={handleClose}
-                        data-hide-cursor="true"
                         className="group flex items-center gap-2 text-sm font-anton uppercase tracking-widest hover:text-portfolio-red transition-colors"
                     >
                         <span>Close</span>
@@ -111,7 +110,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     
                     {/* Title Section */}
                     <div ref={contentRef} className="mb-12 md:mb-20">
-                        <h1 className="font-anton text-[15vw] md:text-[12vw] leading-[0.8] text-foreground uppercase tracking-tight break-words">
+                        <h1 className="font-anton text-5xl md:text-7xl lg:text-8xl leading-none text-foreground uppercase tracking-tight break-words mb-8">
                             {project.title}
                         </h1>
                         <div className="flex flex-wrap gap-4 mt-6 md:mt-10">
@@ -133,7 +132,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                         <div className="lg:col-span-7">
                             <div 
                                 ref={imageRef}
-                                className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] rounded-br-[5rem] md:rounded-br-[8rem] overflow-hidden bg-secondary/5"
+                                className="relative w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] rounded-br-[3rem] md:rounded-br-[5rem] overflow-hidden bg-secondary/5"
                             >
                                 <Image
                                     src={project.longThumbnail || project.thumbnail}
@@ -173,7 +172,6 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                     <Link 
                                         href={project.liveUrl}
                                         target="_blank"
-                                        data-hide-cursor="true"
                                         className="flex-1 group flex items-center justify-center gap-3 px-8 py-6 bg-portfolio-red text-white font-anton text-xl uppercase tracking-wider rounded-none rounded-br-[2rem] hover:bg-red-600 transition-all"
                                     >
                                         <span>Visit Site</span>
@@ -184,7 +182,6 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                     <Link 
                                         href={project.sourceCode}
                                         target="_blank"
-                                        data-hide-cursor="true"
                                         className={cn(
                                             "flex items-center justify-center gap-3 px-8 py-6 border border-foreground/20 text-foreground font-anton text-xl uppercase tracking-wider hover:bg-foreground hover:text-background transition-all rounded-none rounded-br-[2rem]",
                                             !project.liveUrl ? "flex-1" : ""

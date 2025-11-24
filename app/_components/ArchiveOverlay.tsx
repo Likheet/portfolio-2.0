@@ -10,6 +10,7 @@ import ProjectModal from '../archive/_components/ProjectModal';
 import { IProject } from '@/types';
 import { useLenis } from 'lenis/react';
 import { cn } from '@/lib/utils';
+import ScrambleText from '@/components/ScrambleText';
 
 interface ArchiveOverlayProps {
     isOpen: boolean;
@@ -168,8 +169,8 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                         {PUBLICATIONS && PUBLICATIONS.length > 0 && (
                             <div className="animate-archive-item mb-24">
                                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
-                                    <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide">
-                                        RESEARCH
+                                    <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
+                                        <ScrambleText text="RESEARCH" autoStart revealDelay={500} />
                                     </h2>
                                     <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
                                         Academic Contributions
@@ -220,8 +221,8 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                         {/* Projects Grid */}
                         <div className="w-full animate-archive-item mb-32">
                             <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
-                                <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide">
-                                    SELECTED WORKS
+                                <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
+                                    <ScrambleText text="SELECTED WORKS" autoStart revealDelay={800} />
                                 </h2>
                                 <p className="text-muted-foreground font-mono text-sm uppercase tracking-widest mb-1">
                                     Projects & Experiments
