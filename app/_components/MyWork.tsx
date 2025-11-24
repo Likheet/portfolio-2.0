@@ -193,12 +193,12 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                 </div>
                                 <div className="flex flex-col">
                                     {PUBLICATIONS.map((pub, index) => (
-                                        <div
+                                        <button
                                             key={index}
                                             onClick={() =>
                                                 handlePublicationClick(pub)
                                             }
-                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-pointer"
+                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-pointer w-full text-left"
                                         >
                                             <div className="flex gap-2 md:gap-5">
                                                 <div className="font-anton text-muted-foreground">
@@ -218,7 +218,7 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </button>
                                     ))}
                                 </div>
                             </div>
