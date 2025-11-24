@@ -31,7 +31,7 @@ const ScrambleText = ({
         // Optional delay before starting to resolve
         timeoutRef.current = setTimeout(() => {
             intervalRef.current = setInterval(() => {
-                setDisplayText((prev) =>
+                setDisplayText(() =>
                     text
                         .split('')
                         .map((char, index) => {
@@ -51,7 +51,7 @@ const ScrambleText = ({
                 }
 
                 iteration += 1 / 3; // Adjust this value to control how fast it resolves
-            }, 30);
+            }, speed);
         }, revealDelay);
     };
 

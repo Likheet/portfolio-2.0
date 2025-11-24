@@ -1,12 +1,10 @@
 'use client';
 import React, { useRef } from 'react';
 import { IPublication } from '@/types';
-import { X, ArrowUpRight, FileText, Quote, Github } from 'lucide-react';
+import { X, ArrowUpRight, Quote, Github } from 'lucide-react';
 import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { cn } from '@/lib/utils';
-import parse from 'html-react-parser';
 
 interface ResearchModalProps {
     publication: IPublication;

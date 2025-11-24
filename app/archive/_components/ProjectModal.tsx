@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
-import { cn } from '@/lib/utils';
 import parse from 'html-react-parser';
 
 interface ProjectModalProps {
@@ -206,7 +205,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                                     <div className="flex flex-col gap-4 p-6 md:p-8 rounded-2xl bg-portfolio-red/10 border border-portfolio-red/20">
                                         <h3 className="font-anton text-2xl text-portfolio-red uppercase tracking-wide">Impact & Results</h3>
                                         <p className="font-inter text-lg md:text-xl text-foreground leading-relaxed font-medium">
-                                            "{project.impact}"
+                                            &quot;{project.impact}&quot;
                                         </p>
                                     </div>
                                 )}

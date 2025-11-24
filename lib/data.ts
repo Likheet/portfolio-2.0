@@ -311,6 +311,7 @@ export const PUBLICATIONS: IPublication[] = [
     {
         title: 'Tokenizer Benchmarking Across Indic and Code‑Mixed Scripts',
         year: '2025',
+        conference: 'Zenodo',
         url: 'https://doi.org/10.5281/zenodo.17273988',
         sourceCode: 'https://github.com/Likheet/indic-tokenizer-paper',
         description:

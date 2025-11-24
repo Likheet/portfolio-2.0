@@ -1,6 +1,5 @@
 'use client';
 import React, { useState, useRef } from 'react';
-import Link from 'next/link';
 import { X, ArrowUpRight } from 'lucide-react';
 import { PROJECTS, ARCHIVE_PROJECTS, PUBLICATIONS } from '@/lib/data';
 import { useGSAP } from '@gsap/react';

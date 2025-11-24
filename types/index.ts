@@ -39,6 +39,7 @@ export interface IProject {
 export interface IPublication {
     title: string;
     year: string;
+    conference?: string;
     url?: string;
     sourceCode?: string;
     description?: string;

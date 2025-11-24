@@ -8,7 +8,6 @@ import { ScrollTrigger } from 'gsap/all';
 import Image from 'next/image';
 import React, { useRef, useState, MouseEvent } from 'react';
 import Project from './Project';
-import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import Button from '@/components/Button';
 import ResearchModal from '../archive/_components/ResearchModal';

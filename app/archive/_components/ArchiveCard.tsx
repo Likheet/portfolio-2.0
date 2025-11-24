@@ -19,6 +19,7 @@ const COLORS = [
     { bg: 'bg-portfolio-bg', text: 'text-portfolio-text', muted: 'text-portfolio-text/60', border: 'border-portfolio-text/10', hoverBorder: 'hover:border-portfolio-text/30' },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ArchiveCard = ({ project, onClick, index }: ArchiveCardProps) => {
     const cardRef = useRef<HTMLDivElement>(null);
     const theme = COLORS[index % COLORS.length];
