@@ -24,7 +24,7 @@ const ScrambleText = ({
 
     const startScramble = () => {
         let iteration = 0;
-        
+
         if (intervalRef.current) clearInterval(intervalRef.current);
         if (timeoutRef.current) clearTimeout(timeoutRef.current);
 
@@ -36,14 +36,16 @@ const ScrambleText = ({
                         .split('')
                         .map((char, index) => {
                             if (char === ' ') return ' '; // Preserve spaces
-                            
+
                             if (index < iteration) {
                                 return text[index];
                             }
-                            
-                            return chars[Math.floor(Math.random() * chars.length)];
+
+                            return chars[
+                                Math.floor(Math.random() * chars.length)
+                            ];
                         })
-                        .join('')
+                        .join(''),
                 );
 
                 if (iteration >= text.length) {
