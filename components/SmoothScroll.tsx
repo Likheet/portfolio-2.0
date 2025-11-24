@@ -24,7 +24,7 @@ const SmoothScroll = ({ children }: SmoothScrollProps) => {
     );
 
     return (
-        <ReactLenis root options={options}>
+        <ReactLenis root {...options}>
             {children}
         </ReactLenis>
     );

@@ -8,6 +8,7 @@ import gsap from 'gsap';
 import Image from 'next/image';
 import { useRef } from 'react';
 import { Github } from 'lucide-react';
+import ProjectHoverCursor from '@/components/ProjectHoverCursor';
 
 interface Props {
     index: number;

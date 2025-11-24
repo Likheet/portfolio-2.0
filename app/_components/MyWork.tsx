@@ -14,7 +14,11 @@ import Button from '@/components/Button';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const MyWork = () => {
+interface MyWorkProps {
+    onViewAllClick: () => void;
+}
+
+const MyWork = ({ onViewAllClick }: MyWorkProps) => {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectListRef = useRef<HTMLDivElement>(null);
     const imageContainer = useRef<HTMLDivElement>(null);
@@ -164,13 +168,13 @@ const MyWork = () => {
                                     <h3 className="text-2xl font-medium text-muted-foreground">
                                         Research Papers
                                     </h3>
-                                    <Link
-                                        href="/archive"
+                                    <button
+                                        onClick={onViewAllClick}
                                         className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
                                     >
                                         View All{' '}
                                         <ArrowUpRight className="w-4 h-4" />
-                                    </Link>
+                                    </button>
                                 </div>
                                 <div className="flex flex-col">
                                     {PUBLICATIONS.map((pub, index) => (
@@ -220,13 +224,13 @@ const MyWork = () => {
                                 <h3 className="text-2xl font-medium text-muted-foreground">
                                     Projects
                                 </h3>
-                                <Link
-                                    href="/archive"
+                                <button
+                                    onClick={onViewAllClick}
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
                                 >
                                     View All{' '}
                                     <ArrowUpRight className="w-4 h-4" />
-                                </Link>
+                                </button>
                             </div>
                             <div className="flex flex-col max-md:gap-10">
                                 {PROJECTS.map((project, index) => (
@@ -245,7 +249,7 @@ const MyWork = () => {
 
                     {/* View More Button */}
                     <div className="flex justify-center mt-16">
-                        <Button as="link" href="/archive" variant="secondary">
+                        <Button as="button" onClick={onViewAllClick} variant="secondary">
                             <span className="flex items-center gap-2">
                                 View All Work
                                 <ArrowUpRight className="h-5 w-5" />

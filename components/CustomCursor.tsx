@@ -9,6 +9,7 @@ gsap.registerPlugin(useGSAP);
 const CustomCursor = () => {
     const cursorRef = useRef<HTMLDivElement>(null);
     const [isHovering, setIsHovering] = useState(false);
+    const [isProjectHover, setIsProjectHover] = useState(false);
 
     useGSAP((context, contextSafe) => {
         if (window.innerWidth < 768) return;
@@ -17,18 +18,37 @@ const CustomCursor = () => {
             if (!cursorRef.current) return;
 
             const { clientX, clientY } = e;
+            const target = e.target as HTMLElement;
+            // Only hide if explicitly requested AND not in project hover mode
+            // (because project hover mode IS the cursor)
+            const isProject = target.closest('[data-cursor-type="project"]');
+            const shouldHide = !isProject && target.closest('[data-hide-cursor="true"]');
 
             gsap.to(cursorRef.current, {
                 x: clientX,
                 y: clientY,
                 ease: 'power2.out',
-                duration: 0.25,
-                opacity: 1,
+                duration: 0.1, // Make it snappier for the heavy feel to work via CSS or just keep it fast
+                opacity: shouldHide ? 0 : 1,
             });
         }) as any;
 
         const handleMouseOver = (e: MouseEvent) => {
             const target = e.target as HTMLElement;
+            
+            // Check for project hover first
+            const projectHover = target.closest('[data-cursor-type="project"]');
+            setIsProjectHover(!!projectHover);
+
+            // Check if we should hide the global cursor
+            const shouldHide = !projectHover && target.closest('[data-hide-cursor="true"]');
+            if (shouldHide) {
+                if (cursorRef.current) {
+                    cursorRef.current.style.opacity = '0';
+                }
+                return;
+            }
+
             const isClickable =
                 target.tagName === 'A' ||
                 target.tagName === 'BUTTON' ||
@@ -52,11 +72,29 @@ const CustomCursor = () => {
     return (
         <div
             ref={cursorRef}
-            className="hidden md:block fixed top-0 left-0 opacity-0 z-[50] pointer-events-none"
+            className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none"
             id="cursor"
         >
-            {isHovering ? (
-                <div className="relative w-12 h-12 -translate-x-3 -translate-y-2">
+            {isProjectHover ? (
+                <div className="relative flex items-center justify-center w-40 h-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/10 backdrop-blur-sm transition-all duration-300 ease-out">
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="48" 
+                        height="48" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="1.5" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        className="text-white"
+                    >
+                        <path d="M7 17L17 7" />
+                        <path d="M7 7h10v10" />
+                    </svg>
+                </div>
+            ) : isHovering ? (
+                <div className="relative w-12 h-12 -translate-x-3 -translate-y-2 transition-all duration-200">
                     <Image
                         src="/pointer.png"
                         alt="Pointer"
@@ -72,6 +110,7 @@ const CustomCursor = () => {
                     viewBox="0 0 27 30"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="transition-all duration-200"
                 >
                     <path
                         d="M20.0995 11.0797L3.72518 1.13204C2.28687 0.258253 0.478228 1.44326 0.704999 3.11083L3.28667 22.0953C3.58333 24.2768 7.33319 24.6415 8.3792 22.7043C9.5038 20.6215 10.8639 18.7382 12.43 17.7122C13.996 16.6861 16.2658 16.1911 18.6244 15.9918C20.8181 15.8063 21.9811 12.2227 20.0995 11.0797Z"
