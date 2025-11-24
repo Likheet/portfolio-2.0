@@ -38,9 +38,9 @@ export interface IProject {
 
 export interface IPublication {
     title: string;
-    conference: string;
     year: string;
     url?: string;
+    sourceCode?: string;
     description?: string;
     // New rich content fields
     abstract?: string;
@@ -48,4 +48,22 @@ export interface IPublication {
     methodology?: string; // Could be a description or steps
     results?: string; // Key metrics
     citation?: string;
+    // Enhanced modal fields
+    stats?: {
+        label: string;
+        value: string;
+        icon?: string;
+    }[];
+    technologies?: string[];
+    resources?: {
+        title: string;
+        url: string;
+        type: 'dataset' | 'code' | 'demo' | 'pdf' | 'slides';
+        description?: string;
+    }[];
+    timeline?: {
+        phase: string;
+        description: string;
+        icon?: string;
+    }[];
 }

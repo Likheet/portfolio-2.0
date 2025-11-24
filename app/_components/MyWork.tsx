@@ -11,6 +11,8 @@ import Project from './Project';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import Button from '@/components/Button';
+import ResearchModal from '../archive/_components/ResearchModal';
+import { IPublication } from '@/types';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -24,6 +26,19 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
     const imageContainer = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const [selectedProject, setSelectedProject] = useState<string | null>(null);
+    const [selectedPublication, setSelectedPublication] =
+        useState<IPublication | null>(null);
+    const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
+
+    const handlePublicationClick = (pub: IPublication) => {
+        setSelectedPublication(pub);
+        setIsResearchModalOpen(true);
+    };
+
+    const handleCloseResearchModal = () => {
+        setIsResearchModalOpen(false);
+        setTimeout(() => setSelectedPublication(null), 300);
+    };
 
     // update imageRef.current href based on the cursor hover position
     // also update image position
@@ -180,7 +195,10 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                     {PUBLICATIONS.map((pub, index) => (
                                         <div
                                             key={index}
-                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+                                            onClick={() =>
+                                                handlePublicationClick(pub)
+                                            }
+                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-pointer"
                                         >
                                             <div className="flex gap-2 md:gap-5">
                                                 <div className="font-anton text-muted-foreground">
@@ -190,24 +208,12 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                                     <div className="flex flex-wrap items-center gap-3">
                                                         <h4 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl flex gap-4 font-anton leading-tight transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
                                                             {pub.title}
-                                                            {pub.url && (
-                                                                <Link
-                                                                    href={
-                                                                        pub.url
-                                                                    }
-                                                                    target="_blank"
-                                                                    className="text-foreground opacity-0 group-hover:opacity-100 transition-all"
-                                                                >
-                                                                    <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
-                                                                </Link>
-                                                            )}
+                                                            <span className="text-foreground opacity-0 group-hover:opacity-100 transition-all">
+                                                                <ArrowUpRight className="w-8 h-8 md:w-10 md:h-10" />
+                                                            </span>
                                                         </h4>
                                                     </div>
                                                     <div className="mt-2 flex flex-wrap gap-3 text-muted-foreground text-sm font-medium">
-                                                        <span>
-                                                            {pub.conference}
-                                                        </span>
-                                                        <span className="inline-block size-1.5 rounded-full bg-muted-foreground/50 self-center"></span>
                                                         <span>{pub.year}</span>
                                                     </div>
                                                 </div>
@@ -249,7 +255,11 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
 
                     {/* View More Button */}
                     <div className="flex justify-center mt-16">
-                        <Button as="button" onClick={onViewAllClick} variant="secondary">
+                        <Button
+                            as="button"
+                            onClick={onViewAllClick}
+                            variant="secondary"
+                        >
                             <span className="flex items-center gap-2">
                                 View All Work
                                 <ArrowUpRight className="h-5 w-5" />
@@ -258,6 +268,15 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                     </div>
                 </div>
             </div>
+
+            {/* Research Detail Modal */}
+            {selectedPublication && (
+                <ResearchModal
+                    publication={selectedPublication!}
+                    isOpen={isResearchModalOpen}
+                    onClose={handleCloseResearchModal}
+                />
+            )}
         </section>
     );
 };

@@ -8,7 +8,8 @@ export const GENERAL_INFO = {
     email: 'likheet.s@gmail.com',
 
     emailSubject: "Let's build an AI-driven experience",
-    emailBody: 'Hi Likheet, I came across your portfolio and would love to collaborate on...',
+    emailBody:
+        'Hi Likheet, I came across your portfolio and would love to collaborate on...',
 
     oldPortfolio: 'https://github.com/Likheet',
     upworkProfile: 'https://www.linkedin.com/in/likheet/',
@@ -150,17 +151,19 @@ export const PROJECTS: IProject[] = [
                 <li>Packaged the notebook experiments into a clean, reproducible repository for teammates.</li>
             </ul>
         `,
-        challenge: "Detecting fraud in financial transactions is notoriously difficult due to the extreme class imbalance—fraudulent transactions represent less than 0.1% of the data. Traditional accuracy metrics are misleading, and false negatives (missing a fraud) are extremely costly.",
-        solution: "I engineered a robust ML pipeline using an ensemble of Random Forest, Gradient Boosting, and Stacking classifiers. To address the imbalance, I applied SMOTE (Synthetic Minority Over-sampling Technique) combined with Near-Miss undersampling to create a balanced training set without losing critical information.",
-        impact: "Achieved a 98% Recall rate on the minority class, significantly outperforming baseline logistic regression models. The final model reduced false negatives by 40%, potentially saving thousands in lost revenue.",
+        challenge:
+            'Detecting fraud in financial transactions is notoriously difficult due to the extreme class imbalance—fraudulent transactions represent less than 0.1% of the data. Traditional accuracy metrics are misleading, and false negatives (missing a fraud) are extremely costly.',
+        solution:
+            'I engineered a robust ML pipeline using an ensemble of Random Forest, Gradient Boosting, and Stacking classifiers. To address the imbalance, I applied SMOTE (Synthetic Minority Over-sampling Technique) combined with Near-Miss undersampling to create a balanced training set without losing critical information.',
+        impact: 'Achieved a 98% Recall rate on the minority class, significantly outperforming baseline logistic regression models. The final model reduced false negatives by 40%, potentially saving thousands in lost revenue.',
         key_features: [
-            "Real-time Anomaly Detection",
-            "Ensemble Learning Architecture",
-            "Automated Reporting Pipeline",
-            "Interactive Performance Metrics"
+            'Real-time Anomaly Detection',
+            'Ensemble Learning Architecture',
+            'Automated Reporting Pipeline',
+            'Interactive Performance Metrics',
         ],
-        team_size: "3 Engineers",
-        duration: "3 Months",
+        team_size: '3 Engineers',
+        duration: '3 Months',
     },
     {
         title: 'Pathfinding Algorithms Visualizer',
@@ -274,7 +277,8 @@ export const MY_EDUCATION = [
         institution: 'University of New South Wales (UNSW)',
         location: 'Sydney, Australia',
         duration: 'Upcoming (2026)',
-        description: 'Focusing on Advanced AI, Machine Learning, and Data Science.',
+        description:
+            'Focusing on Advanced AI, Machine Learning, and Data Science.',
         score: '-',
     },
     {
@@ -303,25 +307,90 @@ export const MY_EDUCATION = [
     },
 ];
 
-
-
 export const PUBLICATIONS: IPublication[] = [
     {
-        title: 'Paper Title Placeholder',
-        conference: 'Conference Name / Journal',
-        year: '2024',
-        url: '#',
-        description: 'Brief description of the paper and its contribution.',
-        abstract: "This paper presents a novel approach to reinforcement learning in sparse reward environments. By introducing a hierarchical curiosity module, we demonstrate that agents can explore more effectively and converge to optimal policies 3x faster than state-of-the-art baselines. Our method is evaluated on complex continuous control tasks and shows robust performance across various domains.",
+        title: 'Tokenizer Benchmarking Across Indic and Code‑Mixed Scripts',
+        year: '2025',
+        url: 'https://doi.org/10.5281/zenodo.17273988',
+        sourceCode: 'https://github.com/Likheet/indic-tokenizer-paper',
+        description:
+            'Systematic comparison of 11 production tokenizers across monolingual English, Indic scripts, and Hinglish code-mixing.',
+        abstract:
+            'Tokenization is the first irreversible decision in most LLM pipelines: it determines context budgets, costs, and robustness to noisy or code‑mixed inputs. This project systematically compares 11 production tokenizers (OpenAI, Meta, Mistral, Indic‑trained WordPiece/SentencePiece models) across monolingual English and three Indic scripts, plus Hinglish (Devanagari+Latin) code‑mixing. All measures (tokens-per-100-chars, bytes/token, [UNK] incidence, fragmentation metrics) were computed with a browser-based harness and exported as CSVs for reproducibility.',
         key_contributions: [
-            "Hierarchical Curiosity Module (HCM) for efficient exploration",
-            "Novel intrinsic reward mechanism based on prediction error",
-            "State-of-the-art performance on Montezuma's Revenge",
-            "Open-source implementation in PyTorch"
+            'Comprehensive benchmark of 11 production tokenizers on Indic and code-mixed text',
+            'Browser-based measurement harness using transformers.js and tiktoken WebAssembly',
+            'Curated baseline input pools with PII-scrubbing for reproducibility',
+            'CSV-first analysis pipeline with full statistical tests and reproducible figures',
+            'Open-source repository with complete data artifacts tracked via Git LFS',
         ],
-        methodology: "We utilized a Proximal Policy Optimization (PPO) backbone augmented with our custom HCM. The agent was trained on 8 NVIDIA V100 GPUs for 10 million timesteps. We conducted ablation studies to isolate the impact of the curiosity signal versus the hierarchical structure.",
-        results: "Our agent achieved a score of 4500+ on Montezuma's Revenge, surpassing the previous SOTA by 15%. In continuous control tasks (MuJoCo), it converged 30% faster than standard PPO.",
-        citation: "Shetty, L., et al. (2024). Hierarchical Curiosity for Sparse Reward RL. In Proceedings of the International Conference on Machine Learning (ICML).",
+        methodology:
+            'Developed a browser-based harness to measure tokenizer performance across multiple metrics (tokens-per-100-chars, bytes/token, [UNK] incidence, fragmentation). Created curated baseline input pools covering English, three Indic scripts, and Hinglish code-mixing. Used transformers.js and tiktoken WebAssembly for consistent measurements. All data exported as CSVs with checksums for verification. Analysis conducted using Python scripts for figure generation and statistical testing.',
+        results:
+            'Published comprehensive dataset with 50-60 MB CSV artifacts per tokenizer, enabling reproducible comparisons. Demonstrated significant performance variations across tokenizers for Indic scripts compared to English. Released complete analysis pipeline with figures, tables, and statistical tests. All artifacts openly available on Zenodo and GitHub with DOI: 10.5281/zenodo.17273988.',
+        citation:
+            'Shetty, L. (2025). Tokenizer Benchmarking Across Indic and Code‑Mixed Scripts. Zenodo. DOI: 10.5281/zenodo.17273988',
+        stats: [
+            { label: 'Tokenizers Compared', value: '11', icon: 'Code2' },
+            { label: 'Scripts Analyzed', value: '4', icon: 'Languages' },
+            { label: 'Dataset Size', value: '50-60MB', icon: 'Database' },
+            { label: 'Reproducibility', value: '100%', icon: 'CheckCircle2' },
+        ],
+        technologies: [
+            'Python',
+            'transformers.js',
+            'tiktoken',
+            'Git LFS',
+            'Zenodo',
+        ],
+        resources: [
+            {
+                title: 'Zenodo Dataset',
+                url: 'https://doi.org/10.5281/zenodo.17273988',
+                type: 'dataset' as const,
+                description: 'Complete dataset with CSV artifacts',
+            },
+            {
+                title: 'Source Code',
+                url: 'https://github.com/Likheet/indic-tokenizer-paper',
+                type: 'code' as const,
+                description: 'Full analysis pipeline and paper source',
+            },
+            {
+                title: 'TokenizerLab',
+                url: 'https://github.com/Likheet/tokenizer-lab',
+                type: 'demo' as const,
+                description: 'Browser-based tokenizer measurement tool',
+            },
+            {
+                title: 'Research Paper PDF',
+                url: 'https://zenodo.org/records/17274071/files/main.pdf',
+                type: 'pdf' as const,
+                description: 'Main paper (1.1 MB)',
+            },
+        ],
+        timeline: [
+            {
+                phase: 'Research',
+                description: 'Designed benchmark methodology',
+                icon: 'Microscope',
+            },
+            {
+                phase: 'Implementation',
+                description: 'Built browser harness with transformers.js',
+                icon: 'Code',
+            },
+            {
+                phase: 'Publication',
+                description: 'Published on Zenodo with DOI',
+                icon: 'BookOpen',
+            },
+            {
+                phase: 'Open Source',
+                description: 'Released code and data publicly',
+                icon: 'Share2',
+            },
+        ],
     },
 ];
 
@@ -338,7 +407,7 @@ export const ARCHIVE_PROJECTS: IProject[] = [
         description: 'A cool project from the archives.',
         role: 'Developer',
     },
-     {
+    {
         title: 'Project Beta',
         slug: 'project-beta',
         techStack: ['React', 'Firebase'],
