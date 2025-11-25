@@ -90,7 +90,6 @@
     html {
         /* Base font size scaled to 80% to match intended 80% zoom design at 100% zoom */
         font-size: 12.8px;
-        scroll-behavior: smooth;
     }
     img, video {
         max-width: 100%;

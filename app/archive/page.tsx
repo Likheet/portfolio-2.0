@@ -24,8 +24,16 @@ const ArchivePage = () => {
     const lenis = useLenis();
     const searchParams = useSearchParams();
     const shouldGoBack = searchParams.get('from') === 'home';
+    const homeHref = shouldGoBack ? '/#my-work' : '/';
     const projectSlug = searchParams.get('project');
     const publicationSlug = searchParams.get('publication');
+
+    // Scroll to top on load
+    React.useEffect(() => {
+        if (lenis) {
+            lenis.scrollTo(0, { immediate: true });
+        }
+    }, [lenis]); // Run once when lenis is available
 
     // Handle deep linking to projects
     React.useEffect(() => {
@@ -113,8 +121,7 @@ const ArchivePage = () => {
                 <div className="mb-16 md:mb-24 animate-item">
                     <div className="flex items-center gap-3 mb-8 text-sm font-medium font-manrope">
                         <TransitionLink 
-                            href="/" 
-                            back={shouldGoBack}
+                            href={homeHref}
                             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
                         >
                             <div className="p-1.5 rounded-md bg-secondary/10 group-hover:bg-secondary/20 transition-colors">
