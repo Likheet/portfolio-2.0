@@ -1,21 +1,62 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Home } from 'lucide-react';
 import { PROJECTS, ARCHIVE_PROJECTS, PUBLICATIONS } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ArchiveCard from './_components/ArchiveCard';
 import ProjectModal from './_components/ProjectModal';
-import { IProject } from '@/types';
+import ResearchModal from './_components/ResearchModal';
+import { IProject, IPublication } from '@/types';
 import ScrambleText from '@/components/ScrambleText';
 import { useLenis } from 'lenis/react';
+
+import TransitionLink from '@/components/TransitionLink';
+import { useSearchParams } from 'next/navigation';
 
 const ArchivePage = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPublication, setSelectedPublication] = useState<IPublication | null>(null);
+    const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
     const lenis = useLenis();
+    const searchParams = useSearchParams();
+    const shouldGoBack = searchParams.get('from') === 'home';
+    const projectSlug = searchParams.get('project');
+    const publicationSlug = searchParams.get('publication');
+
+    // Handle deep linking to projects
+    React.useEffect(() => {
+        if (projectSlug) {
+            const project = allProjects.find((p) => p.slug === projectSlug);
+            if (project) {
+                setSelectedProject(project);
+                setIsModalOpen(true);
+            }
+        }
+    }, [projectSlug]);
+
+    // Handle deep linking to publications
+    React.useEffect(() => {
+        if (publicationSlug) {
+            // Check if it's an index (number) or slug
+            const index = parseInt(publicationSlug);
+            let publication;
+            
+            if (!isNaN(index) && index < PUBLICATIONS.length) {
+                 publication = PUBLICATIONS[index];
+            } else {
+                 publication = PUBLICATIONS.find(p => p.slug === publicationSlug);
+            }
+
+            if (publication) {
+                setSelectedPublication(publication);
+                setIsResearchModalOpen(true);
+            }
+        }
+    }, [publicationSlug]);
 
     useGSAP(
         () => {
@@ -32,12 +73,12 @@ const ArchivePage = () => {
 
     // Manage Lenis state
     React.useEffect(() => {
-        if (isModalOpen) {
+        if (isModalOpen || isResearchModalOpen) {
             lenis?.stop();
         } else {
             lenis?.start();
         }
-    }, [isModalOpen, lenis]);
+    }, [isModalOpen, isResearchModalOpen, lenis]);
 
     // Combine and sort projects by year descending
     const allProjects = [...PROJECTS, ...ARCHIVE_PROJECTS].sort((a, b) => {
@@ -55,18 +96,37 @@ const ArchivePage = () => {
         setTimeout(() => setSelectedProject(null), 300);
     };
 
+    const handlePublicationClick = (pub: IPublication) => {
+        setSelectedPublication(pub);
+        setIsResearchModalOpen(true);
+    };
+
+    const handleCloseResearchModal = () => {
+        setIsResearchModalOpen(false);
+        setTimeout(() => setSelectedPublication(null), 300);
+    };
+
     return (
         <div className="min-h-screen bg-background py-20 px-4 sm:px-6 md:px-12 lg:px-24" ref={containerRef}>
             <div className="max-w-[1400px] mx-auto">
                 {/* Header */}
                 <div className="mb-16 md:mb-24 animate-item">
-                    <Link
-                        href="/"
-                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors mb-8 group"
-                    >
-                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                        Back to Home
-                    </Link>
+                    <div className="flex items-center gap-3 mb-8 text-sm font-medium font-manrope">
+                        <TransitionLink 
+                            href="/" 
+                            back={shouldGoBack}
+                            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
+                        >
+                            <div className="p-1.5 rounded-md bg-secondary/10 group-hover:bg-secondary/20 transition-colors">
+                                <Home className="w-4 h-4" />
+                            </div>
+                            <span>Home</span>
+                        </TransitionLink>
+                        
+                        <span className="text-muted-foreground/40">/</span>
+                        
+                        <span className="text-foreground bg-primary/10 px-2 py-1 rounded text-primary">All Works</span>
+                    </div>
                     <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold font-anton mb-6 tracking-tight">
                         ALL WORKS
                     </h1>
@@ -99,7 +159,8 @@ const ArchivePage = () => {
                                 {PUBLICATIONS.map((pub, index) => (
                                     <div
                                         key={index}
-                                        className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center p-6 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-all border border-white/5 hover:border-white/10"
+                                        onClick={() => handlePublicationClick(pub)}
+                                        className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center p-6 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-all border border-white/5 hover:border-white/10 cursor-pointer"
                                     >
                                         <div className="md:col-span-1 text-sm text-primary font-mono mb-2 md:mb-0">
                                             {pub.year}
@@ -159,6 +220,15 @@ const ArchivePage = () => {
                     project={selectedProject} 
                     isOpen={isModalOpen} 
                     onClose={handleCloseModal} 
+                />
+            )}
+
+            {/* Research Detail Modal */}
+            {selectedPublication && (
+                <ResearchModal
+                    publication={selectedPublication!}
+                    isOpen={isResearchModalOpen}
+                    onClose={handleCloseResearchModal}
                 />
             )}
         </div>

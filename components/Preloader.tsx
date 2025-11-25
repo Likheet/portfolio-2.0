@@ -44,18 +44,18 @@ const Preloader = () => {
 
     return (
         <div className="fixed inset-0 z-[6] flex" ref={preloaderRef}>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
-            <div className="preloader-item h-full w-[10%] bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
+            <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
 
-            <p className="name-text flex text-[20vw] lg:text-[200px] font-anton text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none overflow-hidden">
+            <p className="name-text flex text-[20vw] lg:text-[200px] font-anton text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 leading-none overflow-hidden text-foreground">
                 {PRELOADER_NAME.split('').map((char, idx) => (
                     <span className="inline-block translate-y-full" key={`${char}-${idx}`}>
                         {char === ' ' ? '\u00A0' : char}

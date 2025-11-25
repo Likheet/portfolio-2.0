@@ -12,14 +12,14 @@ import { ArrowUpRight } from 'lucide-react';
 import Button from '@/components/Button';
 import ResearchModal from '../archive/_components/ResearchModal';
 import { IPublication } from '@/types';
+import TransitionLink from '@/components/TransitionLink';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 interface MyWorkProps {
-    onViewAllClick: () => void;
 }
 
-const MyWork = ({ onViewAllClick }: MyWorkProps) => {
+const MyWork = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectListRef = useRef<HTMLDivElement>(null);
     const imageContainer = useRef<HTMLDivElement>(null);
@@ -182,22 +182,20 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                     <h3 className="text-2xl font-medium text-muted-foreground">
                                         Research Papers
                                     </h3>
-                                    <button
-                                        onClick={onViewAllClick}
+                                    <TransitionLink
+                                        href="/archive?from=home"
                                         className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
                                     >
                                         View All{' '}
                                         <ArrowUpRight className="w-4 h-4" />
-                                    </button>
+                                    </TransitionLink>
                                 </div>
                                 <div className="flex flex-col">
                                     {PUBLICATIONS.map((pub, index) => (
-                                        <button
+                                        <TransitionLink
                                             key={index}
-                                            onClick={() =>
-                                                handlePublicationClick(pub)
-                                            }
-                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-pointer w-full text-left"
+                                            href={`/archive?publication=${pub.slug || index}&from=home`}
+                                            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all cursor-pointer w-full text-left block"
                                         >
                                             <div className="flex gap-2 md:gap-5">
                                                 <div className="font-anton text-muted-foreground">
@@ -217,7 +215,7 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </button>
+                                        </TransitionLink>
                                     ))}
                                 </div>
                             </div>
@@ -229,13 +227,13 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
                                 <h3 className="text-2xl font-medium text-muted-foreground">
                                     Projects
                                 </h3>
-                                <button
-                                    onClick={onViewAllClick}
+                                <TransitionLink
+                                    href="/archive?from=home"
                                     className="text-sm text-muted-foreground hover:text-primary transition-colors flex items-center gap-1"
                                 >
                                     View All{' '}
                                     <ArrowUpRight className="w-4 h-4" />
-                                </button>
+                                </TransitionLink>
                             </div>
                             <div className="flex flex-col max-md:gap-10">
                                 {PROJECTS.map((project, index) => (
@@ -254,16 +252,16 @@ const MyWork = ({ onViewAllClick }: MyWorkProps) => {
 
                     {/* View More Button */}
                     <div className="flex justify-center mt-16">
-                        <Button
-                            as="button"
-                            onClick={onViewAllClick}
-                            variant="secondary"
+                        <TransitionLink
+                            href="/archive?from=home"
+                            className="group h-12 px-8 inline-flex justify-center items-center gap-2 text-lg uppercase font-anton tracking-widest outline-none transition-colors relative overflow-hidden bg-secondary text-secondary-foreground hover:bg-secondary-hover"
                         >
-                            <span className="flex items-center gap-2">
+                            <span className="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
+                            <span className="z-[1] group-hover:text-black transition-colors duration-300 flex items-center gap-2">
                                 View All Work
                                 <ArrowUpRight className="h-5 w-5" />
                             </span>
-                        </Button>
+                        </TransitionLink>
                     </div>
                 </div>
             </div>

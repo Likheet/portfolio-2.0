@@ -281,14 +281,14 @@ const Banner = () => {
 
                     <h1
                         ref={surnameRef}
-                        className="hero-text font-bodoni font-normal text-[clamp(3.2rem,12vw,8.5rem)] md:text-[clamp(5rem,14vw,12rem)] lg:text-[clamp(6.5rem,18vw,16rem)] leading-[0.85] tracking-[-0.02em] text-foreground z-10 mix-blend-difference text-center lg:text-left"
+                        className="hero-text font-bodoni font-normal text-[clamp(3.2rem,12vw,8.5rem)] md:text-[clamp(5rem,14vw,12rem)] lg:text-[clamp(6.5rem,18vw,16rem)] leading-[0.85] tracking-[-0.02em] text-foreground z-10 mix-blend-difference text-center lg:text-left lg:-mt-12"
                     >
                         Shetty
                     </h1>
                 </div>
 
                 {/* CONTACT CARD (Bottom Anchor) */}
-                <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-[-12%] lg:right-[12%] xl:right-[15%] z-20 flex justify-center lg:block w-full lg:w-auto relative lg:w-[320px]">
+                <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-[-16%] lg:right-[12%] xl:right-[15%] z-20 flex justify-center lg:block w-full lg:w-auto relative lg:w-[320px]">
                     <TabCard
                         href="#contact"
                         label="Contact"

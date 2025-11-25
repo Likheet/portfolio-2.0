@@ -34,7 +34,11 @@ const TransitionLink = ({
             tl.to('.page-transition', {
                 yPercent: 0,
                 duration: 0.3,
-            });
+            })
+            .to('.page-transition--inner', {
+                yPercent: 0,
+                duration: 0.3,
+            }, "<");
 
             tl.then(() => {
                 if (back) {

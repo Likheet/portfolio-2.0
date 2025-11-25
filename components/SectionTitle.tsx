@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode } from 'react';
+import { ReactNode, useState, useEffect } from 'react';
 import { SectionFlower } from './icons';
 import { cn } from '@/lib/utils';
 import { useTheme } from 'next-themes';
@@ -17,6 +17,12 @@ interface Props {
 
 const SectionTitle = ({ icon, title, className, classNames }: Props) => {
     const { theme } = useTheme();
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
     return (
         <div
             className={cn(
@@ -32,7 +38,7 @@ const SectionTitle = ({ icon, title, className, classNames }: Props) => {
                     width={25}
                     className={cn(
                         'animate-spin duration-7000',
-                        theme === 'light' ? 'brightness-[0.8]' : '',
+                        (mounted && theme === 'light') ? 'brightness-[0.8]' : '',
                         classNames?.icon,
                     )}
                 />

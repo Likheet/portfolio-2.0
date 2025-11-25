@@ -38,6 +38,7 @@ export interface IProject {
 
 export interface IPublication {
     title: string;
+    slug?: string; // Optional slug for deep linking
     year: string;
     conference?: string;
     url?: string;

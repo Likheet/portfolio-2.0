@@ -113,7 +113,7 @@ const Project = ({
 
     return (
         <TransitionLink
-            href={`/projects/${project.slug}`}
+            href={`/archive?project=${project.slug}&from=home`}
             className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}

@@ -20,7 +20,6 @@ import CustomCursor from '@/components/CustomCursor';
 import Preloader from '../components/Preloader';
 import StickyEmail from './_components/StickyEmail';
 import ScrollToTop from '@/components/ScrollToTop';
-import ScrollFix from '@/components/ScrollFix';
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
@@ -77,6 +76,7 @@ export const metadata: Metadata = {
         'Likheet Shetty — AI-focused software developer building ML prototypes, interactive frontends, and cloud-native tools.',
 };
 
+// Root layout component
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -133,11 +133,9 @@ export default function RootLayout({
                         <Preloader />
                         <ScrollProgressIndicator />
                         <ParticleBackground />
-                        <StickyEmail />
-                        <ScrollToTop />
-                        <ScrollFix />
-                    </ReactLenis>
-                </ThemeProvider>
+                                            <StickyEmail />
+                                            <ScrollToTop />
+                                        </ReactLenis>                </ThemeProvider>
             </body>
         </html>
     );
