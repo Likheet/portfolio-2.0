@@ -123,6 +123,7 @@ const Contact = () => {
                                         {...register('name', { required: 'Name is required' })}
                                         id="name"
                                         type="text"
+                                        suppressHydrationWarning
                                         className={cn(
                                             "w-full bg-transparent border-b border-border py-4 text-xl sm:text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors rounded-none placeholder:text-muted-foreground/30",
                                             errors.name && "border-destructive"
@@ -145,6 +146,7 @@ const Contact = () => {
                                         })}
                                         id="email"
                                         type="email"
+                                        suppressHydrationWarning
                                         className={cn(
                                             "w-full bg-transparent border-b border-border py-4 text-xl sm:text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors rounded-none placeholder:text-muted-foreground/30",
                                             errors.email && "border-destructive"
@@ -161,6 +163,7 @@ const Contact = () => {
                                         {...register('message', { required: 'Message is required' })}
                                         id="message"
                                         rows={4}
+                                        suppressHydrationWarning
                                         className={cn(
                                             "w-full bg-transparent border-b border-border py-4 text-xl sm:text-2xl md:text-3xl font-light focus:outline-none focus:border-portfolio-red transition-colors resize-none rounded-none placeholder:text-muted-foreground/30",
                                             errors.message && "border-destructive"
@@ -179,11 +182,10 @@ const Contact = () => {
                                     type="checkbox" 
                                     name="botcheck" 
                                     className="hidden" 
-                                    style={{ display: 'none' }}
                                 />
 
                                 {/* Google reCAPTCHA v2 - Free tier */}
-                                <div className="w-fit">
+                                <div className="w-fit origin-left transform scale-[0.85] xs:scale-100 recaptcha-wrapper">
                                     <ReCAPTCHA
                                         sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
                                         onChange={onRecaptchaChange}

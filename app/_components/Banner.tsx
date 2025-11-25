@@ -124,7 +124,7 @@ const Banner = () => {
 
                 {/* Bottom Row */}
                 <div className="flex justify-between items-end">
-                    <div className="nav-item pointer-events-auto flex flex-col gap-1">
+                    <div className="nav-item pointer-events-auto hidden xs:flex flex-col gap-1">
                         <span className="font-inter text-xs uppercase tracking-wider opacity-60">
                             Located in
                         </span>
@@ -141,7 +141,7 @@ const Banner = () => {
             </nav>
 
             {/* MOBILE LAYOUT (Visible < md) */}
-            <div className="relative z-10 w-full flex flex-col justify-center items-center gap-8 py-12 md:hidden">
+            <div className="relative z-10 w-full flex flex-col justify-center items-center gap-8 py-12 md:hidden bg-background">
                 {/* Name & Role */}
                 <div className="w-full flex flex-col px-6">
                     {/* Likheet - Left Aligned */}
@@ -288,7 +288,7 @@ const Banner = () => {
                 </div>
 
                 {/* CONTACT CARD (Bottom Anchor) */}
-                <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-[-16%] lg:right-[12%] xl:right-[15%] z-20 flex justify-center lg:block w-full lg:w-auto relative lg:w-[320px]">
+                <div className="tab-card mt-6 sm:mt-8 lg:mt-0 lg:absolute lg:bottom-[-16%] lg:right-[12%] xl:right-[15%] z-20 flex justify-center lg:block w-full max-w-[360px] lg:w-[320px] relative">
                     <TabCard
                         href="#contact"
                         label="Contact"
@@ -300,7 +300,7 @@ const Banner = () => {
                         href="https://www.linkedin.com/in/likheet/"
                         target="_blank"
                         rel="noreferrer"
-                        className="group relative mt-3 lg:absolute lg:-right-20 lg:-bottom-3 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden block h-[12px]"
+                        className="group relative mt-3 lg:absolute lg:left-0 lg:-bottom-8 lg:mt-0 font-inter text-[10px] uppercase tracking-[0.26em] text-foreground/60 overflow-hidden block h-[12px]"
                     >
                         <span className="block translate-y-0 transition-transform duration-300 ease-out group-hover:-translate-y-full">
                             LinkedIn

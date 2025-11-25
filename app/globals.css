@@ -141,3 +141,16 @@
 ::view-transition-new(root) {
   z-index: 2147483646;
 }
+
+/* Fix reCAPTCHA appearance */
+.recaptcha-wrapper iframe,
+.recaptcha-wrapper div {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    filter: none !important; /* Remove any drop-shadow filters */
+}
+.recaptcha-wrapper iframe {
+    border-radius: 0 !important;
+    display: block;
+}

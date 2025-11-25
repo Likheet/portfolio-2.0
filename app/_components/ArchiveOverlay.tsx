@@ -164,7 +164,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                     <div className="absolute right-2 top-1/2 -translate-y-1/2 h-[80%] w-1 bg-foreground/5 rounded-full z-50 pointer-events-none mix-blend-difference">
                         <div
                             ref={thumbRef}
-                            className="w-full bg-[#00ff00] rounded-full transition-transform duration-75 ease-out shadow-[0_0_10px_#00ff00]"
+                            className="w-full bg-primary rounded-full transition-transform duration-75 ease-out shadow-[0_0_10px_hsl(var(--primary))]"
                         />
                     </div>
 
