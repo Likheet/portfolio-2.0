@@ -136,19 +136,19 @@ export const PROJECTS: IProject[] = [
         sourceCode: 'https://github.com/Likheet/Fraud-Detection-ML',
         year: 2024,
         description: `
-            A production-style ML pipeline that spots anomalous credit card activity.
+            A production-style ML pipeline that spots anomalous credit card activity using advanced ensemble methods.
             <ul>
-                <li>Engineered ensemble models (Random Forest, Gradient Boosting, Stacking) to maximize recall on rare fraud cases.</li>
-                <li>Balanced the heavily skewed dataset using SMOTE and Near-Miss to preserve signal in minority classes.</li>
-                <li>Benchmarked 6+ classical algorithms with cross-validation and tracked metrics in experiment logs.</li>
+                <li>Engineered a robust pipeline using Random Forest, Gradient Boosting, and Stacking classifiers to maximize recall.</li>
+                <li>Addressed extreme class imbalance (fraud < 0.1%) using SMOTE combined with Near-Miss undersampling.</li>
+                <li>Guided by LIME (Local Interpretable Model-agnostic Explanations) principles to ensure model transparency.</li>
             </ul>
         `,
         role: `
             <p>Lead ML Engineer</p>
             <ul>
-                <li>Owned data preprocessing, feature engineering, and evaluation scripts.</li>
-                <li>Tuned hyperparameters with grid searches and automated the reporting stack.</li>
-                <li>Packaged the notebook experiments into a clean, reproducible repository for teammates.</li>
+                <li>Conducted extensive EDA including correlation matrices and time-based analysis of fraud patterns.</li>
+                <li>Implemented dimensionality reduction techniques like PCA, SVD, and LDA to optimize feature space.</li>
+                <li>Benchmarked 6+ algorithms including Logistic Regression, k-NN, and Decision Trees against the ensemble model.</li>
             </ul>
         `,
         challenge:
@@ -159,8 +159,8 @@ export const PROJECTS: IProject[] = [
         key_features: [
             'Real-time Anomaly Detection',
             'Ensemble Learning Architecture',
-            'Automated Reporting Pipeline',
-            'Interactive Performance Metrics',
+            'SMOTE & Near-Miss Sampling',
+            'LIME Interpretability',
         ],
         team_size: '3 Engineers',
         duration: '3 Months',
@@ -180,19 +180,19 @@ export const PROJECTS: IProject[] = [
         liveUrl: 'https://likheet.github.io/pathfinding-algorithm/',
         year: 2024,
         description: `
-            An interactive web app that demystifies graph search for students.
+            An interactive web app that demystifies graph search for students with real-time visualization.
             <ul>
-                <li>Implemented DFS, BFS, Dijkstra, and A* with clear animations and adjustable step speed.</li>
-                <li>Let users draw custom mazes, drop weighted nodes, and inspect how heuristics change routes.</li>
-                <li>Used Vis.js to keep the grid performant even with thousands of cells.</li>
+                <li>Implemented complex algorithms: A*, Bidirectional Greedy, Dijkstra, BFS, DFS, and Greedy Best-First Search.</li>
+                <li>Features instant maze generation using Recursive Division, Horizontal/Vertical skew, and Random layouts.</li>
+                <li>Allows users to draw custom walls, move start/end nodes, and adjust visualization speed dynamically.</li>
             </ul>
         `,
         role: `
             <p>Frontend Engineer & UX Designer</p>
             <ul>
-                <li>Designed the control surface and timeline scrubber for a smooth learning experience.</li>
-                <li>Optimized the render loop to avoid layout thrashing when animating long paths.</li>
-                <li>Wrote reusable visualization utilities to add new algorithms quickly.</li>
+                <li>Designed a responsive grid system that handles thousands of nodes without performance degradation.</li>
+                <li>Created a clean, user-friendly interface with clear path highlighting and real-time feedback.</li>
+                <li>Optimized the rendering loop to ensure smooth animations across different devices.</li>
             </ul>
         `,
     },
@@ -210,19 +210,19 @@ export const PROJECTS: IProject[] = [
         sourceCode: 'https://github.com/Likheet/AI-News-App',
         year: 2023,
         description: `
-            Voice-driven news reader powered by Alan AI and real-time APIs.
+            A voice-controlled news application powered by Alan AI for hands-free interaction.
             <ul>
-                <li>Implemented conversational flows so users can fetch, open, and summarize stories hands-free.</li>
-                <li>Synced Alan intents with React state to keep cards, highlights, and transcripts aligned.</li>
-                <li>Used Material UI theming plus custom CSS for an accessible mobile-first layout.</li>
+                <li>Integrated Alan AI to enable conversational voice commands for fetching and reading news.</li>
+                <li>Features real-time news fetching with capabilities to filter by categories and open articles by voice.</li>
+                <li>Built with a responsive Material UI design to ensure a seamless experience on mobile and desktop.</li>
             </ul>
         `,
         role: `
             <p>Solo Developer</p>
             <ul>
-                <li>Integrated Alan AI SDK, scripted dialogue responses, and handled edge cases for repeated commands.</li>
-                <li>Wired the news API layer with graceful fallbacks when categories return zero articles.</li>
-                <li>Focused on latency so responses feel instant during voice conversations.</li>
+                <li>Scripted the Alan AI dialogue flows to handle various user intents and edge cases naturally.</li>
+                <li>Implemented synchronized state management between the voice assistant and the React frontend.</li>
+                <li>Optimized the app for low-latency voice responses and smooth UI transitions.</li>
             </ul>
         `,
     },
@@ -241,23 +241,24 @@ export const PROJECTS: IProject[] = [
         liveUrl: 'https://stack-game-pearl.vercel.app/',
         year: 2024,
         description: `
-            A relaxing physics-based stacking game with both manual and autopilot play.
+            A 3D physics-based stacking game built with Three.js and Cannon.js.
             <ul>
-                <li>Used Three.js + Cannon.js to render 3D blocks, collisions, and camera sweeps.</li>
-                <li>Introduced an auto mode plus 500ms input cooldown to balance challenge and flow.</li>
-                <li>Added subtle audio cues and themeable palettes for better immersion.</li>
+                <li>Leveraged Cannon.js for realistic physics simulations, including collision detection and gravity.</li>
+                <li>Implemented an 'Autopilot Mode' that demonstrates perfect stacking strategies automatically.</li>
+                <li>Designed a 500ms input cooldown system to promote deliberate gameplay and prevent spamming.</li>
             </ul>
         `,
         role: `
             <p>Game & Physics Programmer</p>
             <ul>
-                <li>Built the physics loop, scoring, and fail-state handling from scratch.</li>
-                <li>Authored reusable hooks for camera tweening and easing curves.</li>
-                <li>Deployed to Vercel with asset compression for fast loads.</li>
+                <li>Built the core game loop and physics world integration from scratch.</li>
+                <li>Created dynamic camera movements and visual effects to enhance immersion.</li>
+                <li>Implemented game state management including scoring, resetting, and difficulty scaling.</li>
             </ul>
         `,
     },
 ];
+
 export const MY_EXPERIENCE = [
     {
         title: 'Data Analyst Intern (Python)',
@@ -398,27 +399,30 @@ export const PUBLICATIONS: IPublication[] = [
 
 export const ARCHIVE_PROJECTS: IProject[] = [
     {
-        title: 'Project Alpha',
-        slug: 'project-alpha',
-        techStack: ['Python', 'FastAPI'],
+        title: 'GPT Discord',
+        slug: 'gpt-discord',
+        techStack: ['Python', 'OpenAI API', 'Discord.py', 'DALL-E'],
         thumbnail: '/projects/thumbnail/placeholder.png', // Placeholder
         longThumbnail: '/projects/long/placeholder.png',
         images: [],
-        sourceCode: '#',
+        sourceCode: 'https://github.com/Likheet/GPTDiscord',
         year: 2023,
-        description: 'A cool project from the archives.',
-        role: 'Developer',
+        description:
+            'A robust, all-in-one GPT interface for Discord featuring multi-modality, code interpretation, and AI moderation.',
+        role: 'Lead Developer',
     },
     {
-        title: 'Project Beta',
-        slug: 'project-beta',
-        techStack: ['React', 'Firebase'],
+        title: 'Project Archive',
+        slug: 'project-archive',
+        techStack: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
         thumbnail: '/projects/thumbnail/placeholder.png', // Placeholder
         longThumbnail: '/projects/long/placeholder.png',
         images: [],
-        sourceCode: '#',
-        year: 2022,
-        description: 'Another cool project.',
-        role: 'Frontend Dev',
+        sourceCode: 'https://github.com/Likheet/project_archive',
+        liveUrl: 'https://codecompasss.github.io/project_archive/',
+        year: 2023,
+        description:
+            'A centralized repository and static website designed to collect and showcase student projects for industry exposure.',
+        role: 'Contributor',
     },
 ];
