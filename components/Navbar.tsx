@@ -5,6 +5,7 @@ import { MoveUpRight } from 'lucide-react';
 import { useRouter, usePathname } from 'next/navigation';
 import { GENERAL_INFO, SOCIAL_LINKS } from '@/lib/data';
 import { useLenis } from 'lenis/react';
+import { ThemeToggle } from './ThemeToggle';
 
 const COLORS = [
     'bg-yellow-500 text-black',
@@ -51,6 +52,7 @@ const Navbar = () => {
     return (
         <>
             <div className="sticky top-0 z-[4]">
+                <ThemeToggle className="absolute top-5 right-20 md:right-28 z-[2]" />
                 <button
                     className={cn(
                         'group size-12 absolute top-5 right-5 md:right-10 z-[2]',

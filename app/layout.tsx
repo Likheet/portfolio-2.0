@@ -5,6 +5,8 @@ import {
     Bodoni_Moda,
     Inter,
     Playfair_Display,
+    Manrope,
+    Syne,
 } from 'next/font/google';
 import { ReactLenis } from 'lenis/react';
 
@@ -19,6 +21,7 @@ import Preloader from '../components/Preloader';
 import StickyEmail from './_components/StickyEmail';
 import ScrollToTop from '@/components/ScrollToTop';
 import ScrollFix from '@/components/ScrollFix';
+import { ThemeProvider } from "@/components/ThemeProvider";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
 
@@ -56,6 +59,18 @@ const playfair = Playfair_Display({
     display: 'swap',
 });
 
+const manrope = Manrope({
+    subsets: ['latin'],
+    variable: '--font-manrope',
+    display: 'swap',
+});
+
+const syne = Syne({
+    subsets: ['latin'],
+    variable: '--font-syne',
+    display: 'swap',
+});
+
 export const metadata: Metadata = {
     title: 'Portfolio - Likheet Shetty',
     description:
@@ -70,7 +85,7 @@ export default function RootLayout({
     const isProduction = process.env.NODE_ENV === 'production';
 
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             {isProduction && <GoogleAnalytics gaId="G-MHLY1LNGY5" />}
             {isProduction && (
                 <Script id="hotjar" strategy="afterInteractive">
@@ -86,36 +101,43 @@ export default function RootLayout({
             )}
             <body
                 suppressHydrationWarning
-                className={`${antonFont.variable} ${robotoFlex.variable} ${bodoniModa.variable} ${inter.variable} ${playfair.variable} antialiased`}
+                className={`${antonFont.variable} ${robotoFlex.variable} ${bodoniModa.variable} ${inter.variable} ${playfair.variable} ${manrope.variable} ${syne.variable} antialiased`}
             >
-                <ReactLenis
-                    root
-                    options={{
-                        lerp: 0.1,
-                        duration: 1.4,
-                    }}
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
                 >
-                    {/* <a
-                        href="https://forms.gle/t73XYJgWD5cJNr6e8"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-4 block bg-black text-center z-[1] text-sm py-2 hover:text-primary transition-all"
+                    <ReactLenis
+                        root
+                        options={{
+                            lerp: 0.1,
+                            duration: 1.4,
+                        }}
                     >
-                        Frontend dev? I&apos;ll help you polish your resume —
-                        completely free.
-                    </a> */}
-                    <Navbar />
-                    <main>{children}</main>
-                    <Footer />
+                        {/* <a
+                            href="https://forms.gle/t73XYJgWD5cJNr6e8"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 block bg-black text-center z-[1] text-sm py-2 hover:text-primary transition-all"
+                        >
+                            Frontend dev? I&apos;ll help you polish your resume —
+                            completely free.
+                        </a> */}
+                        <Navbar />
+                        <main>{children}</main>
+                        <Footer />
 
-                    <CustomCursor />
-                    <Preloader />
-                    <ScrollProgressIndicator />
-                    <ParticleBackground />
-                    <StickyEmail />
-                    <ScrollToTop />
-                    <ScrollFix />
-                </ReactLenis>
+                        <CustomCursor />
+                        <Preloader />
+                        <ScrollProgressIndicator />
+                        <ParticleBackground />
+                        <StickyEmail />
+                        <ScrollToTop />
+                        <ScrollFix />
+                    </ReactLenis>
+                </ThemeProvider>
             </body>
         </html>
     );

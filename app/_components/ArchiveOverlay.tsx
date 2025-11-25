@@ -138,7 +138,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                 {/* Backdrop */}
                 <div
                     className={cn(
-                        'absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-500',
+                        'absolute inset-0 bg-background/80 backdrop-blur-sm transition-opacity duration-500',
                         isOpen
                             ? 'opacity-100 pointer-events-auto'
                             : 'opacity-0 pointer-events-none',
@@ -161,7 +161,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                     />
 
                     {/* Custom Scroll Indicator */}
-                    <div className="absolute right-2 top-1/2 -translate-y-1/2 h-[80%] w-1 bg-white/5 rounded-full z-50 pointer-events-none mix-blend-difference">
+                    <div className="absolute right-2 top-1/2 -translate-y-1/2 h-[80%] w-1 bg-foreground/5 rounded-full z-50 pointer-events-none mix-blend-difference">
                         <div
                             ref={thumbRef}
                             className="w-full bg-[#00ff00] rounded-full transition-transform duration-75 ease-out shadow-[0_0_10px_#00ff00]"
@@ -201,7 +201,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                             {/* Research Papers Section */}
                             {PUBLICATIONS && PUBLICATIONS.length > 0 && (
                                 <div className="animate-archive-item mb-24">
-                                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
+                                    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-border pb-6">
                                         <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
                                             <ScrambleText
                                                 text="RESEARCH"
@@ -215,7 +215,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                                     </div>
 
                                     <div className="grid gap-4">
-                                        <div className="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-white/5 text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2 px-6">
+                                        <div className="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-border text-xs font-mono text-muted-foreground uppercase tracking-widest mb-2 px-6">
                                             <div className="col-span-1">
                                                 Year
                                             </div>
@@ -235,7 +235,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                                                             pub,
                                                         )
                                                     }
-                                                    className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center p-6 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-all border border-white/5 hover:border-white/10 cursor-pointer"
+                                                    className="group grid grid-cols-1 md:grid-cols-12 gap-4 items-start md:items-center p-6 md:p-6 rounded-2xl bg-secondary/5 hover:bg-secondary/10 transition-all border border-border hover:border-border/80 cursor-pointer"
                                                 >
                                                     <div className="md:col-span-1 text-sm text-primary font-mono mb-2 md:mb-0">
                                                         {pub.year}
@@ -244,7 +244,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
                                                         {pub.title}
                                                     </div>
                                                     <div className="md:col-span-1 flex md:justify-end items-center">
-                                                        <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-primary/50 group-hover:text-primary transition-colors">
+                                                        <div className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-primary/50 group-hover:text-primary transition-colors">
                                                             <ArrowUpRight className="w-5 h-5" />
                                                         </div>
                                                     </div>
@@ -257,7 +257,7 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
 
                             {/* Projects Grid */}
                             <div className="w-full animate-archive-item mb-32">
-                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-white/10 pb-6">
+                                <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 border-b border-border pb-6">
                                     <h2 className="text-4xl md:text-5xl font-bold font-anton tracking-wide cursor-default hover:text-primary transition-colors duration-300">
                                         <ScrambleText
                                             text="SELECTED WORKS"

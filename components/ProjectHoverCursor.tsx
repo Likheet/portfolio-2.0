@@ -28,9 +28,9 @@ const Cursor = ({ mouseX, mouseY }: { mouseX: MotionValue<number>, mouseY: Motio
                 translateX: '-50%',
                 translateY: '-50%',
             }}
-            className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:flex items-center justify-center w-20 h-20 rounded-full border border-white/20 bg-black/10 backdrop-blur-sm"
+            className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:flex items-center justify-center w-20 h-20 rounded-full border border-white/20 bg-foreground/10 backdrop-blur-sm"
         >
-            <ArrowUpRight className="w-8 h-8 text-white" strokeWidth={1.5} />
+            <ArrowUpRight className="w-8 h-8 text-foreground" strokeWidth={1.5} />
         </motion.div>
     );
 };

@@ -1,6 +1,8 @@
+"use client";
 import { ReactNode } from 'react';
 import { SectionFlower } from './icons';
 import { cn } from '@/lib/utils';
+import { useTheme } from 'next-themes';
 
 interface Props {
     icon?: ReactNode;
@@ -14,6 +16,7 @@ interface Props {
 }
 
 const SectionTitle = ({ icon, title, className, classNames }: Props) => {
+    const { theme } = useTheme();
     return (
         <div
             className={cn(
@@ -29,6 +32,7 @@ const SectionTitle = ({ icon, title, className, classNames }: Props) => {
                     width={25}
                     className={cn(
                         'animate-spin duration-7000',
+                        theme === 'light' ? 'brightness-[0.8]' : '',
                         classNames?.icon,
                     )}
                 />

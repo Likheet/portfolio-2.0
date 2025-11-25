@@ -4,6 +4,38 @@
 
 @layer base {
     :root {
+        /* Light Mode Variables */
+        --background: 60 7% 73%;     /* #c0c0b6 */
+        --background-light: 60 7% 78%; /* Slightly lighter */
+        --foreground: 0 0% 10%;
+
+        --card: 60 7% 78%;           /* Matching background-light for subtle cards */
+        --card-foreground: 0 0% 10%;
+        --popover: 60 7% 78%;
+        --popover-foreground: 0 0% 10%;
+
+        --primary: 140 100% 25%;     /* Darker green for better contrast on beige */
+        --primary-foreground: 60 7% 85%;
+        --secondary: 193 100% 30%;
+        --secondary-foreground: 60 7% 85%;
+        --muted: 60 5% 65%;          /* Darker than background for "inset" feel or inactive */
+        --muted-foreground: 0 0% 30%;
+        --accent: 60 5% 68%;
+        --accent-foreground: 0 0% 10%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 60 5% 60%;         /* Darker border */
+        --input: 60 5% 60%;
+        --ring: 0 0% 10%;
+        --chart-1: 12 76% 61%;
+        --chart-2: 173 58% 39%;
+        --chart-3: 197 37% 24%;
+        --chart-4: 43 74% 66%;
+        --chart-5: 27 87% 67%;
+    }
+
+    .dark {
+        /* Dark Mode Variables (Original) */
         --background: 0 0% 13%;
         --background-light: 0 0% 19%;
         --foreground: 0 0% 87%;
@@ -37,8 +69,6 @@
 @layer base {
     html {
         /* Base font size scaled to 80% to match intended 80% zoom design at 100% zoom */
-        /* 16px (browser default) * 0.8 = 12.8px */
-        /* This scales all rem-based values (Tailwind's default unit) proportionally */
         font-size: 12.8px;
         scroll-behavior: smooth;
     }
@@ -53,7 +83,7 @@
         @apply border-border !cursor-none;
     }
     body {
-        @apply bg-background text-foreground font-roboto-flex;
+        @apply bg-background text-foreground font-manrope;
         position: relative;
         background-color: hsl(var(--background));
     }

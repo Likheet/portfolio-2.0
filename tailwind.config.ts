@@ -83,6 +83,8 @@ export default {
                 bodoni: ['var(--font-bodoni)'],
                 inter: ['var(--font-inter)'],
                 playfair: ['var(--font-playfair)'],
+                manrope: ['var(--font-manrope)'],
+                syne: ['var(--font-syne)'],
             },
             fontSize: {
                 'fluid-h1': 'clamp(2.5rem, 5vw + 1rem, 6rem)',

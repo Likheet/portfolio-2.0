@@ -44,7 +44,7 @@ const Contact = () => {
                     Accept: 'application/json',
                 },
                 body: JSON.stringify({
-                    access_key: 'cad71167-9b5a-4c27-b161-261815e8cc34',
+                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
                     subject: `New Contact Form Message from ${data.name}`,
                     from_name: data.name,
                     ...data,
@@ -185,7 +185,7 @@ const Contact = () => {
                                 {/* Google reCAPTCHA v2 - Free tier */}
                                 <div className="w-fit">
                                     <ReCAPTCHA
-                                        sitekey="6LfQUA4sAAAAAO1tnhCJGzZlpWJ71Ew7AM4kP6ut"
+                                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
                                         onChange={onRecaptchaChange}
                                         theme="dark"
                                     />

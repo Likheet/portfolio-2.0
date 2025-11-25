@@ -190,7 +190,7 @@ const ProjectCursor = ({ isActive }: { isActive: boolean }) => {
     return (
         <div 
             ref={containerRef}
-            className="absolute top-0 left-0 flex items-center justify-center w-40 h-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-black/10 backdrop-blur-sm opacity-0 scale-0 origin-center"
+            className="absolute top-0 left-0 flex items-center justify-center w-40 h-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/20 bg-foreground/10 backdrop-blur-sm opacity-0 scale-0 origin-center"
         >
             <svg 
                 ref={arrowRef}
@@ -203,7 +203,7 @@ const ProjectCursor = ({ isActive }: { isActive: boolean }) => {
                 strokeWidth="0.6" 
                 strokeLinecap="round" 
                 strokeLinejoin="round" 
-                className="text-white"
+                className="text-foreground"
             >
                 {/* Longer arrow shaft */}
                 <path d="M5 19L19 5" />
