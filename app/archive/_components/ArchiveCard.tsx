@@ -7,7 +7,7 @@ import gsap from 'gsap';
 
 interface ArchiveCardProps {
     project: IProject;
-    onClick: (project: IProject) => void;
+    onClick: (_project: IProject) => void;
     index: number;
 }
 

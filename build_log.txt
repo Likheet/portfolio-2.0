@@ -1,0 +1,23 @@
+
+> new-portfolio@0.1.0 build C:\Users\likhe\Desktop\Projects\portfolio-2.0-main
+> next build
+
+   ▲ Next.js 15.2.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+
+Failed to compile.
+
+./app/_components/MyWork.tsx
+13:10  Warning: 'IPublication' is defined but never used.  no-unused-vars
+13:10  Error: 'IPublication' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./components/ThemeToggle.tsx
+41:5  Error: Include a description after the "@ts-expect-error" directive to explain why the @ts-expect-error is necessary. The description must be 3 characters or longer.  @typescript-eslint/ban-ts-comment
+47:5  Error: Include a description after the "@ts-expect-error" directive to explain why the @ts-expect-error is necessary. The description must be 3 characters or longer.  @typescript-eslint/ban-ts-comment
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+ ELIFECYCLE  Command failed with exit code 1.

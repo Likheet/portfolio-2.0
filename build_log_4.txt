@@ -1,0 +1,40 @@
+
+> new-portfolio@0.1.0 build C:\Users\likhe\Desktop\Projects\portfolio-2.0-main
+> next build
+
+   ▲ Next.js 15.2.0
+   - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/3) ...
+ ✓ Exporting (3/3)
+
+Route (app)                                  Size     First Load JS
+┌ ○ /                                        56.1 kB         236 kB
+├ ○ /_not-found                              976 B           118 kB
+├ ○ /archive                                 11.1 kB         176 kB
+├ ● /projects/[slug]                         2.82 kB         175 kB
+├   ├ /projects/credit-card-fraud-detection
+├   ├ /projects/pathfinding-visualizer
+├   ├ /projects/ai-news-app
+├   └ /projects/stack-it
+└ ○ /sitemap.xml                             136 B           117 kB
++ First Load JS shared by all                117 kB
+  ├ chunks/2b1da934-3dcde52ef55c3964.js      53 kB
+  ├ chunks/888-9c7e069ababfe2fc.js           61.7 kB
+  └ other shared chunks (total)              1.99 kB
+
+
+○  (Static)  prerendered as static content
+●  (SSG)     prerendered as static HTML (uses generateStaticParams)
+

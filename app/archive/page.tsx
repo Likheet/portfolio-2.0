@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Home } from 'lucide-react';
 import { PROJECTS, ARCHIVE_PROJECTS, PUBLICATIONS } from '@/lib/data';
@@ -15,7 +15,7 @@ import { useLenis } from 'lenis/react';
 import TransitionLink from '@/components/TransitionLink';
 import { useSearchParams } from 'next/navigation';
 
-const ArchivePage = () => {
+const ArchivePageContent = () => {
     const containerRef = React.useRef<HTMLDivElement>(null);
     const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -239,6 +239,14 @@ const ArchivePage = () => {
                 />
             )}
         </div>
+    );
+};
+
+const ArchivePage = () => {
+    return (
+        <Suspense fallback={<div className="min-h-screen bg-background" />}>
+            <ArchivePageContent />
+        </Suspense>
     );
 };
 

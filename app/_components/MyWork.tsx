@@ -9,15 +9,13 @@ import Image from 'next/image';
 import React, { useRef, useState, MouseEvent } from 'react';
 import Project from './Project';
 import { ArrowUpRight } from 'lucide-react';
-import Button from '@/components/Button';
-import ResearchModal from '../archive/_components/ResearchModal';
-import { IPublication } from '@/types';
+
+
 import TransitionLink from '@/components/TransitionLink';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-interface MyWorkProps {
-}
+
 
 const MyWork = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -25,19 +23,6 @@ const MyWork = () => {
     const imageContainer = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const [selectedProject, setSelectedProject] = useState<string | null>(null);
-    const [selectedPublication, setSelectedPublication] =
-        useState<IPublication | null>(null);
-    const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
-
-    const handlePublicationClick = (pub: IPublication) => {
-        setSelectedPublication(pub);
-        setIsResearchModalOpen(true);
-    };
-
-    const handleCloseResearchModal = () => {
-        setIsResearchModalOpen(false);
-        setTimeout(() => setSelectedPublication(null), 300);
-    };
 
     // update imageRef.current href based on the cursor hover position
     // also update image position
@@ -266,14 +251,7 @@ const MyWork = () => {
                 </div>
             </div>
 
-            {/* Research Detail Modal */}
-            {selectedPublication && (
-                <ResearchModal
-                    publication={selectedPublication!}
-                    isOpen={isResearchModalOpen}
-                    onClose={handleCloseResearchModal}
-                />
-            )}
+
         </section>
     );
 };

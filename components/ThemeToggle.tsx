@@ -38,13 +38,13 @@ export function ThemeToggle({ className }: { className?: string }) {
       Math.max(y, innerHeight - y)
     )
 
-    // @ts-ignore
+
     if (!document.startViewTransition) {
       setTheme(newTheme)
       return
     }
 
-    // @ts-ignore
+
     const transition = document.startViewTransition(() => {
       flushSync(() => {
         setTheme(newTheme)
