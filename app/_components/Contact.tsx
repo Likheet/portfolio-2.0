@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import SectionTitle from '@/components/SectionTitle';
 import Button from '@/components/Button';
 import { cn } from '@/lib/utils';
@@ -10,26 +11,31 @@ type FormData = {
     name: string;
     email: string;
     message: string;
-    botcheck: boolean;
+    "h-captcha-response": string;
 };
 
 const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState('');
+    const captchaRef = useRef<HCaptcha>(null);
 
     const {
         register,
         handleSubmit,
         reset,
+        setValue,
         formState: { errors },
     } = useForm<FormData>();
 
+    const onHCaptchaChange = (token: string) => {
+        setValue("h-captcha-response", token);
+        if (token) setError('');
+    };
+
     const onSubmit = async (data: FormData) => {
-        // Honeypot check
-        if (data.botcheck) {
-            // If the hidden checkbox is checked, it's likely a bot.
-            // We can just pretend it succeeded or return.
+        if (!data['h-captcha-response']) {
+            setError('Please complete the captcha verification.');
             return;
         }
 
@@ -50,7 +56,7 @@ const Contact = () => {
                     name: data.name,
                     email: data.email,
                     message: data.message,
-                    botcheck: false, // Explicitly send false to Web3Forms
+                    "h-captcha-response": data['h-captcha-response'],
                 }),
             });
 
@@ -59,6 +65,7 @@ const Contact = () => {
             if (result.success) {
                 setIsSuccess(true);
                 reset();
+                captchaRef.current?.resetCaptcha();
             } else {
                 setError(result.message || 'Something went wrong. Please try again.');
             }
@@ -173,14 +180,15 @@ const Contact = () => {
                             </div>
 
                             <div className="space-y-6 sm:space-y-8">
-                                {/* Honeypot field - hidden from users but visible to bots */}
-                                <input 
-                                    type="checkbox" 
-                                    id="botcheck"
-                                    {...register("botcheck")}
-                                    className="hidden" 
-                                    style={{ display: 'none' }}
-                                />
+                                <div className="w-fit origin-left transform scale-[0.85] xs:scale-100">
+                                    <HCaptcha
+                                        sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                                        reCaptchaCompat={false}
+                                        onVerify={onHCaptchaChange}
+                                        theme="dark"
+                                        ref={captchaRef}
+                                    />
+                                </div>
 
                                 {error && (
                                     <p className="text-destructive text-sm uppercase tracking-wider">{error}</p>
