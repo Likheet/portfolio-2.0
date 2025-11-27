@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import ReCAPTCHA from 'react-google-recaptcha';
 import SectionTitle from '@/components/SectionTitle';
 import Button from '@/components/Button';
 import { cn } from '@/lib/utils';
@@ -11,13 +10,13 @@ type FormData = {
     name: string;
     email: string;
     message: string;
+    botcheck: boolean;
 };
 
 const Contact = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [error, setError] = useState('');
-    const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
     const {
         register,
@@ -27,9 +26,10 @@ const Contact = () => {
     } = useForm<FormData>();
 
     const onSubmit = async (data: FormData) => {
-        // Client-side reCAPTCHA verification
-        if (!recaptchaToken) {
-            setError('Please complete the reCAPTCHA verification.');
+        // Honeypot check
+        if (data.botcheck) {
+            // If the hidden checkbox is checked, it's likely a bot.
+            // We can just pretend it succeeded or return.
             return;
         }
 
@@ -47,8 +47,10 @@ const Contact = () => {
                     access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
                     subject: `New Contact Form Message from ${data.name}`,
                     from_name: data.name,
-                    ...data,
-                    botcheck: false, // Required to pass Web3Forms spam filter
+                    name: data.name,
+                    email: data.email,
+                    message: data.message,
+                    botcheck: false, // Explicitly send false to Web3Forms
                 }),
             });
 
@@ -57,7 +59,6 @@ const Contact = () => {
             if (result.success) {
                 setIsSuccess(true);
                 reset();
-                setRecaptchaToken(null);
             } else {
                 setError(result.message || 'Something went wrong. Please try again.');
             }
@@ -66,11 +67,6 @@ const Contact = () => {
         } finally {
             setIsSubmitting(false);
         }
-    };
-
-    const onRecaptchaChange = (token: string | null) => {
-        setRecaptchaToken(token);
-        if (token) setError('');
     };
 
     return (
@@ -177,22 +173,15 @@ const Contact = () => {
                             </div>
 
                             <div className="space-y-6 sm:space-y-8">
-                                {/* Hidden botcheck field for Web3Forms spam prevention */}
+                                {/* Honeypot field - hidden from users but visible to bots */}
                                 <input 
                                     type="checkbox" 
-                                    name="botcheck" 
+                                    id="botcheck"
+                                    {...register("botcheck")}
                                     className="hidden" 
+                                    style={{ display: 'none' }}
                                 />
 
-                                {/* Google reCAPTCHA v2 - Free tier */}
-                                <div className="w-fit origin-left transform scale-[0.85] xs:scale-100 recaptcha-wrapper">
-                                    <ReCAPTCHA
-                                        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-                                        onChange={onRecaptchaChange}
-                                        theme="dark"
-                                    />
-                                </div>
-                                
                                 {error && (
                                     <p className="text-destructive text-sm uppercase tracking-wider">{error}</p>
                                 )}
