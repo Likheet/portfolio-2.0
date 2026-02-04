@@ -180,7 +180,7 @@ const Contact = () => {
                             </div>
 
                             <div className="space-y-6 sm:space-y-8">
-                                <div className="w-fit origin-left transform scale-[0.85] xs:scale-100">
+                                <div className="w-fit origin-left transform scale-[0.85] xs:scale-100" data-hide-cursor="true">
                                     <HCaptcha
                                         sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                                         reCaptchaCompat={false}

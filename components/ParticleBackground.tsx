@@ -5,39 +5,51 @@ import { useRef } from 'react';
 
 gsap.registerPlugin(useGSAP);
 
+const PARTICLE_COUNT = 50;
+
 const ParticleBackground = () => {
+    const containerRef = useRef<HTMLDivElement>(null);
     const particlesRef = useRef<HTMLDivElement[]>([]);
 
     useGSAP(() => {
+        particlesRef.current = particlesRef.current.filter(Boolean);
+        
         particlesRef.current.forEach((particle) => {
+            if (!particle) return;
+            
+            const size = Math.random() * 3 + 1;
+            const startX = Math.random() * 100; // percentage across viewport width
+            const startY = Math.random() * -100; // start above viewport
+            const duration = Math.random() * 15 + 15;
+
             gsap.set(particle, {
-                width: Math.random() * 3 + 1,
-                height: Math.random() * 3 + 1,
-                opacity: Math.random(),
-                left: Math.random() * window.innerWidth,
-                top: Math.random() * (window.innerHeight + 1),
+                width: size,
+                height: size,
+                left: `${startX}%`,
+                top: `${startY}%`,
+                opacity: Math.random() * 0.5 + 0.2,
+                force3D: true,
             });
 
             gsap.to(particle, {
-                y: window.innerHeight,
-                duration: Math.random() * 10 + 10,
-                opacity: 0,
+                y: window.innerHeight * 2,
+                duration: duration,
                 repeat: -1,
                 ease: 'none',
-                // yoyo: true,
+                force3D: true,
             });
         });
-    }, []);
+    }, { scope: containerRef });
 
     return (
-        <div className="fixed inset-0 z-0 pointer-events-none">
-            {[...Array(100)].map((_, i) => (
+        <div ref={containerRef} className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+            {[...Array(PARTICLE_COUNT)].map((_, i) => (
                 <div
                     key={i}
                     ref={(el) => {
-                        particlesRef.current.push(el!);
+                        if (el) particlesRef.current[i] = el;
                     }}
-                    className="absolute rounded-full bg-white"
+                    className="absolute rounded-full bg-foreground/30 will-change-transform"
                 />
             ))}
         </div>
@@ -45,3 +57,4 @@ const ParticleBackground = () => {
 };
 
 export default ParticleBackground;
+
