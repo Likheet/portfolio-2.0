@@ -51,7 +51,7 @@ const Navbar = () => {
 
     return (
         <>
-            <div className="sticky top-0 z-[4]">
+            <div className="sticky top-0 z-[50]">
                 <ThemeToggle className="absolute top-5 right-20 md:right-28 z-[2]" />
                 <button
                     className={cn(

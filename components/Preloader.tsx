@@ -43,7 +43,7 @@ const Preloader = () => {
     );
 
     return (
-        <div className="fixed inset-0 z-[6] flex" ref={preloaderRef}>
+        <div className="fixed inset-0 z-[100] flex" ref={preloaderRef}>
             <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
             <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
             <div className="preloader-item h-full w-[10%] bg-white dark:bg-background"></div>
