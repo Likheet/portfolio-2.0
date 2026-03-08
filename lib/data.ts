@@ -26,6 +26,44 @@ export const SOCIAL_LINKS = [
     },
 ];
 
+export const ACHIEVEMENTS = [
+    {
+        title: 'Azure AI Engineer Associate',
+        icon: 'Trophy',
+        category: 'certification',
+    },
+    {
+        title: 'Google Cloud Digital Leader',
+        icon: 'Cloud',
+        category: 'certification',
+    },
+    {
+        title: '50+ GCP Skill Labs',
+        icon: 'Beaker',
+        category: 'learning',
+    },
+    {
+        title: 'HackerRank 3★',
+        icon: 'Star',
+        category: 'competitive',
+    },
+    {
+        title: 'GfG Contest #20',
+        icon: 'Medal',
+        category: 'competitive',
+    },
+    {
+        title: 'MATLAB Onramp',
+        icon: 'BarChart',
+        category: 'learning',
+    },
+    {
+        title: 'CYBERATIC Quiz 2nd',
+        icon: 'Award',
+        category: 'competitive',
+    },
+];
+
 export const MY_STACK = {
     languages: [
         {

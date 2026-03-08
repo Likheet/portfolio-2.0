@@ -242,15 +242,34 @@ const Banner = () => {
                             </span>
                         </Link>
                     </div>
+                    
                 </div>
 
                 {/* MIDDLE DECORATION */}
-                <div className="hero-sub w-full flex justify-center items-center py-6 md:py-10 lg:py-14 gap-5 md:gap-10 lg:gap-12 z-0">
+                <div className="hero-sub w-full flex justify-center items-center py-6 md:py-10 lg:py-14 gap-5 md:gap-10 lg:gap-12 z-30 relative">
                     <div className="h-[1px] w-10 md:w-24 bg-foreground/30" />
                     <span className="font-inter text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] text-foreground/80 text-center">
                         Software Developer
                     </span>
                     <div className="h-[1px] w-10 md:w-24 bg-foreground/30" />
+
+                    {/* Resume Link (Aligned Right) */}
+                    <div className="absolute right-0 lg:right-[-3%] hidden md:block z-40 pointer-events-auto">
+                        <a
+                            href="https://drive.google.com/file/u/4/d/1GgYlmxQEsKFjpaQdThu-hjqAUPL62-VB/view"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex min-h-11 items-center justify-center gap-3 rounded-full border border-foreground/10 bg-background/40 px-6 py-3 backdrop-blur-md transition-all duration-300 hover:border-portfolio-red/50 hover:bg-portfolio-red/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-portfolio-red/50"
+                        >
+                            <span className="font-inter text-[10px] font-medium uppercase tracking-[0.2em] text-foreground/70 group-hover:text-portfolio-red transition-colors">
+                                View Resume
+                            </span>
+                            <span className="relative flex h-1.5 w-1.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-portfolio-red opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-portfolio-red"></span>
+                            </span>
+                        </a>
+                    </div>
                 </div>
 
                 {/* ROW 2: SURNAME + MY WORKS CARD */}

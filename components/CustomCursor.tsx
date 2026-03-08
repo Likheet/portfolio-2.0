@@ -25,6 +25,22 @@ const CustomCursor = () => {
             yTo.current = gsap.quickTo(cursorRef.current, "y", { duration: 0.1, ease: "power3.out" });
         }
 
+        const setCursorVisibility = (visible: boolean) => {
+            if (!cursorRef.current) return;
+            gsap.to(cursorRef.current, {
+                opacity: visible ? 1 : 0,
+                duration: 0.25,
+                ease: "power2.out",
+                overwrite: "auto",
+            });
+        };
+
+        const shouldHideGlobalCursor = (target: EventTarget | null) => {
+            if (!(target instanceof HTMLElement)) return false;
+            const isProject = target.closest('[data-cursor-type="project"]');
+            return !isProject && !!target.closest('[data-hide-cursor="true"]');
+        };
+
         const handleMouseMove = contextSafe?.((e: MouseEvent) => {
             if (!cursorRef.current) return;
 
@@ -34,32 +50,22 @@ const CustomCursor = () => {
             xTo.current(clientX);
             yTo.current(clientY);
 
-            const target = e.target as HTMLElement;
-            // Only hide if explicitly requested AND not in project hover mode
-            const isProject = target.closest('[data-cursor-type="project"]');
-            const shouldHide = !isProject && target.closest('[data-hide-cursor="true"]');
-
-            // Use standard to() for non-movement properties
-            gsap.to(cursorRef.current, {
-                opacity: shouldHide ? 0 : 1,
-                duration: 0.2,
-                overwrite: 'auto' // Prevent conflicts
-            });
+            const shouldHide = shouldHideGlobalCursor(e.target);
+            setCursorVisibility(!shouldHide);
         }) as any;
 
         const handleMouseOver = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
+            if (!(e.target instanceof HTMLElement)) return;
+            const target = e.target;
             
             // Check for project hover first
             const projectHover = target.closest('[data-cursor-type="project"]');
             setIsProjectHover(!!projectHover);
 
             // Check if we should hide the global cursor
-            const shouldHide = !projectHover && target.closest('[data-hide-cursor="true"]');
+            const shouldHide = shouldHideGlobalCursor(target);
             if (shouldHide) {
-                if (cursorRef.current) {
-                    cursorRef.current.style.opacity = '0';
-                }
+                setCursorVisibility(false);
                 return;
             }
 
@@ -74,12 +80,65 @@ const CustomCursor = () => {
             setIsHovering(!!isClickable);
         };
 
+        const handleMouseLeave = contextSafe?.(() => {
+            setIsHovering(false);
+            setIsProjectHover(false);
+            setCursorVisibility(false);
+        }) as any;
+
+        const handleMouseEnter = contextSafe?.((e: MouseEvent) => {
+            const targetUnderPointer = document.elementFromPoint(e.clientX, e.clientY);
+            const shouldHide = shouldHideGlobalCursor(targetUnderPointer);
+            setCursorVisibility(!shouldHide);
+        }) as any;
+
+        const handleWindowBlur = contextSafe?.(() => {
+            setIsHovering(false);
+            setIsProjectHover(false);
+            setCursorVisibility(false);
+        }) as any;
+
+        const handleMouseOutDocument = contextSafe?.((e: MouseEvent) => {
+            // When moving from the page to browser chrome (tabs/address bar),
+            // relatedTarget is null in most browsers.
+            if (e.relatedTarget) return;
+            setIsHovering(false);
+            setIsProjectHover(false);
+            setCursorVisibility(false);
+        }) as any;
+
+        const handlePointerOutDocument = contextSafe?.((e: PointerEvent) => {
+            if (e.relatedTarget) return;
+            setIsHovering(false);
+            setIsProjectHover(false);
+            setCursorVisibility(false);
+        }) as any;
+
+        const handleVisibilityChange = contextSafe?.(() => {
+            if (!document.hidden) return;
+            setIsHovering(false);
+            setIsProjectHover(false);
+            setCursorVisibility(false);
+        }) as any;
+
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('mouseover', handleMouseOver);
+        window.addEventListener('mouseleave', handleMouseLeave);
+        window.addEventListener('mouseenter', handleMouseEnter);
+        window.addEventListener('blur', handleWindowBlur);
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        document.addEventListener('mouseout', handleMouseOutDocument);
+        document.addEventListener('pointerout', handlePointerOutDocument);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('mouseover', handleMouseOver);
+            window.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener('mouseenter', handleMouseEnter);
+            window.removeEventListener('blur', handleWindowBlur);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            document.removeEventListener('mouseout', handleMouseOutDocument);
+            document.removeEventListener('pointerout', handlePointerOutDocument);
         };
     });
 
@@ -109,7 +168,7 @@ const CustomCursor = () => {
     return (
         <div
             ref={cursorRef}
-            className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none"
+            className="hidden md:block fixed top-0 left-0 z-[9999] pointer-events-none opacity-0"
             id="cursor"
         >
             {/* Default Cursor Container */}
