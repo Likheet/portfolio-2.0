@@ -1,4 +1,4 @@
-import { IProject, IPublication } from '@/types';
+import { IAchievement, IProject, IPublication } from '@/types';
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const withBasePath = (path: string) =>
@@ -26,41 +26,162 @@ export const SOCIAL_LINKS = [
     },
 ];
 
-export const ACHIEVEMENTS = [
+export const ACHIEVEMENTS: IAchievement[] = [
     {
-        title: 'Azure AI Engineer Associate',
+        title: 'Oracle Race to Certification',
         icon: 'Trophy',
-        category: 'certification',
+        category: 'global challenge',
+        year: '2025',
+        highlight: 'Top 500',
+        description:
+            'Completed Oracle\'s Race to Certification track and secured a global Top 500 finish. Built consistency across weekly cloud challenges and validated practical OCI knowledge under score-based evaluation.',
+        tags: ['OCI', 'Cloud', 'Global Ranking'],
+        proofUrl:
+            'https://drive.google.com/file/d/10hzALEWNwTMBYR-sbiCPl7eMJt6y-mkq/view?usp=sharing',
+        proofLabel: 'Proof',
+    },
+    {
+        title: 'Oracle Cloud Infrastructure 2025 Networking Professional',
+        icon: 'Cloud',
+        category: 'cloud certification',
+        year: '2025',
+        highlight: 'Certified',
+        description:
+            'Earned the Oracle Cloud Infrastructure 2025 Certified Networking Professional credential. Demonstrates applied competency in OCI networking architecture, connectivity, and production-grade cloud networking operations.',
+        tags: ['OCI', 'Networking', 'Cloud Architecture'],
+        proofUrl: withBasePath(
+            '/docs/certificates/oracle-oci-2025-networking-professional.pdf',
+        ),
+        proofLabel: 'Certificate',
+    },
+    {
+        title: 'Microsoft Azure AI Engineer Associate',
+        icon: 'Award',
+        category: 'cloud certification',
+        year: '2025',
+        highlight: 'Certified',
+        description:
+            'Earned the Azure AI Engineer Associate credential by demonstrating end-to-end AI solution delivery on Azure. Covered model integration, cognitive services, deployment architecture, and responsible AI practices.',
+        tags: ['Azure AI', 'MLOps', 'Responsible AI'],
+        proofUrl:
+            'https://learn.microsoft.com/api/credentials/share/en-us/LikheetShetty/EDFCAD1071EAD80A?sharingId=C44F415D6E32A2E7',
+        proofLabel: 'Credential',
     },
     {
         title: 'Google Cloud Digital Leader',
         icon: 'Cloud',
-        category: 'certification',
+        category: 'cloud certification',
+        year: '2024',
+        highlight: 'Certified',
+        description:
+            'Completed the Google Cloud Digital Leader certification with focus on cloud value, architecture, and business impact. Demonstrated cross-domain fluency across data, AI, security, and product decision-making on GCP.',
+        tags: ['GCP', 'Cloud Strategy', 'Architecture'],
+        proofUrl: 'https://www.credential.net/b5f87fcd-f9e1-49b4-b108-bcfd71ebfd54',
+        proofLabel: 'Credential',
     },
     {
-        title: '50+ GCP Skill Labs',
-        icon: 'Beaker',
-        category: 'learning',
-    },
-    {
-        title: 'HackerRank 3★',
+        title: 'GitHub Foundations',
         icon: 'Star',
-        category: 'competitive',
+        category: 'certification',
+        year: '2024',
+        highlight: 'Certified',
+        description:
+            'Completed GitHub Foundations certification covering core Git workflows, repository collaboration patterns, and GitHub platform fundamentals for team-based software development.',
+        tags: ['Git', 'GitHub', 'Version Control'],
+        proofUrl: 'https://www.credly.com/go/0AREjkSg',
+        proofLabel: 'Credential',
     },
     {
-        title: 'GfG Contest #20',
-        icon: 'Medal',
-        category: 'competitive',
+        title: 'JPMorgan Chase & Co. Software Engineering Job Simulation',
+        icon: 'BarChart',
+        category: 'job simulation',
+        year: '2024',
+        highlight: 'Completed',
+        description:
+            'Completed the Forage software engineering simulation with JPMorgan Chase & Co., including practical tasks on stock price data interfacing, framework usage, and trader-facing data visualization workflows.',
+        tags: ['Forage', 'JPMorgan', 'Applied Practice'],
+        proofUrl:
+            withBasePath(
+                '/docs/certificates/jpmorgan-software-engineering-job-simulation.pdf',
+            ),
+        proofLabel: 'Certificate',
+    },
+    {
+        title: 'HackerRank Software Engineer Certification',
+        icon: 'Award',
+        category: 'coding assessment',
+        year: '2024',
+        highlight: 'Certified',
+        description:
+            'Passed HackerRank\'s Software Engineer role certification exam, validating practical coding and role-focused software engineering assessment performance.',
+        tags: ['HackerRank', 'Software Engineer', 'Competitive Coding'],
+        proofUrl: withBasePath(
+            '/docs/certificates/hackerrank-software-engineer.pdf',
+        ),
+        proofLabel: 'Certificate',
+    },
+    {
+        title: 'HackerRank Problem Solving (Intermediate)',
+        icon: 'Star',
+        category: 'coding assessment',
+        year: '2024',
+        highlight: 'Certified',
+        description:
+            'Cleared HackerRank\'s Problem Solving (Intermediate) skill assessment through algorithmic and data-structure problem solving under timed constraints.',
+        tags: ['DSA', 'Algorithms', 'Competitive Coding'],
+        proofUrl: withBasePath(
+            '/docs/certificates/hackerrank-problem-solving-intermediate.pdf',
+        ),
+        proofLabel: 'Certificate',
+    },
+    {
+        title: 'Mastering Data Structures & Algorithms using C and C++',
+        icon: 'Beaker',
+        category: 'course completion',
+        year: '2024',
+        highlight: 'Completed',
+        description:
+            'Completed Abdul Bari\'s in-depth Udemy course focused on core data structures, algorithm design, complexity analysis, and implementation in C/C++.',
+        tags: ['Udemy', 'C/C++', 'Data Structures'],
+        proofUrl: 'https://ude.my/UC-bfac3c49-cf56-453f-a8bb-60f7fe08ed9d',
+        proofLabel: 'Certificate',
+    },
+    {
+        title: 'Machine Learning Pipelines with Azure ML Studio',
+        icon: 'Beaker',
+        category: 'hands-on project',
+        year: '2025',
+        highlight: 'Completed',
+        description:
+            'Completed a Coursera Project Network hands-on project on Azure ML Studio, covering pipeline setup, model workflow orchestration, and practical cloud ML operations.',
+        tags: ['Coursera', 'Azure ML', 'MLOps'],
+        proofUrl: 'https://coursera.org/verify/C1WU8HUCEB4D',
+        proofLabel: 'Certificate',
     },
     {
         title: 'MATLAB Onramp',
         icon: 'BarChart',
-        category: 'learning',
+        category: 'learning milestone',
+        year: '2024',
+        highlight: 'Completed',
+        description:
+            'Completed MathWorks MATLAB Onramp, building practical fluency in matrix operations, scripting, visualization, and numerical-computing fundamentals.',
+        tags: ['MATLAB', 'Numerical Computing', 'Visualization'],
+        proofUrl: withBasePath('/docs/certificates/matlab-onramp.pdf'),
+        proofLabel: 'Certificate',
     },
     {
-        title: 'CYBERATIC Quiz 2nd',
-        icon: 'Award',
-        category: 'competitive',
+        title: 'GeeksforGeeks Weekly Contest 162',
+        icon: 'Medal',
+        category: 'contest ranking',
+        year: '2024',
+        highlight: 'Rank 20',
+        description:
+            'Placed 20th on the GeeksforGeeks Weekly Contest 162 leaderboard in a timed competitive programming round.',
+        tags: ['GeeksforGeeks', 'Contest', 'Problem Solving'],
+        proofUrl:
+            'https://practice.geeksforgeeks.org/contest/gfg-weekly-162-rated-contest/leaderboard',
+        proofLabel: 'Leaderboard',
     },
 ];
 

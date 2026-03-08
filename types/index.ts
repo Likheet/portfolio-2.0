@@ -69,3 +69,15 @@ export interface IPublication {
         icon?: string;
     }[];
 }
+
+export interface IAchievement {
+    title: string;
+    icon: string;
+    category: string;
+    year: string;
+    highlight: string;
+    description: string;
+    tags: string[];
+    proofUrl?: string;
+    proofLabel?: string;
+}
