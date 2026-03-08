@@ -282,6 +282,95 @@ export const MY_STACK = {
 
 export const PROJECTS: IProject[] = [
     {
+        title: 'Prompt Enhancer Extension',
+        slug: 'prompt-enhancer-extension',
+        techStack: [
+            'JavaScript',
+            'Chrome Extension APIs',
+            'Gemini API',
+            'HTML/CSS',
+        ],
+        thumbnail: '/projects/thumbnail/prompt-enhancer.png',
+        longThumbnail: '/projects/long/prompt-enhancer.png',
+        images: ['/projects/images/prompt-enhancer.png'],
+        sourceCode: 'https://github.com/Likheet/prompt-enhancer-extension',
+        year: 2025,
+        description: `
+            A Chrome extension that helps non-technical users turn vague prompts into high-quality AI instructions with one click.
+            <ul>
+                <li>Built inline prompt enhancement directly inside chat inputs, so users can optimize prompts without leaving ChatGPT or Claude.</li>
+                <li>Implemented multiple enhancement templates (concise, detailed, technical, creative, and custom) for different use cases.</li>
+                <li>Added context-aware enhancement with optional BYOK Gemini API support and keyboard shortcuts for fast workflows.</li>
+            </ul>
+        `,
+        role: `
+            <p>Extension Developer (Solo)</p>
+            <ul>
+                <li>Designed the DOM observer and platform-specific injection logic for reliable cross-platform behavior.</li>
+                <li>Built the settings UX, preset management, and local persistence for customization and ease of use.</li>
+                <li>Implemented enhancement pipeline behavior balancing free rule-based mode with API-powered mode.</li>
+            </ul>
+        `,
+        challenge:
+            'Most users can describe what they want, but struggle to phrase prompts in a way that consistently gets strong AI responses.',
+        solution:
+            'I built a one-click enhancement flow with preset strategies, optional custom instructions, and conversation-context handling so users can improve prompts without prompt-engineering knowledge.',
+        impact: 'Reduced prompt-writing friction for non-technical users and made high-quality prompting repeatable through templates and shortcut-driven workflows.',
+        key_features: [
+            'Inline Prompt Enhancement',
+            'Preset + Custom Templates',
+            'BYOK Gemini Integration',
+            'Keyboard Shortcut Workflow',
+        ],
+        team_size: 'Solo Project',
+        duration: 'Ongoing',
+    },
+    {
+        title: 'Sky Prophet',
+        slug: 'sky-prophet',
+        techStack: [
+            'JavaScript',
+            'HTML/CSS',
+            'OpenWeather API',
+            'PWA',
+        ],
+        thumbnail: '/projects/thumbnail/sky-prophet.png',
+        longThumbnail: '/projects/long/sky-prophet.png',
+        images: ['/projects/images/sky-prophet.png'],
+        sourceCode: 'https://github.com/Likheet/Sky-Prophet',
+        liveUrl: 'https://sky-prophet.vercel.app',
+        year: 2023,
+        description: `
+            A weather intelligence dashboard with rich daily and hourly forecasting, air-quality highlights, and location-aware city search.
+            <ul>
+                <li>Built a clean weather UI with current conditions, five-day forecast, hourly timeline, and highlight cards for AQI, humidity, pressure, and visibility.</li>
+                <li>Integrated geolocation + city search flows to quickly fetch weather data for current location or user-selected places.</li>
+                <li>Packaged the app as a Progressive Web App (PWA) for installable, app-like usage across desktop and mobile.</li>
+            </ul>
+        `,
+        role: `
+            <p>Frontend Developer (Solo)</p>
+            <ul>
+                <li>Designed and implemented the complete dashboard interface and component layout.</li>
+                <li>Built data fetching and route/hash handling for location-based weather updates.</li>
+                <li>Implemented air-quality visualization and responsive behavior across screen sizes.</li>
+            </ul>
+        `,
+        challenge:
+            'Weather apps often overload users with raw numbers but miss clarity and actionable visual structure.',
+        solution:
+            'I designed a card-based dashboard that prioritizes key signals first (temperature, AQI, sunrise/sunset, and hourly trend) while keeping deeper details accessible in the same view.',
+        impact: 'Created an installable, user-friendly forecasting app that makes complex weather and air-quality data faster to read and compare.',
+        key_features: [
+            'Location-Aware Forecasting',
+            'Air Quality Insights',
+            'Hourly + Multi-Day Views',
+            'Progressive Web App Support',
+        ],
+        team_size: 'Solo Project',
+        duration: '4 Weeks',
+    },
+    {
         title: 'Credit Card Fraud Detection',
         slug: 'credit-card-fraud-detection',
         techStack: ['Python', 'Pandas', 'NumPy', 'Scikit-Learn', 'SMOTE'],
@@ -556,32 +645,4 @@ export const PUBLICATIONS: IPublication[] = [
     },
 ];
 
-export const ARCHIVE_PROJECTS: IProject[] = [
-    {
-        title: 'GPT Discord',
-        slug: 'gpt-discord',
-        techStack: ['Python', 'OpenAI API', 'Discord.py', 'DALL-E'],
-        thumbnail: '/projects/thumbnail/placeholder.png', // Placeholder
-        longThumbnail: '/projects/long/placeholder.png',
-        images: [],
-        sourceCode: 'https://github.com/Likheet/GPTDiscord',
-        year: 2023,
-        description:
-            'A robust, all-in-one GPT interface for Discord featuring multi-modality, code interpretation, and AI moderation.',
-        role: 'Lead Developer',
-    },
-    {
-        title: 'Project Archive',
-        slug: 'project-archive',
-        techStack: ['HTML', 'CSS', 'JavaScript', 'GitHub Pages'],
-        thumbnail: '/projects/thumbnail/placeholder.png', // Placeholder
-        longThumbnail: '/projects/long/placeholder.png',
-        images: [],
-        sourceCode: 'https://github.com/Likheet/project_archive',
-        liveUrl: 'https://codecompasss.github.io/project_archive/',
-        year: 2023,
-        description:
-            'A centralized repository and static website designed to collect and showcase student projects for industry exposure.',
-        role: 'Contributor',
-    },
-];
+export const ARCHIVE_PROJECTS: IProject[] = [];
