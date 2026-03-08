@@ -69,7 +69,12 @@ const Achievements = () => {
             id="achievements"
             ref={containerRef}
         >
-            <SectionTitle title="Achievements" />
+            <SectionTitle
+                title="Achievements"
+                classNames={{
+                    title: 'font-manrope font-semibold tracking-[0.08em]',
+                }}
+            />
 
             <div className="mt-8 sm:mt-10 flex items-start justify-between gap-5 flex-wrap">
                 <p className="max-w-3xl text-base sm:text-lg text-muted-foreground leading-relaxed">

@@ -48,6 +48,12 @@ const MyWork = () => {
                 const imageRect =
                     imageContainer.current.getBoundingClientRect();
                 const offsetTop = e.clientY - containerRect.y;
+                const targetY = offsetTop - imageRect.height / 2;
+                const maxY = Math.max(
+                    0,
+                    containerRect.height - imageRect.height,
+                );
+                const clampedY = gsap.utils.clamp(0, maxY, targetY);
 
                 // if cursor is outside the container, hide the image
                 if (
@@ -63,8 +69,9 @@ const MyWork = () => {
                 }
 
                 gsap.to(imageContainer.current, {
-                    y: offsetTop - imageRect.height / 2,
-                    duration: 1,
+                    y: clampedY,
+                    duration: 0.65,
+                    ease: 'power3.out',
                     opacity: 1,
                 });
             }) as any;
@@ -135,27 +142,44 @@ const MyWork = () => {
                 >
                     {selectedProject !== null && (
                         <div
-                            className="max-md:hidden absolute right-0 top-0 z-[1] pointer-events-none w-[200px] lg:w-[260px] xl:w-[350px] aspect-[3/4] overflow-hidden opacity-0"
+                            className="max-md:hidden absolute right-0 top-0 z-[1] pointer-events-none w-[260px] lg:w-[330px] xl:w-[420px] aspect-[4/3] opacity-0"
                             ref={imageContainer}
                         >
-                            {PROJECTS.map((project) => (
-                                <Image
-                                    src={project.thumbnail}
-                                    alt="Project"
-                                    width="400"
-                                    height="500"
-                                    className={cn(
-                                        'absolute inset-0 transition-all duration-500 w-full h-full object-cover',
-                                        {
-                                            'opacity-0':
-                                                project.slug !==
-                                                selectedProject,
-                                        },
-                                    )}
-                                    ref={imageRef}
-                                    key={project.slug}
-                                />
-                            ))}
+                            <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border/45 bg-background/75 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
+                                <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-transparent to-portfolio-red/14 z-[2]" />
+                                <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl z-[3]" />
+
+                                {PROJECTS.map((project) => (
+                                    <div
+                                        key={project.slug}
+                                        className={cn(
+                                            'absolute inset-0 transition-opacity duration-500',
+                                            {
+                                                'opacity-0':
+                                                    project.slug !==
+                                                    selectedProject,
+                                            },
+                                        )}
+                                    >
+                                        <Image
+                                            src={project.thumbnail}
+                                            alt={project.title}
+                                            width="800"
+                                            height="600"
+                                            className="absolute inset-0 w-full h-full object-cover scale-105 blur-xl opacity-35"
+                                            aria-hidden
+                                        />
+                                        <Image
+                                            src={project.thumbnail}
+                                            alt={project.title}
+                                            width="800"
+                                            height="600"
+                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/projects:scale-[1.03]"
+                                            ref={imageRef}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     )}
 
@@ -243,7 +267,7 @@ const MyWork = () => {
                         >
                             <span className="absolute top-[200%] left-0 right-0 h-full bg-white rounded-[50%] group-hover:top-0 transition-all duration-500 scale-150"></span>
                             <span className="z-[1] group-hover:text-black transition-colors duration-300 flex items-center gap-2">
-                                View All Work
+                                View All Works
                                 <ArrowUpRight className="h-5 w-5" />
                             </span>
                         </TransitionLink>
