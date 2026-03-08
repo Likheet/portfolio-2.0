@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import Image from 'next/image';
-import React, { useRef, useState, MouseEvent } from 'react';
+import React, { useMemo, useRef, useState, MouseEvent } from 'react';
 import Project from './Project';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -23,6 +23,10 @@ const MyWork = () => {
     const imageContainer = useRef<HTMLDivElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const [selectedProject, setSelectedProject] = useState<string | null>(null);
+    const sortedProjects = useMemo(
+        () => [...PROJECTS].sort((a, b) => Number(b.year) - Number(a.year)),
+        [],
+    );
 
     // update imageRef.current href based on the cursor hover position
     // also update image position
@@ -149,7 +153,7 @@ const MyWork = () => {
                                 <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-transparent to-portfolio-red/14 z-[2]" />
                                 <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl z-[3]" />
 
-                                {PROJECTS.map((project) => (
+                                {sortedProjects.map((project) => (
                                     <div
                                         key={project.slug}
                                         className={cn(
@@ -245,7 +249,7 @@ const MyWork = () => {
                                 </TransitionLink>
                             </div>
                             <div className="flex flex-col max-md:gap-10">
-                                {PROJECTS.map((project, index) => (
+                                {sortedProjects.map((project, index) => (
                                     <Project
                                         index={index}
                                         project={project}

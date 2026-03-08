@@ -645,4 +645,3 @@ export const PUBLICATIONS: IPublication[] = [
     },
 ];
 
-export const ARCHIVE_PROJECTS: IProject[] = [];

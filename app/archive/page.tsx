@@ -2,7 +2,7 @@
 import React, { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Home } from 'lucide-react';
-import { PROJECTS, ARCHIVE_PROJECTS, PUBLICATIONS } from '@/lib/data';
+import { PROJECTS, PUBLICATIONS } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ArchiveCard from './_components/ArchiveCard';
@@ -88,8 +88,8 @@ const ArchivePageContent = () => {
         }
     }, [isModalOpen, isResearchModalOpen, lenis]);
 
-    // Combine and sort projects by year descending
-    const allProjects = [...PROJECTS, ...ARCHIVE_PROJECTS].sort((a, b) => {
+    // Sort projects by year descending
+    const allProjects = [...PROJECTS].sort((a, b) => {
         return Number(b.year) - Number(a.year);
     });
 

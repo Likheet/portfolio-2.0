@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useRef } from 'react';
 import { X, ArrowUpRight } from 'lucide-react';
-import { PROJECTS, ARCHIVE_PROJECTS, PUBLICATIONS } from '@/lib/data';
+import { PROJECTS, PUBLICATIONS } from '@/lib/data';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import ArchiveCard from '../archive/_components/ArchiveCard';
@@ -107,8 +107,8 @@ const ArchiveOverlay = ({ isOpen, onClose }: ArchiveOverlayProps) => {
         }
     }, [isOpen]);
 
-    // Combine and sort projects by year descending
-    const allProjects = [...PROJECTS, ...ARCHIVE_PROJECTS].sort((a, b) => {
+    // Sort projects by year descending
+    const allProjects = [...PROJECTS].sort((a, b) => {
         return Number(b.year) - Number(a.year);
     });
 
