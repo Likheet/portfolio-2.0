@@ -34,7 +34,7 @@ export const ACHIEVEMENTS: IAchievement[] = [
         year: '2025',
         highlight: 'Top 500',
         description:
-            'Completed Oracle\'s Race to Certification track and secured a global Top 500 finish. Built consistency across weekly cloud challenges and validated practical OCI knowledge under score-based evaluation.',
+            "Completed Oracle's Race to Certification track and secured a global Top 500 finish. Built consistency across weekly cloud challenges and validated practical OCI knowledge under score-based evaluation.",
         tags: ['OCI', 'Cloud', 'Global Ranking'],
         proofUrl:
             'https://drive.google.com/file/d/10hzALEWNwTMBYR-sbiCPl7eMJt6y-mkq/view?usp=sharing',
@@ -76,7 +76,8 @@ export const ACHIEVEMENTS: IAchievement[] = [
         description:
             'Completed the Google Cloud Digital Leader certification with focus on cloud value, architecture, and business impact. Demonstrated cross-domain fluency across data, AI, security, and product decision-making on GCP.',
         tags: ['GCP', 'Cloud Strategy', 'Architecture'],
-        proofUrl: 'https://www.credential.net/b5f87fcd-f9e1-49b4-b108-bcfd71ebfd54',
+        proofUrl:
+            'https://www.credential.net/b5f87fcd-f9e1-49b4-b108-bcfd71ebfd54',
         proofLabel: 'Credential',
     },
     {
@@ -100,10 +101,9 @@ export const ACHIEVEMENTS: IAchievement[] = [
         description:
             'Completed the Forage software engineering simulation with JPMorgan Chase & Co., including practical tasks on stock price data interfacing, framework usage, and trader-facing data visualization workflows.',
         tags: ['Forage', 'JPMorgan', 'Applied Practice'],
-        proofUrl:
-            withBasePath(
-                '/docs/certificates/jpmorgan-software-engineering-job-simulation.pdf',
-            ),
+        proofUrl: withBasePath(
+            '/docs/certificates/jpmorgan-software-engineering-job-simulation.pdf',
+        ),
         proofLabel: 'Certificate',
     },
     {
@@ -113,7 +113,7 @@ export const ACHIEVEMENTS: IAchievement[] = [
         year: '2024',
         highlight: 'Certified',
         description:
-            'Passed HackerRank\'s Software Engineer role certification exam, validating practical coding and role-focused software engineering assessment performance.',
+            "Passed HackerRank's Software Engineer role certification exam, validating practical coding and role-focused software engineering assessment performance.",
         tags: ['HackerRank', 'Software Engineer', 'Competitive Coding'],
         proofUrl: withBasePath(
             '/docs/certificates/hackerrank-software-engineer.pdf',
@@ -127,7 +127,7 @@ export const ACHIEVEMENTS: IAchievement[] = [
         year: '2024',
         highlight: 'Certified',
         description:
-            'Cleared HackerRank\'s Problem Solving (Intermediate) skill assessment through algorithmic and data-structure problem solving under timed constraints.',
+            "Cleared HackerRank's Problem Solving (Intermediate) skill assessment through algorithmic and data-structure problem solving under timed constraints.",
         tags: ['DSA', 'Algorithms', 'Competitive Coding'],
         proofUrl: withBasePath(
             '/docs/certificates/hackerrank-problem-solving-intermediate.pdf',
@@ -141,7 +141,7 @@ export const ACHIEVEMENTS: IAchievement[] = [
         year: '2024',
         highlight: 'Completed',
         description:
-            'Completed Abdul Bari\'s in-depth Udemy course focused on core data structures, algorithm design, complexity analysis, and implementation in C/C++.',
+            "Completed Abdul Bari's in-depth Udemy course focused on core data structures, algorithm design, complexity analysis, and implementation in C/C++.",
         tags: ['Udemy', 'C/C++', 'Data Structures'],
         proofUrl: 'https://ude.my/UC-bfac3c49-cf56-453f-a8bb-60f7fe08ed9d',
         proofLabel: 'Certificate',
@@ -328,12 +328,7 @@ export const PROJECTS: IProject[] = [
     {
         title: 'Sky Prophet',
         slug: 'sky-prophet',
-        techStack: [
-            'JavaScript',
-            'HTML/CSS',
-            'OpenWeather API',
-            'PWA',
-        ],
+        techStack: ['JavaScript', 'HTML/CSS', 'OpenWeather API', 'PWA'],
         thumbnail: '/projects/thumbnail/sky-prophet.png',
         longThumbnail: '/projects/long/sky-prophet.png',
         images: ['/projects/images/sky-prophet.png'],
@@ -522,13 +517,13 @@ export const MY_EXPERIENCE = [
 
 export const MY_EDUCATION = [
     {
-        degree: 'Master of Information Technology (Artificial Intelligence)',
+        degree: 'Master of Information Technology',
         institution: 'University of New South Wales (UNSW)',
         location: 'Sydney, Australia',
-        duration: 'Upcoming (2026)',
+        duration: '2026 - 2028',
         description:
-            'Focusing on Advanced AI, Machine Learning, and Data Science.',
-        score: '-',
+            'Currently pursuing Master of Information Technology at UNSW, with expected graduation in Feb 2028. Focused on advanced AI, machine learning, and data-centric systems.',
+        score: '',
     },
     {
         degree: 'B.E. in Electronics & Communication Engineering',
@@ -536,7 +531,7 @@ export const MY_EDUCATION = [
         location: 'Bengaluru, India',
         duration: '2021 - 2025',
         description: 'Specializing in Electronics and Communication.',
-        score: 'CGPA: 8.68',
+        score: 'CGPA: 8.69',
     },
     {
         degree: 'Higher Secondary (12th)',
@@ -644,4 +639,3 @@ export const PUBLICATIONS: IPublication[] = [
         ],
     },
 ];
-

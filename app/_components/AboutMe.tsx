@@ -78,8 +78,11 @@ const AboutMe = () => {
                     <div className="md:col-span-7">
                         <div className="text-base sm:text-lg text-muted-foreground max-w-[620px] leading-8 sm:leading-9 text-justify space-y-4">
                             <p className="slide-up-and-fade">
-                                I&apos;m Likheet, an ECE undergrad and incoming
-                                MS IT (AI) student at UNSW who likes turning AI
+                                I&apos;m Likheet, an Electronics &amp;
+                                Communication Engineering graduate currently
+                                pursuing a Master of Information Technology at
+                                UNSW (expected graduation: Feb 2028) who likes
+                                turning AI
                                 ideas into working products. I&apos;ve built
                                 Alan AI voice apps, fraud detection models,
                                 dashboards for real-world workflows, and even a
@@ -104,4 +107,3 @@ const AboutMe = () => {
 };
 
 export default AboutMe;
-

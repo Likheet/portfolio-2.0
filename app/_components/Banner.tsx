@@ -208,7 +208,7 @@ const Banner = () => {
                     <div className="flex flex-col w-full md:w-auto z-10 mix-blend-difference">
                         <div className="flex justify-start items-center border-b border-foreground/30 pb-3 mb-4 md:mb-6 w-full -translate-y-[0.3rem] sm:-translate-y-[0.45rem] lg:-translate-y-[0.6rem]">
                             <span className="font-inter text-[11px] sm:text-xs md:text-sm font-medium uppercase tracking-[0.22em] opacity-90">
-                                MS in IT(AI) at UNSW 2026
+                                Master of IT @ UNSW · Expected Feb 2028
                             </span>
                         </div>
                         <h1
