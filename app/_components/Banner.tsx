@@ -6,6 +6,7 @@ import Link from 'next/link';
 import React, { useRef } from 'react';
 import { useLenis } from 'lenis/react';
 import { RESUME_URL } from '@/lib/data';
+import { prefersReducedMotion } from '@/lib/motion';
 
 // TabCard Component with Slow Fill Effect
 const TabCard = ({
@@ -68,12 +69,22 @@ const Banner = () => {
 
     useGSAP(
         () => {
-            // Single delayed fade-in for the whole banner
-            gsap.fromTo(
-                containerRef.current,
-                { opacity: 0 },
-                { opacity: 1, duration: 1, delay: 1.5, ease: 'power1.out' },
-            );
+            // Fade the banner in as the intro clears, or right away when the
+            // intro was skipped; reduced motion shows it as it is.
+            if (!prefersReducedMotion()) {
+                const introSkipped =
+                    document.documentElement.hasAttribute('data-skip-intro');
+                gsap.fromTo(
+                    containerRef.current,
+                    { opacity: 0 },
+                    {
+                        opacity: 1,
+                        duration: introSkipped ? 0.4 : 1,
+                        delay: introSkipped ? 0 : 0.8,
+                        ease: 'power1.out',
+                    },
+                );
+            }
 
             // Mouse Move Effect for Typography
             const handleMouseMove = (e: MouseEvent) => {

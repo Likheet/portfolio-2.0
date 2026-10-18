@@ -1,5 +1,6 @@
 'use client';
 
+import { prefersReducedMotion } from '@/lib/motion';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
@@ -7,6 +8,11 @@ gsap.registerPlugin(useGSAP);
 
 export default function Template({ children }: { children: React.ReactNode }) {
     useGSAP(() => {
+        if (prefersReducedMotion()) {
+            gsap.set('.page-transition', { display: 'none' });
+            return;
+        }
+
         const tl = gsap.timeline();
 
         tl.set('.page-content', { opacity: 0, pointerEvents: 'none' })

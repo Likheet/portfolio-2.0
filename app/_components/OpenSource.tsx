@@ -1,39 +1,15 @@
 'use client';
 import SectionTitle from '@/components/SectionTitle';
 import { OPEN_SOURCE } from '@/lib/data';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { useRiseIn } from '@/lib/motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useRef } from 'react';
-
-gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const SHOWN_PRS = 3;
 
 const OpenSource = () => {
     const containerRef = useRef<HTMLDivElement>(null);
-
-    useGSAP(
-        () => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 60%',
-                    end: 'bottom 50%',
-                    toggleActions: 'restart none none reverse',
-                    scrub: 1,
-                },
-            });
-
-            tl.from('.open-source-item', {
-                y: 50,
-                opacity: 0,
-                stagger: 0.3,
-            });
-        },
-        { scope: containerRef },
-    );
+    useRiseIn(containerRef, '.open-source-item');
 
     return (
         <section className="py-section" id="open-source">

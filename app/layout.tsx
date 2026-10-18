@@ -8,7 +8,6 @@ import {
     Manrope,
     Syne,
 } from 'next/font/google';
-import { ReactLenis } from 'lenis/react';
 
 import 'lenis/dist/lenis.css';
 import './globals.css';
@@ -17,9 +16,10 @@ import ScrollProgressIndicator from '@/components/ScrollProgressIndicator';
 import ParticleBackground from '@/components/ParticleBackground';
 import Navbar from '@/components/Navbar';
 import CustomCursor from '@/components/CustomCursor';
-import Preloader from '../components/Preloader';
+import Preloader, { SKIP_INTRO_SCRIPT } from '../components/Preloader';
 import StickyEmail from './_components/StickyEmail';
 import ScrollToTop from '@/components/ScrollToTop';
+import SmoothScroll from '@/components/SmoothScroll';
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import Script from 'next/script';
@@ -86,6 +86,9 @@ export default function RootLayout({
 
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <script dangerouslySetInnerHTML={{ __html: SKIP_INTRO_SCRIPT }} />
+            </head>
             {isProduction && <GoogleAnalytics gaId="G-MHLY1LNGY5" />}
             {isProduction && (
                 <Script id="hotjar" strategy="afterInteractive">
@@ -109,13 +112,7 @@ export default function RootLayout({
                     enableSystem
                     disableTransitionOnChange
                 >
-                    <ReactLenis
-                        root
-                        options={{
-                            lerp: 0.1,
-                            duration: 1.4,
-                        }}
-                    >
+                    <SmoothScroll>
                         {/* <a
                             href="https://forms.gle/t73XYJgWD5cJNr6e8"
                             target="_blank"
@@ -135,7 +132,7 @@ export default function RootLayout({
                         <ParticleBackground />
                                             <StickyEmail />
                                             <ScrollToTop />
-                                        </ReactLenis>                </ThemeProvider>
+                                        </SmoothScroll>                </ThemeProvider>
             </body>
         </html>
     );

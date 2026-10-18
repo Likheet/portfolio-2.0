@@ -1,4 +1,5 @@
 import { IAchievement, IProject, IPublication } from '@/types';
+import openSource from './open-source.json';
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const withBasePath = (path: string) =>
@@ -733,94 +734,8 @@ export const MY_EDUCATION = [
     },
 ];
 
-export const OPEN_SOURCE = [
-    {
-        project: 'Monty',
-        repo: 'pydantic/monty',
-        description:
-            'A secure Python sandbox, written in Rust, for code written by AI.',
-        mergedUrl:
-            'https://github.com/pydantic/monty/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
-        pullRequests: [
-            {
-                title: 'Include capture groups in re.split() results',
-                url: 'https://github.com/pydantic/monty/pull/1036',
-            },
-        ],
-    },
-    {
-        project: 'Vorssaint Utils',
-        repo: 'vorssaint/vorssaint-utils',
-        description: 'A free and open-source macOS menu bar toolkit.',
-        mergedUrl:
-            'https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
-        pullRequests: [
-            {
-                title: 'Keep the desktop from taking a selection drag',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3104',
-            },
-            {
-                title: 'Keep volume keys moving on outputs with coarse steps',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3042',
-            },
-            {
-                title: 'Keep Studio Pro out of the audio routing like Studio One',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3152',
-            },
-            {
-                title: "Find Xcode's tools like Instruments and Device Hub",
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3043',
-            },
-            {
-                title: 'Say why replacing ⌘Tab locks apps with no open window',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3041',
-            },
-            {
-                title: 'Let thumbnail capture pause in a program that is not an app',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3103',
-            },
-            {
-                title: 'Match a Java runtime picked by its path (mouse)',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3156',
-            },
-            {
-                title: 'Match a Java runtime picked by its path (switcher)',
-                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3154',
-            },
-        ],
-    },
-    {
-        project: 'fontkit',
-        repo: 'foliojs/fontkit',
-        description: 'An advanced font engine for Node and the browser.',
-        mergedUrl:
-            'https://github.com/foliojs/fontkit/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
-        pullRequests: [
-            {
-                title: 'Fix USE shaper crash on characters outside a syllable',
-                url: 'https://github.com/foliojs/fontkit/pull/399',
-            },
-            {
-                title: 'Read hdmx device records at their padded size',
-                url: 'https://github.com/foliojs/fontkit/pull/396',
-            },
-        ],
-    },
-    {
-        project: 'SchemaStore',
-        repo: 'SchemaStore/schemastore',
-        description:
-            'JSON schemas that editors such as VS Code use for validation and autocomplete.',
-        mergedUrl:
-            'https://github.com/SchemaStore/schemastore/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
-        pullRequests: [
-            {
-                title: 'pre-commit-hooks: add Haskell and Julia languages, fix fail_fast description',
-                url: 'https://github.com/SchemaStore/schemastore/pull/6487',
-            },
-        ],
-    },
-];
+// Refreshed from GitHub by scripts/fetch-open-source.mjs.
+export const OPEN_SOURCE = openSource;
 
 export const PUBLICATIONS: IPublication[] = [
     {

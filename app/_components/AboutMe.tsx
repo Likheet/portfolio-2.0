@@ -1,11 +1,7 @@
 'use client';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/all';
+import { useRiseIn } from '@/lib/motion';
 import React from 'react';
 import FlipWords from './FlipWords';
-
-gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const HIGHLIGHTS = [
     { label: 'Studying', value: 'Master of IT (Artificial Intelligence), UNSW' },
@@ -19,47 +15,7 @@ const HIGHLIGHTS = [
 
 const AboutMe = () => {
     const container = React.useRef<HTMLDivElement>(null);
-    useGSAP(
-        () => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    id: 'about-me-in',
-                    trigger: container.current,
-                    start: 'top 70%',
-                    end: 'bottom bottom',
-                    scrub: 0.5,
-                },
-            });
-
-            tl.from('.slide-up-and-fade', {
-                y: 150,
-                opacity: 0,
-                stagger: 0.05,
-            });
-        },
-        { scope: container },
-    );
-
-    useGSAP(
-        () => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    id: 'about-me-out',
-                    trigger: container.current,
-                    start: 'bottom 50%',
-                    end: 'bottom 10%',
-                    scrub: 0.5,
-                },
-            });
-
-            tl.to('.slide-up-and-fade', {
-                y: -150,
-                opacity: 0,
-                stagger: 0.02,
-            });
-        },
-        { scope: container },
-    );
+    useRiseIn(container, '.slide-up-and-fade');
 
     return (
         <section className="pb-10 sm:pb-14 pt-10 sm:pt-14" id="about-me">

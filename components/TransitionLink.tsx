@@ -1,4 +1,5 @@
 'use client';
+import { prefersReducedMotion } from '@/lib/motion';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import Link from 'next/link';
@@ -26,6 +27,21 @@ const TransitionLink = ({
         async (e: React.MouseEvent<HTMLAnchorElement>) => {
             e.preventDefault();
 
+            const navigate = () => {
+                if (back) {
+                    router.back();
+                } else if (href) {
+                    router.push(href.toString());
+                } else if (onClick) {
+                    onClick(e);
+                }
+            };
+
+            if (prefersReducedMotion()) {
+                navigate();
+                return;
+            }
+
             gsap.set('.page-transition', { yPercent: 100 });
             gsap.set('.page-transition--inner', { yPercent: 100 });
 
@@ -40,15 +56,7 @@ const TransitionLink = ({
                 duration: 0.3,
             }, "<");
 
-            tl.then(() => {
-                if (back) {
-                    router.back();
-                } else if (href) {
-                    router.push(href.toString());
-                } else if (onClick) {
-                    onClick(e);
-                }
-            });
+            tl.then(navigate);
         },
     );
 

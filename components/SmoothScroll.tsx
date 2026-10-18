@@ -1,30 +1,20 @@
 'use client';
 
+import { prefersReducedMotion } from '@/lib/motion';
 import { ReactLenis } from 'lenis/react';
-import { useMemo } from 'react';
+import { useState } from 'react';
 
 type SmoothScrollProps = {
     children: React.ReactNode;
 };
 
+// Smooth wheel scrolling, off when the device asks for reduced motion.
+// Touch scrolling stays native either way.
 const SmoothScroll = ({ children }: SmoothScrollProps) => {
-    const options = useMemo(
-        () => ({
-            duration: 1.1,
-            lerp: 0.08,
-            smoothWheel: true,
-            syncTouch: true,
-            syncTouchLerp: 0.12,
-            touchInertiaMultiplier: 18,
-            wheelMultiplier: 0.9,
-            gestureOrientation: 'vertical',
-            easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        }),
-        [],
-    );
+    const [smoothWheel] = useState(() => !prefersReducedMotion());
 
     return (
-        <ReactLenis root {...options}>
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.4, smoothWheel }}>
             {children}
         </ReactLenis>
     );

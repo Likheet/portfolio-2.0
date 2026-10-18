@@ -154,3 +154,8 @@
     border-radius: 0 !important;
     display: block;
 }
+
+/* The intro already played this session or motion is reduced (see Preloader) */
+html[data-skip-intro] .preloader {
+    display: none;
+}
