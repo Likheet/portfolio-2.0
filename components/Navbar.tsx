@@ -12,6 +12,7 @@ const COLORS = [
     'bg-blue-500 text-white',
     'bg-teal-500 text-black',
     'bg-indigo-500 text-white',
+    'bg-rose-500 text-white',
 ];
 
 const MENU_LINKS = [
@@ -26,6 +27,10 @@ const MENU_LINKS = [
     {
         name: 'Experience',
         url: '/#my-experience',
+    },
+    {
+        name: 'Open Source',
+        url: '/#open-source',
     },
     {
         name: 'Projects',

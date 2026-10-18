@@ -6,6 +6,7 @@ import Education from './_components/Education';
 import Achievements from './_components/Achievements';
 import Skills from './_components/Skills';
 import MyWork from './_components/MyWork';
+import OpenSource from './_components/OpenSource';
 import Contact from './_components/Contact';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
             <Achievements />
             <Skills />
             <Experiences />
+            <OpenSource />
             <MyWork />
             <Contact />
         </div>

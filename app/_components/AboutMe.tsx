@@ -7,6 +7,16 @@ import FlipWords from './FlipWords';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+const HIGHLIGHTS = [
+    { label: 'Studying', value: 'Master of IT (Artificial Intelligence), UNSW' },
+    { label: 'Building', value: 'YTFast, Life Ledger and Nucleus AI' },
+    { label: 'Contributing', value: 'Pydantic Monty, fontkit and SchemaStore' },
+    {
+        label: 'Certified',
+        value: 'Azure AI Engineer and OCI Networking Professional',
+    },
+];
+
 const AboutMe = () => {
     const container = React.useRef<HTMLDivElement>(null);
     useGSAP(
@@ -76,28 +86,34 @@ const AboutMe = () => {
                         </p>
                     </div>
                     <div className="md:col-span-7">
-                        <div className="text-base sm:text-lg text-muted-foreground max-w-[620px] leading-8 sm:leading-9 text-justify space-y-4">
-                            <p className="slide-up-and-fade">
-                                I&apos;m Likheet, an Electronics &amp;
-                                Communication Engineering graduate currently
-                                pursuing a Master of Information Technology at
-                                UNSW (expected graduation: Feb 2028) who likes
-                                turning AI
-                                ideas into working products. I&apos;ve built
-                                Alan AI voice apps, fraud detection models,
-                                dashboards for real-world workflows, and even a
-                                tokenizer benchmark for Indic and code-mixed
-                                text. Most of my time goes into LLMs,
-                                tokenization, and multi-agent prompt systems,
-                                with the long term goal of working on frontier
-                                AI teams like DeepMind or Anthropic. On the
-                                cloud side I&apos;m certified on Azure AI and
-                                Oracle Cloud Infrastructure, and I&apos;ve done
-                                50+ Google Cloud skill labs, so I&apos;m
-                                comfortable taking a rough Python or JavaScript
-                                prototype and shipping it as something people
-                                can actually use.
+                        <div className="max-w-[620px]">
+                            <p className="text-lg sm:text-xl leading-relaxed slide-up-and-fade">
+                                I&apos;m a Master of IT student at UNSW who
+                                likes turning AI ideas into products people
+                                actually use.
                             </p>
+                            <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed slide-up-and-fade">
+                                Most of my time goes into LLMs, tokenization
+                                and multi-agent prompt systems, and my
+                                long-term goal is to work on a frontier AI
+                                team like DeepMind or Anthropic.
+                            </p>
+
+                            <dl className="mt-8 sm:mt-10 border-t">
+                                {HIGHLIGHTS.map((item) => (
+                                    <div
+                                        key={item.label}
+                                        className="grid grid-cols-[6.5rem_1fr] sm:grid-cols-[8.5rem_1fr] gap-4 py-3.5 border-b slide-up-and-fade"
+                                    >
+                                        <dt className="font-inter text-xs uppercase tracking-wider opacity-60 pt-1">
+                                            {item.label}
+                                        </dt>
+                                        <dd className="text-base sm:text-lg">
+                                            {item.value}
+                                        </dd>
+                                    </div>
+                                ))}
+                            </dl>
                         </div>
                     </div>
                 </div>

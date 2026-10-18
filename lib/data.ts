@@ -4,6 +4,8 @@ const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 const withBasePath = (path: string) =>
     path.startsWith('/') ? `${BASE_PATH}${path}` : path;
 
+export const RESUME_URL = withBasePath('/docs/likheet-shetty-resume.pdf');
+
 export const GENERAL_INFO = {
     email: 'likheet.s@gmail.com',
 
@@ -22,7 +24,7 @@ export const SOCIAL_LINKS = [
     { name: 'Kaggle', url: 'https://www.kaggle.com/likheet' },
     {
         name: 'Resume',
-        url: withBasePath('/docs/likheet-shetty-resume.pdf'),
+        url: RESUME_URL,
     },
 ];
 
@@ -200,6 +202,14 @@ export const MY_STACK = {
             icon: '/logo/js.png',
         },
         {
+            name: 'TypeScript',
+            icon: '/logo/ts.png',
+        },
+        {
+            name: 'Rust',
+            icon: '/logo/rust.svg',
+        },
+        {
             name: 'SQL',
             icon: '/logo/sql.svg',
         },
@@ -212,6 +222,10 @@ export const MY_STACK = {
         {
             name: 'Next.js',
             icon: '/logo/next.png',
+        },
+        {
+            name: 'React Native',
+            icon: '/logo/react.png',
         },
         {
             name: 'Tailwind CSS',
@@ -281,6 +295,164 @@ export const MY_STACK = {
 };
 
 export const PROJECTS: IProject[] = [
+    {
+        title: 'YTFast',
+        slug: 'ytfast',
+        techStack: ['Rust', 'egui', 'wgpu', 'Tokio'],
+        thumbnail: '/projects/thumbnail/ytfast.jpg',
+        longThumbnail: '/projects/long/ytfast.jpg',
+        images: ['/projects/images/ytfast-1.jpg', '/projects/images/ytfast-2.jpg'],
+        liveUrl: 'https://github.com/Likheet/YTFast/releases/latest',
+        sourceCode: 'https://github.com/Likheet/YTFast',
+        year: 2026,
+        description: `
+            A native desktop app for YouTube Music on Mac and Windows, written in Rust with no browser underneath.
+            <ul>
+                <li>Finds a song ahead while the pointer rests on it, so a click starts playback almost at once.</li>
+                <li>Plays from the first moments while the rest downloads, and readies the next song during the current one.</li>
+                <li>Uses 0% of the processor when paused and about 120 MB of memory, against a 200 MB budget.</li>
+            </ul>
+        `,
+        role: `
+            <p>Developer (Solo)</p>
+            <ul>
+                <li>Built the app in Rust on egui and wgpu, with Home, Explore, Library and search laid out one to one against music.youtube.com.</li>
+                <li>Wrote the audio pipeline (Tokio, Symphonia, rodio) and the word-by-word synced lyrics with translation and romanisation.</li>
+                <li>Shipped signed-in account sync, three visual themes and background self-updates for Mac (Apple Silicon) and Windows.</li>
+            </ul>
+        `,
+        challenge:
+            'On a computer, YouTube Music is a web page: songs take a moment to start, and the browser underneath costs memory and battery.',
+        solution:
+            'I rebuilt the client as a native Rust app that predicts the next click, streams audio while it downloads and keeps every screen and shortcut people already know.',
+        impact: 'Released through v1.3.1 for Mac and Windows with automatic updates, running at about 120 MB of memory and no processor use while paused.',
+        key_features: [
+            'Preloads on Hover',
+            'Word-by-Word Synced Lyrics',
+            'Three Visual Themes',
+            'Background Self-Updates',
+        ],
+        team_size: 'Solo Project',
+        duration: 'Ongoing',
+    },
+    {
+        title: 'Life Ledger',
+        slug: 'life-ledger',
+        techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite'],
+        thumbnail: '/projects/thumbnail/life-ledger.png',
+        longThumbnail: '/projects/long/life-ledger.png',
+        images: ['/projects/images/life-ledger.png'],
+        liveUrl: 'https://life-ledger.tech',
+        year: 2026,
+        description: `
+            An Android app, now in public beta, that keeps goals, ongoing commitments, tasks and meals in one calm daily view.
+            <ul>
+                <li>Captures a goal, commitment or task from one short line and tidies the wording without adding anything.</li>
+                <li>Tracks commitments as ongoing promises, with an honest lapse count instead of a completion tick.</li>
+                <li>Records spending in the background from payment notifications and exports everything for review in ChatGPT.</li>
+            </ul>
+        `,
+        role: `
+            <p>Creator (Solo)</p>
+            <ul>
+                <li>Defined the product, from the combined home view to the one-tap food logging tile.</li>
+                <li>Built an offline-first data layer on SQLite and a native module that reads payment notifications.</li>
+                <li>Built and launched the landing page at life-ledger.tech.</li>
+            </ul>
+        `,
+        challenge:
+            'Intentions made in a moment of clarity get lost in ordinary days, and most planners turn them into clutter or busywork.',
+        solution:
+            'I built a minimal app that makes capturing a goal or promise take seconds and keeps it in view, with finance and food logging collected quietly in the background.',
+        impact: 'Released as a public beta on Android, with everything exportable at any time.',
+        key_features: [
+            'One-Line Capture',
+            'Commitment Lapse Tracking',
+            'Background Payment Capture',
+            'Export for ChatGPT',
+        ],
+        team_size: 'Solo Project',
+        duration: 'Ongoing',
+    },
+    {
+        title: 'Nucleus AI',
+        slug: 'nucleus-ai',
+        techStack: ['Python', 'FastAPI', 'ChromaDB', 'Gemini API'],
+        thumbnail: '/projects/thumbnail/nucleus-ai.jpg',
+        longThumbnail: '/projects/long/nucleus-ai.jpg',
+        images: ['/projects/images/nucleus-ai.jpg'],
+        sourceCode: 'https://github.com/Likheet/Nucleus-AI',
+        year: 2026,
+        description: `
+            A grounded chatbot for the UNSW Nucleus Student Hub that answers only from official UNSW pages and cites a source for every answer.
+            <ul>
+                <li>Crawls the UNSW website and Handbook, then chunks and indexes the pages into a vector store.</li>
+                <li>Retrieves with hybrid search, combining semantic vectors with BM25 keyword matching.</li>
+                <li>Runs free on Gemini Flash, or fully locally on Ollama with Gemma 3.</li>
+            </ul>
+        `,
+        role: `
+            <p>Developer (Solo)</p>
+            <ul>
+                <li>Wrote the Scrapy crawlers, including Handbook-aware chunking that keeps course details together.</li>
+                <li>Built the retrieval-augmented generation chain and the FastAPI backend.</li>
+                <li>Designed the chat interface with suggested questions and linked citations.</li>
+            </ul>
+        `,
+        challenge:
+            'Students ask the same questions about enrolment, fees and graduation, and a general chatbot will confidently invent the answers.',
+        solution:
+            'I restricted the model to retrieved passages from official UNSW pages and required a cited source for every answer.',
+        impact: 'Every answer links back to the official page it came from, and one command refreshes the knowledge base when UNSW updates its pages.',
+        key_features: [
+            'Answers Only From UNSW Pages',
+            'Source Citations',
+            'Hybrid Vector + BM25 Search',
+            'Gemini or Local Ollama',
+        ],
+        team_size: 'Solo Project',
+        duration: 'Ongoing',
+    },
+    {
+        title: 'Hermes Monitoring',
+        slug: 'hermes-monitoring',
+        techStack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
+        thumbnail: '/projects/thumbnail/hermes-monitoring.jpg',
+        longThumbnail: '/projects/long/hermes-monitoring.jpg',
+        images: ['/projects/images/hermes-monitoring.jpg'],
+        liveUrl: 'https://hermes-monitoring.vercel.app',
+        sourceCode: 'https://github.com/Likheet/hermes-monitoring',
+        year: 2025,
+        description: `
+            A resort operations app that gives every staff role its own workspace for tasks, shifts, maintenance and supervisor checks.
+            <ul>
+                <li>Separate views for workers, supervisors, front office, managers and admins.</li>
+                <li>Supervisors verify completed tasks, and workers leave handover notes between shifts.</li>
+                <li>Maintenance calendar by room and location, with reports exported to PDF and Excel.</li>
+            </ul>
+        `,
+        role: `
+            <p>Full-Stack Developer (Solo)</p>
+            <ul>
+                <li>Modelled tasks, shifts and maintenance schedules in Supabase (Postgres).</li>
+                <li>Built the role-based Next.js interface as an installable app for staff phones.</li>
+                <li>Added analytics and PDF/Excel reporting for supervisors and managers.</li>
+            </ul>
+        `,
+        challenge:
+            'A resort runs on tasks, shifts and maintenance spread across many roles, and it is hard to see what has been done and who checked it.',
+        solution:
+            'I built one app where front office and supervisors assign work, staff complete it on their phones and supervisors verify it, with maintenance scheduled by room.',
+        impact: 'Puts task assignment, verification and maintenance history for every role in one app, with reports managers can export.',
+        key_features: [
+            'Role-Based Workspaces',
+            'Supervisor Verification',
+            'Maintenance Calendar',
+            'PDF & Excel Reports',
+        ],
+        team_size: 'Solo Project',
+        duration: 'Ongoing',
+    },
     {
         title: 'Prompt Enhancer Extension',
         slug: 'prompt-enhancer-extension',
@@ -504,6 +676,16 @@ export const PROJECTS: IProject[] = [
 
 export const MY_EXPERIENCE = [
     {
+        title: 'Peer Mentor',
+        company: 'UNSW Psychology and Wellness (The Landing)',
+        duration: 'Oct 2026 - Present',
+    },
+    {
+        title: 'Student Help Assistant (Administrative Officer)',
+        company: 'UNSW Nucleus Student Hub',
+        duration: 'Mar 2026 - Present',
+    },
+    {
         title: 'Data Analyst Intern (Python)',
         company: 'KaroStartup Technology India Pvt Ltd',
         duration: 'Jan 2025 - May 2025',
@@ -523,7 +705,7 @@ export const MY_EDUCATION = [
         duration: '2026 - 2028',
         description:
             'Currently pursuing Master of Information Technology at UNSW, with expected graduation in Feb 2028. Focused on advanced AI, machine learning, and data-centric systems.',
-        score: '',
+        score: 'CWAM: 77%',
     },
     {
         degree: 'B.E. in Electronics & Communication Engineering',
@@ -548,6 +730,95 @@ export const MY_EDUCATION = [
         duration: '2018',
         description: 'Completed with distinction.',
         score: '91%',
+    },
+];
+
+export const OPEN_SOURCE = [
+    {
+        project: 'Monty',
+        repo: 'pydantic/monty',
+        description:
+            'A secure Python sandbox, written in Rust, for code written by AI.',
+        mergedUrl:
+            'https://github.com/pydantic/monty/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
+        pullRequests: [
+            {
+                title: 'Include capture groups in re.split() results',
+                url: 'https://github.com/pydantic/monty/pull/1036',
+            },
+        ],
+    },
+    {
+        project: 'Vorssaint Utils',
+        repo: 'vorssaint/vorssaint-utils',
+        description: 'A free and open-source macOS menu bar toolkit.',
+        mergedUrl:
+            'https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
+        pullRequests: [
+            {
+                title: 'Keep the desktop from taking a selection drag',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3104',
+            },
+            {
+                title: 'Keep volume keys moving on outputs with coarse steps',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3042',
+            },
+            {
+                title: 'Keep Studio Pro out of the audio routing like Studio One',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3152',
+            },
+            {
+                title: "Find Xcode's tools like Instruments and Device Hub",
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3043',
+            },
+            {
+                title: 'Say why replacing ⌘Tab locks apps with no open window',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3041',
+            },
+            {
+                title: 'Let thumbnail capture pause in a program that is not an app',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3103',
+            },
+            {
+                title: 'Match a Java runtime picked by its path (mouse)',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3156',
+            },
+            {
+                title: 'Match a Java runtime picked by its path (switcher)',
+                url: 'https://github.com/vorssaint/vorssaint-utils/pull/3154',
+            },
+        ],
+    },
+    {
+        project: 'fontkit',
+        repo: 'foliojs/fontkit',
+        description: 'An advanced font engine for Node and the browser.',
+        mergedUrl:
+            'https://github.com/foliojs/fontkit/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
+        pullRequests: [
+            {
+                title: 'Fix USE shaper crash on characters outside a syllable',
+                url: 'https://github.com/foliojs/fontkit/pull/399',
+            },
+            {
+                title: 'Read hdmx device records at their padded size',
+                url: 'https://github.com/foliojs/fontkit/pull/396',
+            },
+        ],
+    },
+    {
+        project: 'SchemaStore',
+        repo: 'SchemaStore/schemastore',
+        description:
+            'JSON schemas that editors such as VS Code use for validation and autocomplete.',
+        mergedUrl:
+            'https://github.com/SchemaStore/schemastore/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet',
+        pullRequests: [
+            {
+                title: 'pre-commit-hooks: add Haskell and Julia languages, fix fail_fast description',
+                url: 'https://github.com/SchemaStore/schemastore/pull/6487',
+            },
+        ],
     },
 ];
 

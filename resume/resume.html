@@ -1,0 +1,193 @@
+<!doctype html>
+<!--
+    Source for public/docs/likheet-shetty-resume.pdf. To rebuild the PDF:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+        --no-pdf-header-footer --print-to-pdf=public/docs/likheet-shetty-resume.pdf \
+        "file://$PWD/resume/resume.html"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Likheet Shetty – Resume</title>
+<style>
+    @page { size: A4; margin: 12mm 14mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 9.3pt;
+        line-height: 1.38;
+        color: #1a1a1a;
+    }
+    a { color: inherit; text-decoration: none; }
+    header { margin-bottom: 9pt; }
+    h1 { font-size: 21pt; font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; }
+    .contact { margin-top: 3pt; color: #444; display: flex; flex-wrap: wrap; }
+    .contact span + span::before { content: "·"; margin: 0 5pt; color: #999; }
+    h2 {
+        font-size: 8.4pt;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+        color: #555;
+        border-bottom: 0.6pt solid #c8c8c8;
+        padding-bottom: 2pt;
+        margin: 9pt 0 4.5pt;
+    }
+    .entry { margin-bottom: 5.5pt; break-inside: avoid; }
+    .row { display: flex; justify-content: space-between; gap: 12pt; }
+    .row .what { font-weight: 600; }
+    .row .what .sub { font-weight: 400; color: #444; }
+    .row .when { color: #444; white-space: nowrap; }
+    ul { margin: 1.5pt 0 0 11pt; }
+    li { margin-bottom: 1pt; }
+    li::marker { color: #888; }
+    .skills p { margin-bottom: 1.5pt; }
+    .skills b, .inline b { font-weight: 600; }
+    code { font-family: inherit; }
+</style>
+</head>
+<body>
+<header>
+    <h1>Likheet Shetty</h1>
+    <p class="contact">
+        <span>Sydney, NSW</span>
+        <span><a href="mailto:likheet.s@gmail.com">likheet.s@gmail.com</a></span>
+        <span><a href="https://likheet.is-a.dev">likheet.is-a.dev</a></span>
+        <span><a href="https://github.com/Likheet">github.com/Likheet</a></span>
+        <span><a href="https://www.linkedin.com/in/likheet/">linkedin.com/in/likheet</a></span>
+    </p>
+</header>
+
+<section>
+    <h2>Education</h2>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Master of Information Technology (Artificial Intelligence) <span class="sub">· UNSW Sydney · CWAM 77%</span></span>
+            <span class="when">Feb 2026 – Feb 2028</span>
+        </div>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">B.E. Electronics &amp; Communication Engineering <span class="sub">· RV Institute of Technology &amp; Management · CGPA 8.69</span></span>
+            <span class="when">2021 – 2025</span>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h2>Experience</h2>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Student Help Assistant (Administrative Officer) <span class="sub">· UNSW Nucleus Student Hub, Sydney</span></span>
+            <span class="when">Mar 2026 – Present</span>
+        </div>
+        <ul>
+            <li>Help students with enrolment, fees and other university enquiries at UNSW's central student help service.</li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Peer Mentor <span class="sub">· UNSW Psychology and Wellness, The Landing</span></span>
+            <span class="when">Oct 2026 – Present</span>
+        </div>
+        <ul>
+            <li>Support students in a peer wellbeing space; trained in person-centred care, escalation and trauma-informed practice.</li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Data Analyst Intern (Python) <span class="sub">· KaroStartup Technology India Pvt Ltd</span></span>
+            <span class="when">Jan 2025 – May 2025</span>
+        </div>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Software Development Intern <span class="sub">· DesiQna (remote)</span></span>
+            <span class="when">Jul 2023 – Dec 2023</span>
+        </div>
+        <ul>
+            <li>Built a fully responsive section of the DesiQna website (HTML, CSS, JavaScript, Bootstrap, MySQL).</li>
+            <li>Worked on user verification and on detecting and removing fake bot accounts and posts; integrated Google reCAPTCHA.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Projects</h2>
+    <div class="entry">
+        <div class="row">
+            <span class="what">YTFast <span class="sub">· Rust, egui, wgpu, Tokio</span></span>
+            <span class="when"><a href="https://github.com/Likheet/YTFast">github.com/Likheet/YTFast</a></span>
+        </div>
+        <ul>
+            <li>Native YouTube Music desktop app for Mac and Windows with no browser underneath; released through v1.3.1.</li>
+            <li>Preloads songs on hover and plays while downloading; about 120 MB of memory and no CPU use while paused.</li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Nucleus AI <span class="sub">· Python, FastAPI, ChromaDB, Gemini API</span></span>
+            <span class="when"><a href="https://github.com/Likheet/Nucleus-AI">github.com/Likheet/Nucleus-AI</a></span>
+        </div>
+        <ul>
+            <li>RAG chatbot for UNSW students that answers only from official UNSW pages, citing a source for every answer.</li>
+            <li>Scrapy crawlers for the UNSW website and Handbook, with hybrid retrieval combining vector search and BM25.</li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Life Ledger <span class="sub">· React Native, Expo, TypeScript, SQLite</span></span>
+            <span class="when"><a href="https://life-ledger.tech">life-ledger.tech</a></span>
+        </div>
+        <ul>
+            <li>Android app in public beta for goals, ongoing commitments, tasks and meals, stored offline in SQLite.</li>
+            <li>Native module that records spending from payment notifications, with a one-tap export for review in ChatGPT.</li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Hermes Monitoring <span class="sub">· Next.js, TypeScript, Supabase</span></span>
+            <span class="when"><a href="https://hermes-monitoring.vercel.app">hermes-monitoring.vercel.app</a></span>
+        </div>
+        <ul>
+            <li>Resort operations app with separate workspaces for workers, supervisors, front office, managers and admins.</li>
+            <li>Supervisor task verification, shift handovers, a maintenance calendar by room, and PDF/Excel reports.</li>
+        </ul>
+    </div>
+</section>
+
+<section>
+    <h2>Research &amp; Open Source</h2>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Tokenizer Benchmarking Across Indic and Code-Mixed Scripts <span class="sub">· Zenodo</span></span>
+            <span class="when"><a href="https://doi.org/10.5281/zenodo.17273988">doi.org/10.5281/zenodo.17273988</a></span>
+        </div>
+        <ul>
+            <li>Benchmarked 11 production tokenizers on English, three Indic scripts and Hinglish (transformers.js, tiktoken).</li>
+        </ul>
+    </div>
+    <div class="entry">
+        <div class="row">
+            <span class="what">Open-source contributions <span class="sub">· merged pull requests</span></span>
+            <span class="when"><a href="https://likheet.is-a.dev/#open-source">likheet.is-a.dev/#open-source</a></span>
+        </div>
+        <ul>
+            <li><b>pydantic/monty</b> (Python sandbox in Rust): capture groups in <code>re.split()</code> results.</li>
+            <li><b>foliojs/fontkit</b>: fixed a crash in the Universal Shaping Engine and the reading of hdmx records.</li>
+            <li><b>vorssaint/vorssaint-utils</b> (macOS toolkit, Swift): 8 fixes, including the window switcher, screenshot tool and audio mixer.</li>
+            <li><b>SchemaStore</b>: added Haskell and Julia to the pre-commit hooks schema.</li>
+        </ul>
+    </div>
+</section>
+
+<section class="skills">
+    <h2>Skills &amp; Certifications</h2>
+    <p><b>Languages:</b> Python, TypeScript, JavaScript, Rust, C/C++, SQL</p>
+    <p><b>Frameworks:</b> React, Next.js, React Native (Expo), FastAPI, Tailwind CSS</p>
+    <p><b>AI &amp; data:</b> retrieval-augmented generation, ChromaDB, Gemini API, Hugging Face, scikit-learn, pandas</p>
+    <p><b>Cloud &amp; tools:</b> Azure, Google Cloud, Oracle OCI, Supabase, Vercel, Docker, Git</p>
+    <p><b>Certifications:</b> OCI 2025 Networking Professional · Azure AI Engineer Associate · Google Cloud Digital Leader · GitHub Foundations · Oracle Race to Certification, global Top 500</p>
+</section>
+</body>
+</html>

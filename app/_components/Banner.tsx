@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import React, { useRef } from 'react';
 import { useLenis } from 'lenis/react';
+import { RESUME_URL } from '@/lib/data';
 
 // TabCard Component with Slow Fill Effect
 const TabCard = ({
@@ -129,7 +130,7 @@ const Banner = () => {
                             Located in
                         </span>
                         <span className="font-inter text-sm font-medium uppercase">
-                            Bengaluru, IN
+                            Sydney, AU
                         </span>
                     </div>
                     <div className="nav-item pointer-events-auto">
@@ -256,7 +257,7 @@ const Banner = () => {
                     {/* Resume Link (Aligned Right) */}
                     <div className="absolute right-0 lg:right-[-3%] hidden md:block z-40 pointer-events-auto">
                         <a
-                            href="https://drive.google.com/file/u/4/d/1GgYlmxQEsKFjpaQdThu-hjqAUPL62-VB/view"
+                            href={RESUME_URL}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group inline-flex min-h-11 items-center justify-center gap-3 rounded-full border border-foreground/10 bg-background/40 px-6 py-3 backdrop-blur-md transition-all duration-300 hover:border-portfolio-red/50 hover:bg-portfolio-red/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-portfolio-red/50"
