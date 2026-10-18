@@ -98,9 +98,12 @@ const buildProjects = async () => {
             );
             const titles = tidyTitles(prs.map((pr) => pr.title));
             return {
-                stars: info.stargazers_count,
                 project: DISPLAY_NAMES[info.full_name] ?? info.name,
                 repo: info.full_name,
+                // Rounded to what the site shows ("27.9k"), so the file only
+                // changes when a visible number does.
+                stars: Math.round(info.stargazers_count / 100) * 100,
+                exactStars: info.stargazers_count,
                 description: asSentence(info.description ?? ''),
                 mergedUrl: `https://github.com/${info.full_name}/pulls?q=is%3Apr+is%3Amerged+author%3A${USER}`,
                 pullRequests: prs.map((pr, i) => ({
@@ -112,8 +115,8 @@ const buildProjects = async () => {
     );
 
     return projects
-        .sort((a, b) => b.stars - a.stars)
-        .map(({ stars, ...project }) => project);
+        .sort((a, b) => b.exactStars - a.exactStars)
+        .map(({ exactStars, ...project }) => project);
 };
 
 try {

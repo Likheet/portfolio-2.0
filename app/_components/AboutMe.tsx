@@ -61,7 +61,7 @@ const AboutMe = () => {
                                         key={item.label}
                                         className="grid grid-cols-[6.5rem_1fr] sm:grid-cols-[8.5rem_1fr] gap-4 py-3.5 border-b slide-up-and-fade"
                                     >
-                                        <dt className="font-inter text-xs uppercase tracking-wider opacity-60 pt-1">
+                                        <dt className="font-inter text-[11px] sm:text-sm uppercase tracking-wider opacity-60 pt-1">
                                             {item.label}
                                         </dt>
                                         <dd className="text-base sm:text-lg">

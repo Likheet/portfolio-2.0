@@ -134,7 +134,7 @@ const Achievements = () => {
                                     {item.tags.map((tag) => (
                                         <span
                                             key={`highlight-${item.title}-${tag}`}
-                                            className="text-[10px] uppercase tracking-[0.14em] text-muted-foreground border border-border/35 px-2 py-1"
+                                            className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground border border-border/35 px-2 py-1"
                                         >
                                             {tag}
                                         </span>

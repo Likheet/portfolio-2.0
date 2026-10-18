@@ -88,8 +88,10 @@
 
 @layer base {
     html {
-        /* Base font size scaled to 80% to match intended 80% zoom design at 100% zoom */
-        font-size: 12.8px;
+        /* Base font size scaled to 80% to match intended 80% zoom design at 100% zoom.
+           Past 1440px wide it grows to 16px (at about 2400px), so wide screens
+           show the same design larger instead of a small island of content. */
+        font-size: clamp(12.8px, 0.333vw + 8px, 16px);
     }
     img, video {
         max-width: 100%;
