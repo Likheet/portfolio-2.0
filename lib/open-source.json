@@ -2,10 +2,14 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 28000,
+        "stars": 28200,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
+            {
+                "title": "Stop rounding large calculator answers to ten digits",
+                "url": "https://github.com/vorssaint/vorssaint-utils/pull/3099"
+            },
             {
                 "title": "Match a Java runtime picked by its path (switcher)",
                 "url": "https://github.com/vorssaint/vorssaint-utils/pull/3154"
@@ -37,6 +41,19 @@
             {
                 "title": "Keep volume keys moving on outputs with coarse steps",
                 "url": "https://github.com/vorssaint/vorssaint-utils/pull/3042"
+            }
+        ]
+    },
+    {
+        "project": "pdfkit",
+        "repo": "foliojs/pdfkit",
+        "stars": 10700,
+        "description": "A JavaScript PDF generation library for Node and the browser.",
+        "mergedUrl": "https://github.com/foliojs/pdfkit/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
+        "pullRequests": [
+            {
+                "title": "Note that center and right alignment apply to each continued segment",
+                "url": "https://github.com/foliojs/pdfkit/pull/1818"
             }
         ]
     },
@@ -73,6 +90,18 @@
         "description": "An advanced font engine for Node and the browser.",
         "mergedUrl": "https://github.com/foliojs/fontkit/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
+            {
+                "title": "Fix repha, pre-base vowel and dotted circle placement in USE",
+                "url": "https://github.com/foliojs/fontkit/pull/400"
+            },
+            {
+                "title": "Continue after the glyphs a lookup matched or inserted",
+                "url": "https://github.com/foliojs/fontkit/pull/398"
+            },
+            {
+                "title": "Encode subsets of fonts with set variations",
+                "url": "https://github.com/foliojs/fontkit/pull/397"
+            },
             {
                 "title": "Fix USE shaper crash on characters outside a syllable",
                 "url": "https://github.com/foliojs/fontkit/pull/399"
