@@ -2,7 +2,7 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 28200,
+        "stars": 28400,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
@@ -64,6 +64,10 @@
         "description": "A secure Python sandbox, written in Rust, for code written by AI.",
         "mergedUrl": "https://github.com/pydantic/monty/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
+            {
+                "title": "Fix re.match() and re.fullmatch() for (?x) patterns that end in a comment",
+                "url": "https://github.com/pydantic/monty/pull/1046"
+            },
             {
                 "title": "Include capture groups in re.split() results",
                 "url": "https://github.com/pydantic/monty/pull/1036"
