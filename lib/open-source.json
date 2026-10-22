@@ -2,7 +2,7 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 28600,
+        "stars": 29100,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
@@ -60,7 +60,7 @@
     {
         "project": "Monty",
         "repo": "pydantic/monty",
-        "stars": 8700,
+        "stars": 8800,
         "description": "A secure Python sandbox, written in Rust, for code written by AI.",
         "mergedUrl": "https://github.com/pydantic/monty/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
