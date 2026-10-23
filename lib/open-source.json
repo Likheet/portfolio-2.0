@@ -2,10 +2,14 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 29100,
+        "stars": 29400,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
+            {
+                "title": "Convert kilometres, millilitres and fl oz",
+                "url": "https://github.com/vorssaint/vorssaint-utils/pull/3109"
+            },
             {
                 "title": "Stop rounding large calculator answers to ten digits",
                 "url": "https://github.com/vorssaint/vorssaint-utils/pull/3099"
