@@ -1,12 +1,10 @@
 'use client';
 import SectionTitle from '@/components/SectionTitle';
 import { PROJECTS, PUBLICATIONS } from '@/lib/data';
-import { cn } from '@/lib/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import Image from 'next/image';
-import React, { useMemo, useRef, useState, MouseEvent } from 'react';
+import React, { useMemo, useRef } from 'react';
 import Project from './Project';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -20,73 +18,13 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 const MyWork = () => {
     const containerRef = useRef<HTMLDivElement>(null);
     const projectListRef = useRef<HTMLDivElement>(null);
-    const imageContainer = useRef<HTMLDivElement>(null);
-    const imageRef = useRef<HTMLImageElement>(null);
-    const [selectedProject, setSelectedProject] = useState<string | null>(null);
-    const sortedProjects = useMemo(
-        () => [...PROJECTS].sort((a, b) => Number(b.year) - Number(a.year)),
+    // The home page shows the featured projects; the archive shows them all.
+    const featuredProjects = useMemo(
+        () =>
+            PROJECTS.filter((project) => project.featured).sort(
+                (a, b) => Number(b.year) - Number(a.year),
+            ),
         [],
-    );
-
-    // update imageRef.current href based on the cursor hover position
-    // also update image position
-    useGSAP(
-        (context, contextSafe) => {
-            // show image on hover
-            if (window.innerWidth < 768) {
-                setSelectedProject(null);
-                return;
-            }
-
-            const handleMouseMove = contextSafe?.((e: MouseEvent) => {
-                if (!containerRef.current) return;
-                if (!imageContainer.current) return;
-
-                if (window.innerWidth < 768) {
-                    setSelectedProject(null);
-                    return;
-                }
-
-                const containerRect =
-                    containerRef.current?.getBoundingClientRect();
-                const imageRect =
-                    imageContainer.current.getBoundingClientRect();
-                const offsetTop = e.clientY - containerRect.y;
-                const targetY = offsetTop - imageRect.height / 2;
-                const maxY = Math.max(
-                    0,
-                    containerRect.height - imageRect.height,
-                );
-                const clampedY = gsap.utils.clamp(0, maxY, targetY);
-
-                // if cursor is outside the container, hide the image
-                if (
-                    containerRect.y > e.clientY ||
-                    containerRect.bottom < e.clientY ||
-                    containerRect.x > e.clientX ||
-                    containerRect.right < e.clientX
-                ) {
-                    return gsap.to(imageContainer.current, {
-                        duration: 0.3,
-                        opacity: 0,
-                    });
-                }
-
-                gsap.to(imageContainer.current, {
-                    y: clampedY,
-                    duration: 0.65,
-                    ease: 'power3.out',
-                    opacity: 1,
-                });
-            }) as any;
-
-            window.addEventListener('mousemove', handleMouseMove);
-
-            return () => {
-                window.removeEventListener('mousemove', handleMouseMove);
-            };
-        },
-        { scope: containerRef, dependencies: [containerRef.current] },
     );
 
     useGSAP(
@@ -109,84 +47,12 @@ const MyWork = () => {
         { scope: containerRef },
     );
 
-    const handleMouseEnter = (slug: string) => {
-        if (window.innerWidth < 768) {
-            setSelectedProject(null);
-            return;
-        }
-
-        setSelectedProject(slug);
-    };
-
-    const handleMouseLeave = () => {
-        if (window.innerWidth < 768) {
-            setSelectedProject(null);
-            return;
-        }
-
-        setSelectedProject(null);
-
-        if (imageContainer.current) {
-            gsap.to(imageContainer.current, {
-                duration: 0.2,
-                opacity: 0,
-            });
-        }
-    };
-
     return (
         <section className="pb-section" id="my-work">
             <div className="container">
                 <SectionTitle title="MY WORK" />
 
-                <div
-                    className="group/projects relative"
-                    ref={containerRef}
-                    onMouseLeave={handleMouseLeave}
-                >
-                    {selectedProject !== null && (
-                        <div
-                            className="max-md:hidden absolute right-0 top-0 z-[1] pointer-events-none w-[260px] lg:w-[330px] xl:w-[420px] aspect-[4/3] opacity-0"
-                            ref={imageContainer}
-                        >
-                            <div className="relative h-full w-full overflow-hidden rounded-2xl border border-border/45 bg-background/75 shadow-[0_18px_50px_rgba(0,0,0,0.45)]">
-                                <div className="absolute inset-0 bg-gradient-to-br from-primary/12 via-transparent to-portfolio-red/14 z-[2]" />
-                                <div className="absolute inset-0 ring-1 ring-white/10 rounded-2xl z-[3]" />
-
-                                {sortedProjects.map((project) => (
-                                    <div
-                                        key={project.slug}
-                                        className={cn(
-                                            'absolute inset-0 transition-opacity duration-500',
-                                            {
-                                                'opacity-0':
-                                                    project.slug !==
-                                                    selectedProject,
-                                            },
-                                        )}
-                                    >
-                                        <Image
-                                            src={project.thumbnail}
-                                            alt={project.title}
-                                            width="800"
-                                            height="600"
-                                            className="absolute inset-0 w-full h-full object-cover scale-105 blur-xl opacity-35"
-                                            aria-hidden
-                                        />
-                                        <Image
-                                            src={project.thumbnail}
-                                            alt={project.title}
-                                            width="800"
-                                            height="600"
-                                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover/projects:scale-[1.03]"
-                                            ref={imageRef}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    )}
-
+                <div className="group/projects relative" ref={containerRef}>
                     <div className="flex flex-col gap-16" ref={projectListRef}>
                         {/* Research Papers Subsection */}
                         {PUBLICATIONS && PUBLICATIONS.length > 0 && (
@@ -248,14 +114,11 @@ const MyWork = () => {
                                     <ArrowUpRight className="w-4 h-4" />
                                 </TransitionLink>
                             </div>
-                            <div className="flex flex-col max-md:gap-10">
-                                {sortedProjects.map((project, index) => (
+                            <div className="grid md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-14">
+                                {featuredProjects.map((project, index) => (
                                     <Project
                                         index={index}
                                         project={project}
-                                        selectedProject={selectedProject}
-                                        onMouseEnter={handleMouseEnter}
-                                        onMouseLeave={handleMouseLeave}
                                         key={project.slug}
                                     />
                                 ))}

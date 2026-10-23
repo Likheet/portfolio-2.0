@@ -1,0 +1,94 @@
+<!doctype html>
+<!--
+    Source for public/og.png, the image shown when a link to the site is
+    shared. To rebuild it (1200x630):
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+        --hide-scrollbars --window-size=1200,630 --virtual-time-budget=10000 \
+        --screenshot=public/og.png "file://$PWD/og/og-image.html"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz@6..96&family=Inter:wght@400;500&family=Playfair+Display:ital@1&display=block" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body {
+        background: #212121;
+        color: #dedede;
+        font-family: Inter, sans-serif;
+        position: relative;
+    }
+    .label {
+        font-size: 15px;
+        font-weight: 500;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+    }
+    .corner { position: absolute; top: 56px; left: 72px; opacity: 0.9; }
+    .names { position: absolute; top: 120px; left: 72px; width: 640px; }
+    .name { position: relative; display: inline-block; line-height: 0.85; font-size: 168px; }
+    .name::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -10px;
+        height: 1px;
+        background: rgba(222, 222, 222, 0.45);
+    }
+    .first { font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: -0.01em; }
+    .last-row { text-align: right; margin-top: 34px; }
+    .last { font-family: 'Bodoni Moda', serif; letter-spacing: -0.02em; }
+    .role {
+        position: absolute;
+        left: 72px;
+        bottom: 64px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        opacity: 0.85;
+    }
+    .role .line { width: 44px; height: 1px; background: rgba(222, 222, 222, 0.4); }
+    .cards { position: absolute; right: 72px; top: 150px; width: 330px; }
+    .card {
+        position: relative;
+        height: 128px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding: 0 28px 22px;
+        font-size: 19px;
+        font-weight: 500;
+        border-bottom-right-radius: 48px;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+    .card + .card { margin-top: -44px; padding-top: 44px; height: 172px; }
+    .about { background: #E8E0D0; color: #1A1A1A; border-top-left-radius: 18px; border-top-right-radius: 18px; z-index: 3; }
+    .projects { background: #DE5448; color: #fff; z-index: 2; }
+    .contact { background: #EAB330; color: #1A1A1A; border-bottom-left-radius: 18px; z-index: 1; }
+</style>
+</head>
+<body>
+    <div class="label corner">likheet.is-a.dev</div>
+
+    <div class="names">
+        <div><span class="name first">Likheet</span></div>
+        <div class="last-row"><span class="name last">Shetty</span></div>
+    </div>
+
+    <div class="label role">
+        <span class="line"></span>
+        Software Developer · Master of IT @ UNSW
+        <span class="line"></span>
+    </div>
+
+    <div class="cards">
+        <div class="card about"><span>About</span><span>01</span></div>
+        <div class="card projects"><span>Projects</span><span>02</span></div>
+        <div class="card contact"><span>Contact</span><span>03</span></div>
+    </div>
+</body>
+</html>

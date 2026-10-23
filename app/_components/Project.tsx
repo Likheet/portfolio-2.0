@@ -1,7 +1,6 @@
 'use client';
 
 import TransitionLink from '@/components/TransitionLink';
-import { cn } from '@/lib/utils';
 import { IProject } from '@/types';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -12,10 +11,11 @@ import { Github } from 'lucide-react';
 interface Props {
     index: number;
     project: IProject;
-    selectedProject: string | null;
-    onMouseEnter: (_slug: string) => void;
-    onMouseLeave: () => void;
 }
+
+// The opening sentence of the description, before its bullet list.
+const summary = (description: string) =>
+    description.split('<ul>')[0].replace(/<[^>]+>/g, '').trim();
 
 /*
 <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link">
@@ -34,13 +34,9 @@ interface Props {
 
 gsap.registerPlugin(useGSAP);
 
-const Project = ({
-    index,
-    project,
-    selectedProject,
-    onMouseEnter,
-    onMouseLeave,
-}: Props) => {
+// A featured project: a large image on top, then the title, a one-line
+// summary and the stack. Clicking opens the project in the archive view.
+const Project = ({ index, project }: Props) => {
     const externalLinkSVGRef = useRef<SVGSVGElement>(null);
 
     const { context, contextSafe } = useGSAP(() => {}, {
@@ -49,8 +45,6 @@ const Project = ({
     });
 
     const handleMouseEnter = contextSafe?.(() => {
-        onMouseEnter(project.slug);
-
         const arrowLine = externalLinkSVGRef.current?.querySelector(
             '#arrow-line',
         ) as SVGPathElement;
@@ -108,42 +102,38 @@ const Project = ({
 
     const handleMouseLeave = contextSafe?.(() => {
         context?.kill();
-        onMouseLeave();
     });
 
     return (
         <TransitionLink
             href={`/archive?project=${project.slug}&from=home`}
-            className="project-item group leading-none py-5 md:border-b first:!pt-0 last:pb-0 last:border-none md:group-hover/projects:opacity-30 md:hover:!opacity-100 transition-all"
+            className="project-item group block"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            {selectedProject === null && (
+            <div className="relative aspect-[16/10] overflow-hidden rounded-2xl border border-border/45 bg-background-light">
                 <Image
                     src={project.thumbnail}
-                    alt="Project"
-                    width="300"
-                    height="200"
-                    className={cn(
-                        'md:hidden w-full object-cover mb-6 aspect-[3/2] object-top',
-                    )}
-                    key={project.slug}
+                    alt={project.title}
+                    width="1200"
+                    height="750"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     loading="lazy"
                 />
-            )}
-            <div className="flex gap-2 md:gap-5">
+            </div>
+            <div className="mt-5 flex gap-2 md:gap-4">
                 <div className="font-anton text-muted-foreground">
                     _{(index + 1).toString().padStart(2, '0')}.
                 </div>
                 <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-3">
-                        <h4 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl flex gap-4 font-anton leading-tight transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
+                        <h4 className="text-3xl sm:text-4xl flex gap-3 font-anton leading-tight transition-all duration-700 bg-gradient-to-r from-primary to-foreground from-[50%] to-[50%] bg-[length:200%] bg-right bg-clip-text text-transparent group-hover:bg-left">
                             {project.title}
                             <span className="text-foreground opacity-0 group-hover:opacity-100 transition-all">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    width="36"
-                                    height="36"
+                                    width="28"
+                                    height="28"
                                     viewBox="0 0 24 24"
                                     fill="none"
                                     stroke="currentColor"
@@ -186,7 +176,10 @@ const Project = ({
                             </button>
                         )}
                     </div>
-                    <div className="mt-2 flex flex-wrap gap-3 text-muted-foreground text-xs">
+                    <p className="mt-2 text-base text-muted-foreground leading-relaxed">
+                        {summary(project.description)}
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-3 text-muted-foreground text-xs">
                         {project.techStack
                             .slice(0, 3)
                             .map((tech, idx, stackArr) => (

@@ -70,10 +70,35 @@ const syne = Syne({
     display: 'swap',
 });
 
+const SITE_DESCRIPTION =
+    'Likheet Shetty — AI-focused software developer building ML prototypes, interactive frontends, and cloud-native tools.';
+
 export const metadata: Metadata = {
+    metadataBase: new URL('https://likheet.is-a.dev'),
     title: 'Portfolio - Likheet Shetty',
-    description:
-        'Likheet Shetty — AI-focused software developer building ML prototypes, interactive frontends, and cloud-native tools.',
+    description: SITE_DESCRIPTION,
+    // The card shown when a link to the site is shared (og/og-image.html).
+    openGraph: {
+        type: 'website',
+        url: '/',
+        siteName: 'Likheet Shetty',
+        title: 'Likheet Shetty — Software Developer',
+        description: SITE_DESCRIPTION,
+        images: [
+            {
+                url: '/og.png',
+                width: 1200,
+                height: 630,
+                alt: 'Likheet Shetty, Software Developer',
+            },
+        ],
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Likheet Shetty — Software Developer',
+        description: SITE_DESCRIPTION,
+        images: ['/og.png'],
+    },
 };
 
 // Root layout component

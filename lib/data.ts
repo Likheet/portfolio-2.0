@@ -299,6 +299,7 @@ export const PROJECTS: IProject[] = [
     {
         title: 'YTFast',
         slug: 'ytfast',
+        featured: true,
         techStack: ['Rust', 'egui', 'wgpu', 'Tokio'],
         thumbnail: '/projects/thumbnail/ytfast.jpg',
         longThumbnail: '/projects/long/ytfast.jpg',
@@ -339,10 +340,11 @@ export const PROJECTS: IProject[] = [
     {
         title: 'Life Ledger',
         slug: 'life-ledger',
+        featured: true,
         techStack: ['React Native', 'Expo', 'TypeScript', 'SQLite'],
-        thumbnail: '/projects/thumbnail/life-ledger.png',
-        longThumbnail: '/projects/long/life-ledger.png',
-        images: ['/projects/images/life-ledger.png'],
+        thumbnail: '/projects/thumbnail/life-ledger.jpg',
+        longThumbnail: '/projects/long/life-ledger.jpg',
+        images: ['/projects/images/life-ledger.jpg'],
         liveUrl: 'https://life-ledger.tech',
         year: 2026,
         description: `
@@ -378,6 +380,7 @@ export const PROJECTS: IProject[] = [
     {
         title: 'Nucleus AI',
         slug: 'nucleus-ai',
+        featured: true,
         techStack: ['Python', 'FastAPI', 'ChromaDB', 'Gemini API'],
         thumbnail: '/projects/thumbnail/nucleus-ai.jpg',
         longThumbnail: '/projects/long/nucleus-ai.jpg',
@@ -417,6 +420,7 @@ export const PROJECTS: IProject[] = [
     {
         title: 'Hermes Monitoring',
         slug: 'hermes-monitoring',
+        featured: true,
         techStack: ['Next.js', 'TypeScript', 'Supabase', 'Tailwind CSS'],
         thumbnail: '/projects/thumbnail/hermes-monitoring.jpg',
         longThumbnail: '/projects/long/hermes-monitoring.jpg',

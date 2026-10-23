@@ -25,6 +25,8 @@ export interface IProject {
     longThumbnail: string;
     images: string[];
     slug: string;
+    // Shown on the home page; every project is in the archive.
+    featured?: boolean;
     liveUrl?: string;
     sourceCode?: string;
     // New rich content fields

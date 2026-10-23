@@ -15,11 +15,32 @@ export const generateMetadata = async ({
     const { slug } = await params;
     const project = PROJECTS.find((project) => project.slug === slug);
 
+    const title = `${project?.title} - ${project?.techStack
+        .slice(0, 3)
+        .join(', ')}`;
+    // The opening sentence, without the description's HTML list.
+    const description = project?.description
+        .split('<ul>')[0]
+        .replace(/<[^>]+>/g, '')
+        .trim();
+    const image = project?.longThumbnail || project?.thumbnail;
+
     return {
-        title: `${project?.title} - ${project?.techStack
-            .slice(0, 3)
-            .join(', ')}`,
-        description: project?.description,
+        title,
+        description,
+        openGraph: {
+            type: 'website',
+            url: `/projects/${slug}`,
+            title,
+            description,
+            images: image ? [{ url: image }] : undefined,
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: image ? [image] : undefined,
+        },
     } as Metadata;
 };
 
