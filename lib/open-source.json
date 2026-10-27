@@ -2,7 +2,7 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 30000,
+        "stars": 30200,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
@@ -121,6 +121,23 @@
             {
                 "title": "Read hdmx device records at their padded size",
                 "url": "https://github.com/foliojs/fontkit/pull/396"
+            }
+        ]
+    },
+    {
+        "project": "fancy-regex",
+        "repo": "fancy-regex/fancy-regex",
+        "stars": 600,
+        "description": "Rust library for regular expressions using \"fancy\" features like look-around and backreferences. Has a mode which aims to be compatible with Oniguruma syntax.",
+        "mergedUrl": "https://github.com/fancy-regex/fancy-regex/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
+        "pullRequests": [
+            {
+                "title": "Balance the explicit stack when a condition fails",
+                "url": "https://github.com/fancy-regex/fancy-regex/pull/316"
+            },
+            {
+                "title": "Do not split a group's alternatives into the branches of a conditional",
+                "url": "https://github.com/fancy-regex/fancy-regex/pull/315"
             }
         ]
     }
