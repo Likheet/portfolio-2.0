@@ -2,7 +2,7 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 30400,
+        "stars": 30500,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
@@ -72,6 +72,26 @@
         "description": "A secure Python sandbox, written in Rust, for code written by AI.",
         "mergedUrl": "https://github.com/pydantic/monty/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
+            {
+                "title": "Write a function's repr without quotes around its name",
+                "url": "https://github.com/pydantic/monty/pull/1156"
+            },
+            {
+                "title": "Fall back to insertion order in Counter repr when counts cannot be ordered",
+                "url": "https://github.com/pydantic/monty/pull/1151"
+            },
+            {
+                "title": "Dict: Preserve original key when updating entry",
+                "url": "https://github.com/pydantic/monty/pull/1139"
+            },
+            {
+                "title": "Raise OverflowError when date arithmetic leaves the supported range",
+                "url": "https://github.com/pydantic/monty/pull/1135"
+            },
+            {
+                "title": "Fix out-of-range bounds in str and bytes methods",
+                "url": "https://github.com/pydantic/monty/pull/1136"
+            },
             {
                 "title": "Fix re.match() and re.fullmatch() for (?x) patterns that end in a comment",
                 "url": "https://github.com/pydantic/monty/pull/1046"
