@@ -2,7 +2,7 @@
     {
         "project": "Vorssaint Utils",
         "repo": "vorssaint/vorssaint-utils",
-        "stars": 31000,
+        "stars": 31500,
         "description": "Free and open-source macOS menu bar toolkit.",
         "mergedUrl": "https://github.com/vorssaint/vorssaint-utils/pulls?q=is%3Apr+is%3Amerged+author%3ALikheet",
         "pullRequests": [
